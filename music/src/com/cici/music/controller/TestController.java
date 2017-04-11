@@ -19,6 +19,12 @@ public class TestController {
 		return "index";
 	}
 	
+	@RequestMapping("indexpage")
+	public String toIndexPage(HttpServletRequest request,Model model){
+		
+		return "indexPage";
+	}
+	
 	@RequestMapping("query")
 	public String query(HttpServletRequest request,Model model){
 		request.setAttribute("data",testService.getData(request));
