@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"  import="java.util.*,com.cici.music.pojo.*"%>
+    <%@ taglib prefix="c" 
+           uri="http://java.sun.com/jsp/jstl/core" %>
     <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -55,8 +57,9 @@ eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a
 </div>
   
   <div id="login">
-    <!--<script language="javascript" src="http://my.yue365.com/Indexlogin.aspx"></script> -->
-	<!--<a target="_self" href="javascript:loginhtml();">登录</a> | <a target="_self" href="javascript:reghtml();">注册</a>-->
+<!--     <script language="javascript" src="http://my.yue365.com/Indexlogin.aspx"></script>
+	<a target="_self" href="javascript:loginhtml();">登录</a> | <a target="_self" href="javascript:reghtml();">注册</a> -->
+	    <span>欢迎来到cici－－音乐网</span>
  </div>
   <ul id="nav">
     <li><a href="/">首页</a></li>
@@ -66,7 +69,10 @@ eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a
     <li><a href="/mlist/singerlist.shtml">歌手</a></li>
     <li><a href="/musiclist/ablumlist.shtml">专辑</a></li>
     <li><a href="/bang/fenlei.shtml">音乐分类</a></li>
-	<span>欢迎来到cici音乐网</span>
+	
+	 <li><a  target="_self" href="javascript:loginhtml();">登陆</a></li>
+    <li><a target="_self" href="javascript:reghtml();">注册</a></li>
+
   </ul>
 </div>
 <script type="text/javascript">
@@ -87,10 +93,21 @@ $(document).keypress(function(e){if(e.which==13){onSearch();}})
             </ul>
             <div id="main1">
               <ul>
-                <li><a target="_blank" class="pic" href="musiclist/77527.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/14579/77527_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77527.shtml">如果你是落花</a></div><a target="_blank" href="/mlist/14579.shtml">任妙音</a></li><li><a target="_blank" class="pic" href="musiclist/73086.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/33394/73086_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/73086.shtml">白狐妹妹</a></div><a target="_blank" href="/mlist/33394.shtml">艾美琦</a></li><li><a target="_blank" class="pic" href="musiclist/77523.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/951/77523_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77523.shtml">暧昧</a></div><a target="_blank" href="/mlist/951.shtml">薛之谦</a></li><li><a target="_blank" class="pic" href="musiclist/77486.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/10359/77486_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77486.shtml">最佳人选</a></div><a target="_blank" href="/mlist/10359.shtml">夏天Alex</a></li><li><a target="_blank" class="pic" href="musiclist/77399.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/3629/77399_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77399.shtml">T榜力量10</a></div><a target="_blank" href="/mlist/3629.shtml">群星</a></li><li><a target="_blank" class="pic" href="musiclist/77388.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/22297/77388_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77388.shtml">河溪早安</a></div><a target="_blank" href="/mlist/22297.shtml">杨朗朗</a></li>
+                <li><a target="_blank" class="pic" href="musiclist/77527.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/14579/77527_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77527.shtml">如果你是落花</a></div><a target="_blank" href="/mlist/14579.shtml">任妙音</a></li>
+                <li><a target="_blank" class="pic" href="musiclist/73086.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/33394/73086_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/73086.shtml">白狐妹妹</a></div><a target="_blank" href="/mlist/33394.shtml">艾美琦</a></li>
+                <li><a target="_blank" class="pic" href="musiclist/77523.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/951/77523_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77523.shtml">暧昧</a></div><a target="_blank" href="/mlist/951.shtml">薛之谦</a></li>
+                <li><a target="_blank" class="pic" href="musiclist/77486.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/10359/77486_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77486.shtml">最佳人选</a></div><a target="_blank" href="/mlist/10359.shtml">夏天Alex</a></li>
+                <li><a target="_blank" class="pic" href="musiclist/77399.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/3629/77399_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77399.shtml">T榜力量10</a></div><a target="_blank" href="/mlist/3629.shtml">群星</a></li>
+                <li><a target="_blank" class="pic" href="musiclist/77388.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/22297/77388_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77388.shtml">河溪早安</a></div><a target="_blank" href="/mlist/22297.shtml">杨朗朗</a></li>
               </ul>
               <ul style="display:none;">
-                <li><a target="_blank" class="pic" href="/musiclist/77551.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/396/77551_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77551.shtml">我喜欢上你时的内心活动(电影《喜欢你》主题曲)</a></div><a target="_blank" href="/mlist/396.shtml">陈绮贞</a></li><li><a target="_blank" class="pic" href="/musiclist/77547.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/2166/77547_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77547.shtml">真爱无坦途(电影《绑架者》片尾曲)</a></div><a target="_blank" href="/mlist/2166.shtml">李玖哲</a></li><li><a target="_blank" class="pic" href="/musiclist/77546.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/35292/77546_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77546.shtml">全世界把我遗弃</a></div><a target="_blank" href="/mlist/35292.shtml">朱盈盈</a></li><li><a target="_blank" class="pic" href="/musiclist/77545.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/8671/77545_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77545.shtml">忘忧集之爱如烟雨</a></div><a target="_blank" href="/mlist/8671.shtml">孟杨</a></li><li><a target="_blank" class="pic" href="/musiclist/77544.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/30454/77544_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77544.shtml">酒太伤</a></div><a target="_blank" href="/mlist/30454.shtml">邵杰</a></li><li><a target="_blank" class="pic" href="/musiclist/77543.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/13020/77543_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77543.shtml">梨花雪</a></div><a target="_blank" href="/mlist/13020.shtml">刘恺名</a></li>
+              <c:forEach var="zhuanji" items="${zuixinzj }">
+                              <li><a target="_blank" class="pic" href="musiclist/77527.shtml">
+                              <img height="80px" width="80px" src="${zhuanji.img }"></a>
+                              <div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77527.shtml">${zhuanji. zname }</a></div>
+                              <a target="_blank" href="/mlist/14579.shtml">${zhuanji. songerId }</a></li>
+              </c:forEach>
+                <!--  <li><a target="_blank" class="pic" href="/musiclist/77551.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/396/77551_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77551.shtml">我喜欢上你时的内心活动(电影《喜欢你》主题曲)</a></div><a target="_blank" href="/mlist/396.shtml">陈绮贞</a></li><li><a target="_blank" class="pic" href="/musiclist/77547.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/2166/77547_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77547.shtml">真爱无坦途(电影《绑架者》片尾曲)</a></div><a target="_blank" href="/mlist/2166.shtml">李玖哲</a></li><li><a target="_blank" class="pic" href="/musiclist/77546.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/35292/77546_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77546.shtml">全世界把我遗弃</a></div><a target="_blank" href="/mlist/35292.shtml">朱盈盈</a></li><li><a target="_blank" class="pic" href="/musiclist/77545.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/8671/77545_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77545.shtml">忘忧集之爱如烟雨</a></div><a target="_blank" href="/mlist/8671.shtml">孟杨</a></li><li><a target="_blank" class="pic" href="/musiclist/77544.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/30454/77544_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77544.shtml">酒太伤</a></div><a target="_blank" href="/mlist/30454.shtml">邵杰</a></li><li><a target="_blank" class="pic" href="/musiclist/77543.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/13020/77543_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77543.shtml">梨花雪</a></div><a target="_blank" href="/mlist/13020.shtml">刘恺名</a></li>-->
               </ul>
              </div>
 	  </div>

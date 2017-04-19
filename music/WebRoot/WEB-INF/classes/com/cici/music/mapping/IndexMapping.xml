@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cici.music.dao.IndexDao">
+
+  <select id="queryForNew" resultType="com.cici.music.pojo.Zhuanji" >
+    SELECT
+            zhujiId,
+            zname,
+            js,
+            songerId,
+            fxgs,
+            typeId,
+            fbtime,
+            cjtime,
+            img
+        FROM
+            zhuanji
+        order by fbtime desc;
+           
+  </select>
+</mapper>
+
+
+
+
