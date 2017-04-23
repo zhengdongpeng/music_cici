@@ -2,14 +2,18 @@ package com.cici.music.dao;
 
 import java.util.List;
 
+import com.cici.music.pojo.Song;
+import com.cici.music.pojo.SongDto;
 import com.cici.music.pojo.Test;
 import com.cici.music.pojo.Zhuanji;
 
 public interface IndexDao {
 	/**
-	 * 最新的專輯，取６個
+	 * 鏈�柊鐨勫皥杓紝鍙栵紪鍊�
 	 * @return
 	 */
 	List<Zhuanji> queryForNew();
+
+	List<SongDto> getsong();
 
 }

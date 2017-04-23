@@ -13,19 +13,19 @@ import com.cici.music.service.TestService;
 public class TestController {
 	@Autowired
 	TestService testService;
-	@RequestMapping("index")
+	@RequestMapping("index2")
 	public String toIndex(HttpServletRequest request,Model model){
 		
 		return "index";
 	}
 	
-	@RequestMapping("indexpage")
+	@RequestMapping("indexpage2")
 	public String toIndexPage(HttpServletRequest request,Model model){
 		
 		return "indexPage";
 	}
 	
-	@RequestMapping("query")
+	@RequestMapping("query2")
 	public String query(HttpServletRequest request,Model model){
 		request.setAttribute("data",testService.getData(request));
 		return "test";
