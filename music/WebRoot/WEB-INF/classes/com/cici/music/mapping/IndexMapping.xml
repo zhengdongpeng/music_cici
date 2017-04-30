@@ -18,6 +18,38 @@
         order by fbtime desc;
            
   </select>
+  
+  
+  <select id="getsong" resultType="com.cici.music.pojo.SongDto" >
+    SELECT
+            song.sid,
+            song.sname as name,
+            songer.sid as si_id,
+            songer.sname as singername        
+        FROM
+            song,songer
+        where
+        	song.songerid=songer.sid
+        order by fbtime desc
+        limit 0,15
+           
+  </select>
+  
+  <select id="getsong_hot" resultType="com.cici.music.pojo.SongDto" >
+    SELECT
+            song.sid,
+            song.sname as name,
+            songer.sid as si_id,
+            songer.sname as singername        
+        FROM
+            song,songer
+        where
+        	song.songerid=songer.sid
+        order by fbtime desc
+        limit 0,15
+           
+  </select>
+  
 </mapper>
 
 

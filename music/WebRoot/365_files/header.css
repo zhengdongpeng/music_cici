@@ -10,11 +10,11 @@ table { border-spacing: 0; }
 input, select { vertical-align: middle; }
 input, button, textarea, select, option { font-family: inherit; font-size: inherit; font-style: inherit; font-weight: inherit; }
 h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal; }
-a { outline: none; color:#044CB8; }
-a:link { color: #044CB8; }
+a { outline: none; color:#0fffB8; }
+a:link { color: #0fffB8; }
 a:visited { color: #044CB8;}
-a:hover {background: none repeat scroll 0 0 #003399;
-    color: #FFFFFF;
+a:hover {background: none repeat scroll 0 0 #AAEEDD;
+    color: #FFAAAA;
     text-decoration: none;}
 	
 .mt5{ margin-bottom:5px;}	
@@ -46,7 +46,7 @@ a:hover {background: none repeat scroll 0 0 #003399;
 #search a:hover{ background:none;color: #044CB8;}
 #search a:visited{ background:none;color: #044CB8;}
 #search .b_link{ padding-left:35px; display:inline;}
-.searchinput{ float:left; width:409px; height:33px; background:#ffffff; border:none; margin:11px 0 0 0px; line-height:33px; font-size:16px; background:url(../images/searctext.gif) no-repeat; padding:0 5px; }
+.searchinput{ float:left; width:409px; height:33px; background:#EEAADD; border:none; margin:11px 0 0 0px; line-height:33px; font-size:16px; background:url(../images/searctext.gif) no-repeat; padding:0 5px; }
 #searchbotton{ float:left; width:80px; height:33px; border:none; margin-top:11px; background:url(../images/searchbut.gif) no-repeat; cursor:pointer;}
 #searchradio{ float:left; width:230px; margin-top:5px;}
 #searchradio span{margin:0px 0 0 3px;_margin-left:0;}

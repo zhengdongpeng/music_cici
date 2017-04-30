@@ -7,10 +7,11 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html >
 <head>
     <base href="<%=basePath%>">
 <script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script>
+
 <!-- foreign country -->
 <script type="text/javascript">BAIDU_CLB_fillSlot("1111134");</script>
 <!-- 手机 -->
@@ -25,6 +26,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="http://zy.yue365.com/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 <script type="text/javascript" src="365_files/jquery.js"></script>
 <script type="text/javascript" src="365_files/common.js"></script>
+<script type="text/javascript" src="js/mainpage.js"></script>
+
 <script>
 <!--
 /*第一种形式 第二种形式 更换显示样式*/
@@ -32,7 +35,7 @@ eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a
 -->
 </script>
 </head>
-<body>
+<body bgcolor='#000000'>
 <div id="wrapper">
   <script type="text/javascript" src="http://cbjs.baidu.com/js/s.js"></script>
 <!-- foreign country -->
@@ -137,43 +140,23 @@ $(document).keypress(function(e){if(e.which==13){onSearch();}})
               <li class="mover">华语</li>
             </ul>
             <div id="main3">
-              <ul>
-                <li><dl class="singer"><a href="/mlist/951.shtml" title="薛之谦歌曲" target="_blank">薛之谦</a></dl><span>1</span><dl  class="songname"><a  target="m" href="/play/951/396179.shtml" rel="2006_951/77523/1.mp3|暧昧|薛之谦|396179|951|77523|暧昧">暧昧</a></dl></li><li><dl class="singer"><a href="/mlist/26706.shtml" title="吕晶歌曲" target="_blank">吕晶</a></dl><span>2</span><dl  class="songname"><a  target="m" href="/play/26706/396077.shtml" rel="2006_26706/77473/1.mp3|味道|吕晶|396077|26706|77473|味道">味道</a></dl></li><li><dl class="singer"><a href="/mlist/22297.shtml" title="杨朗朗歌曲" target="_blank">杨朗朗</a></dl><span>3</span><dl  class="songname"><a  target="m" href="/play/22297/395964.shtml" rel="2006_22297/77388/1.mp3|河溪早安|杨朗朗|395964|22297|77388|河溪早安">河溪早安</a></dl></li><li><dl class="singer"><a href="/mlist/28061.shtml" title="简弘亦歌曲" target="_blank">简弘亦</a></dl><span>4</span><dl  class="songname"><a  target="m" href="/play/28061/395960.shtml" rel="2006_28061/77384/1.mp3|过节|简弘亦|395960|28061|77384|过节">过节</a></dl></li><li><dl class="singer"><a href="/mlist/951.shtml" title="薛之谦歌曲" target="_blank">薛之谦</a></dl><span>5</span><dl  class="songname"><a  target="m" href="/play/951/395778.shtml" rel="2006_951/77284/1.mp3|动物世界|薛之谦|395778|951|77284|动物世界">动物世界</a></dl></li><li><dl class="singer"><a href="/mlist/35181.shtml" title="HELLO GIRLS歌曲" target="_blank">HELLO GIRLS</a></dl><span>6</span><dl  class="songname"><a  target="m" href="/play/35181/395731.shtml" rel="2006_35181/77253/1.mp3|小黑屋|HELLO GIRLS|395731|35181|77253|小黑屋">小黑屋</a></dl></li><li><dl class="singer"><a href="/mlist/35128.shtml" title="L.I.K.E歌曲" target="_blank">L.I.K.E</a></dl><span>7</span><dl  class="songname"><a  target="m" href="/play/35128/395538.shtml" rel="2006_35128/77147/1.mp3|闺蜜城堡|L.I.K.E|395538|35128|77147|闺蜜城堡">闺蜜城堡</a></dl></li><li><dl class="singer"><a href="/mlist/23141.shtml" title="毛泽少歌曲" target="_blank">毛泽少</a></dl><span>8</span><dl  class="songname"><a  target="m" href="/play/23141/395522.shtml" rel="2006_23141/77133/1.mp3|心头的彩虹|毛泽少|395522|23141|77133|心头的彩虹">心头的彩虹</a></dl></li><li><dl class="singer"><a href="/mlist/7872.shtml" title="叶贝文歌曲" target="_blank">叶贝文</a></dl><span>9</span><dl  class="songname"><a  target="m" href="/play/7872/395449.shtml" rel="2006_7872/77099/1.mp3|相爱相守一辈子|叶贝文|395449|7872|77099|相爱相守一辈子">相爱相守一辈子</a></dl></li><li><dl class="singer"><a href="/mlist/951.shtml" title="薛之谦歌曲" target="_blank">薛之谦</a></dl><span>10</span><dl  class="songname"><a  target="m" href="/play/951/395447.shtml" rel="2006_951/77067/2.mp3|高尚|薛之谦|395447|951|77067|高尚">高尚</a></dl></li><li><dl class="singer"><a href="/mlist/5505.shtml" title="金志文歌曲" target="_blank">金志文</a></dl><span>11</span><dl  class="songname"><a  target="m" href="/play/5505/395408.shtml" rel="2006_5505/77066/1.mp3|迷途之光|金志文|395408|5505|77066|迷途之光">迷途之光</a></dl></li><li><dl class="singer"><a href="/mlist/797.shtml" title="胡彦斌歌曲" target="_blank">胡彦斌</a></dl><span>12</span><dl  class="songname"><a  target="m" href="/play/797/395381.shtml" rel="2006_797/77045/1.mp3|剃刀边缘|胡彦斌|395381|797|77045|剃刀边缘">剃刀边缘</a></dl></li><li><dl class="singer"><a href="/mlist/24801.shtml" title="1931女子偶像组合歌曲" target="_blank">1931女子偶像组合</a></dl><span>13</span><dl  class="songname"><a  target="m" href="/play/24801/395380.shtml" rel="2006_24801/77044/1.mp3|梦想广州|1931女子偶像组合|395380|24801|77044|梦想广州">梦想广州</a></dl></li><li><dl class="singer"><a href="/mlist/4486.shtml" title="许嵩歌曲" target="_blank">许嵩</a></dl><span>14</span><dl  class="songname"><a  target="m" href="/play/4486/395335.shtml" rel="2006_4486/77006/2.mp3|深夜书店 - 许嵩&洛天依|许嵩|395335|4486|77006|深夜书店">深夜书店</a></dl></li><li><dl class="singer"><a href="/mlist/35049.shtml" title="月光畅想歌曲" target="_blank">月光畅想</a></dl><span>15</span><dl  class="songname"><a  target="m" href="/play/35049/395222.shtml" rel="2006_35049/76961/1.mp3|还是她最美|月光畅想|395222|35049|76961|还是她最美">还是她最美</a></dl></li>
+              <ul class="newsong">
+               <!-- <li>
+                <dl class="singer">
+                	<a href="/mlist/951.shtml" title="薛之谦歌曲" target="_blank">薛之谦</a></dl>
+                	<span>1</span>
+                	<dl  class="songname">
+                	<a  target="m" href="/play/951/396179.shtml" rel="2006_951/77523/1.mp3|暧昧|薛之谦|396179|951|77523|暧昧">暧昧</a>
+                </dl>
+               </li> -->
+                	
+                	
               </ul>
             </div>
           </div>
         </div>
-      <div id="leftmiddle">
-        <div class="noborder">
-          <ul class="title"><span style="float:right;"><a href="/guangchangwu/" rel="nofollow">更多</a></span><a href="/guangchangwu/">广场舞</a></ul>  
-          <ul id="gcwList">
-		   <li><span class="numberone">1</span><a href="/guangchangwu/gequ/3183.shtml" target="_blank" title="广场舞小苹果">小苹果广场舞</a></li><li><span class="numberone">2</span><a href="/guangchangwu/gequ/2576.shtml" target="_blank" title="瑜伽视频教程初级">瑜伽视频教程初级广场舞</a></li><li><span class="numberone">3</span><a href="/guangchangwu/gequ/1372.shtml" target="_blank" title="广场舞火火的姑娘">火火的姑娘广场舞</a></li><li><span>4</span><a href="/guangchangwu/gequ/3656.shtml" target="_blank" title="广场舞美丽的牧羊姑娘">美丽的牧羊姑娘广场舞</a></li><li><span>5</span><a href="/guangchangwu/gequ/4300.shtml" target="_blank" title="广场舞感觉自己萌萌哒">感觉自己萌萌哒广场舞</a></li><li><span>6</span><a href="/guangchangwu/gequ/9.shtml" target="_blank" title="广场舞最炫民族风">最炫民族风广场舞</a></li><li><span>7</span><a href="/guangchangwu/gequ/4397.shtml" target="_blank" title="广场舞爱情过过招">爱情过过招广场舞</a></li><li><span>8</span><a href="/guangchangwu/gequ/3025.shtml" target="_blank" title="广场舞我的快乐就是想你">我的快乐就是想你广场舞</a></li><li><span>9</span><a href="/guangchangwu/gequ/3412.shtml" target="_blank" title="广场舞你是我的妞">你是我的妞广场舞</a></li><li><span>10</span><a href="/guangchangwu/gequ/856.shtml" target="_blank" title="广场舞今夜舞起来">今夜舞起来广场舞</a></li><li><span>11</span><a href="/guangchangwu/gequ/4245.shtml" target="_blank" title="肚皮舞">肚皮舞广场舞</a></li><li><span>12</span><a href="/guangchangwu/gequ/1261.shtml" target="_blank" title="广场舞爱的奴隶">爱的奴隶广场舞</a></li><li><span>13</span><a href="/guangchangwu/gequ/3729.shtml" target="_blank" title="广场舞江南梦">江南梦广场舞</a></li><li><span>14</span><a href="/guangchangwu/gequ/3877.shtml" target="_blank" title="广场舞辣妈">辣妈广场舞</a></li><li><span>15</span><a href="/guangchangwu/gequ/3578.shtml" target="_blank" title="广场舞老公赚钱老婆花">老公赚钱老婆花广场舞</a></li>
-          </ul>
-        </div>
-        <div id="goodsong">
-          <ul class="goodsongtitle">
-            <span>首发歌曲/独播歌曲</span>
-          </ul>
-          <ul class="goodsongcontent">
-          <li><span class="num">1</span><dl class="songname"><a href="/mlist/26562.shtml" title="沈梦辰歌曲"  class="u" target="_blank">沈梦辰</a> 首发歌曲 <a href="/play/26562/396159.shtml" target="m">追梦星城</a></dl><span class="time">19小时前</span></li>
-<li><span class="num">2</span><dl class="songname"><a href="/mlist/28756.shtml" title="王冠乔歌曲"  class="u" target="_blank">王冠乔</a> 首发歌曲 <a href="/play/28756/396140.shtml" target="m">像石头一样坚强ＤＪ阿远ＲeMix</a></dl><span class="time">19小时前</span></li>
-<li><span class="num">3</span><dl class="songname"><a href="/mlist/24801.shtml" title="1931女子偶像组合歌曲"  class="u" target="_blank">1931女子偶像组合</a> 首发歌曲 <a href="/play/24801/396115.shtml" target="m">并肩闪耀</a></dl><span class="time">20小时前</span></li>
-<li><span class="num">4</span><dl class="songname"><a href="/mlist/26706.shtml" title="吕晶歌曲"  class="u" target="_blank">吕晶</a> 首发歌曲 <a href="/play/26706/396077.shtml" target="m">味道</a></dl><span class="time">3天前</span></li>
-<li><span class="num">5</span><dl class="songname"><a href="/mlist/22297.shtml" title="杨朗朗歌曲"  class="u" target="_blank">杨朗朗</a> 首发歌曲 <a href="/play/22297/395964.shtml" target="m">河溪早安</a></dl><span class="time">5天前</span></li>
-<li><span class="num">6</span><dl class="songname"><a href="/mlist/951.shtml" title="薛之谦歌曲"  class="u" target="_blank">薛之谦</a> 首发歌曲 <a href="/play/951/395778.shtml" target="m">动物世界</a></dl><span class="time">1周前</span></li>
-<li><span class="num">7</span><dl class="songname"><a href="/mlist/17836.shtml" title="傅松歌曲"  class="u" target="_blank">傅松</a> 首发歌曲 <a href="/play/17836/395776.shtml" target="m">老大</a></dl><span class="time">1周前</span></li>
-<li><span class="num">8</span><dl class="songname"><a href="/mlist/35181.shtml" title="HELLO GIRLS歌曲"  class="u" target="_blank">HELLO GIRLS</a> 首发歌曲 <a href="/play/35181/395731.shtml" target="m">小黑屋</a></dl><span class="time">1周前</span></li>
-<li><span class="num">9</span><dl class="songname"><a href="/mlist/15707.shtml" title="马頔歌曲"  class="u" target="_blank">马頔</a> 首发歌曲 <a href="/play/15707/395546.shtml" target="m">大雁</a></dl><span class="time">2周前</span></li>
-<li><span class="num">10</span><dl class="songname"><a href="/mlist/34733.shtml" title="鲍鹏歌曲"  class="u" target="_blank">鲍鹏</a> 首发歌曲 <a href="/play/34733/395537.shtml" target="m">朋友的圈</a></dl><span class="time">2周前</span></li>
-<li><span class="num">11</span><dl class="songname"><a href="/mlist/35123.shtml" title="罗伊歌曲"  class="u" target="_blank">罗伊</a> 首发歌曲 <a href="/play/35123/395528.shtml" target="m">离别的车站</a></dl><span class="time">2周前</span></li>
-<li><span class="num">12</span><dl class="songname"><a href="/mlist/10168.shtml" title="戴佳毅歌曲"  class="u" target="_blank">戴佳毅</a> 首发歌曲 <a href="/play/10168/395454.shtml" target="m">我是真的很爱你dj阿远 2017Extended Mix</a></dl><span class="time">2周前</span></li>
-<li><span class="num">13</span><dl class="songname"><a href="/mlist/7872.shtml" title="叶贝文歌曲"  class="u" target="_blank">叶贝文</a> 首发歌曲 <a href="/play/7872/395449.shtml" target="m">相爱相守一辈子</a></dl><span class="time">2周前</span></li>
-<li><span class="num">14</span><dl class="songname"><a href="/mlist/951.shtml" title="薛之谦歌曲"  class="u" target="_blank">薛之谦</a> 首发歌曲 <a href="/play/951/395447.shtml" target="m">高尚</a></dl><span class="time">2周前</span></li>
-<li><span class="num">15</span><dl class="songname"><a href="/mlist/5505.shtml" title="金志文歌曲"  class="u" target="_blank">金志文</a> 首发歌曲 <a href="/play/5505/395408.shtml" target="m">迷途之光</a></dl><span class="time">2周前</span></li>
-
-          </ul>
-        </div>
-      </div>
+      
+        
       <div id="tags"><strong>热门标签:</strong>
 <a target="_blank"  href="/mlist/4789.shtml">乌兰托娅</a> <a target="_blank"  href="/bang/box100_w.shtml" class="brown f16 blod">歌曲大全</a> <a target="_blank"  href="/guangchangwu/wudui/1774/">郑多燕减肥舞</a> <a target="_blank"  href="/bang/tag9.shtml" class="green f16 blod">好听的英文歌</a> <a target="_blank"  href="/bang/tag147.shtml">父亲节歌曲</a> <a target="_blank"  href="/bang/tag17.shtml" class="red f16 blod">儿歌大全100首</a> <a target="_blank"  href="/mlist/9625.shtml" class="green blod">徐良</a> <a target="_blank"  href="/bang/tag2.shtml">老歌</a><br /> <a target="_blank"  href="/bang/tag13.shtml" class="red f15 blod">最好听的歌</a> <a target="_blank"  href="/mlist/3345.shtml">凤凰传奇最新歌曲</a> <a target="_blank"  href="/mlist/4486.shtml">许嵩的歌</a> <a target="_blank"  href="/mlist/8793.shtml" class="brown f16 blod">降央卓玛歌曲大全</a> <a target="_blank"  href="/mlist/9707.shtml">汪苏泷</a> <a target="_blank"  href="/bang/tag89.shtml">古风歌曲</a> <a target="_blank"  href="/mlist/8160.shtml" class="green f16 blod">冷漠</a> <a target="_blank"  href="/bang/tag14.shtml">好听的铃声</a> <a target="_blank"  href="/mlist/8968.shtml" class="red f16 blod">六哲</a><br /> <a target="_blank"  href="/bang/tag147.shtml">父亲节歌曲</a> <a target="_blank"  href="/mlist/6130.shtml" class="green f16 blod">王麟</a> <a target="_blank"  href="/mlist/4499.shtml">龚玥</a> <a target="_blank"  href="/bang/tag13.shtml" class="red">好听的歌曲推荐2017</a> <a target="_blank"  href="/bang/tag40.shtml">摇滚</a> <a target="_blank"  href="/bang/tag13.shtml" class="green f16 blod">有什么好听的歌</a> <a target="_blank"  href="/bang/tag93.shtml">神曲排行榜</a> <a target="_blank" href="/bang/box100_w.shtml">流行歌曲排行榜2017</a> </div>
       <div id="listen">
@@ -444,71 +427,8 @@ $(document).keypress(function(e){if(e.which==13){onSearch();}})
       </div>
     </div>
   </div>
-  <div style="clear:both;"></div>
-  <div class="friend">
-  <div class="bluetitle02">友情连接 <a href="/about/friend.shtml" target="_blank">交换连接</a></div>
-  <div class="linktxt">
-    <ul>
-      <li><a href="http://www.kugou.com/" target="_blank">酷狗音乐</a></li>
-      <li><a href="http://www.baike.com/" target="_blank">互动百科</a></li>
-      <li><a href="http://www.xilu.com/" target="_blank">西陆军事</a></li>
-      <li><a href="http://www.kuwo.cn/" target="_blank">酷我音乐</a></li>
-      <li><a href="http://www.xiazaiba.com/" target="_blank">软件下载</a></li>
-      <li><a href="http://www.mtv123.com/" target="_blank">网络歌曲</a></li>
-      <li><a href="http://www.manmankan.com/" target="_blank">火影漫画</a></li>
-      <li><a href="http://www.yy8844.cn/" target="_blank">Mp3歌曲</a></li>
-      <li><a href="http://www.19lou.com/" target="_blank">杭州19楼</a></li>
-      <li><a href="http://www.1ting.com/" target="_blank">一听音乐</a></li>
-      <li><a href="http://www.xialv.com/" target="_blank">侠侣周边游</a></li>
-      <li><a href="http://www.yaolan.com/" target="_blank">摇篮网</a></li>
-      <li><a href="http://www.07073.com/" target="_blank">07073网页游戏</a></li>
-      <li><a href="http://www.ali213.net/" target="_blank">游侠单机游戏</a></li>
-      <li><a href="http://www.yxdown.com/" target="_blank">单机游戏</a></li>
-      <li><a href="http://www.ik123.com/" target="_blank">深港dj舞曲</a></li>
-      <li><a href="http://www.meishij.net/" target="_blank">美食杰</a></li>
-      <li><a href="http://www.ooopic.com/" target="_blank">我图网</a></li>
-      <li><a href="http://www.narutom.com" target="_blank">火影忍者中文网</a></li>
-      <li><a href="http://www.zongheng.com/" target="_blank">纵横中文网</a></li>
-      <li><a href="http://www.doyo.cn/" target="_blank">逗游网</a></li>
-      <li><a href="http://www.52pk.com" target="_blank">52PK游戏网</a></li>
-      <li><a href="http://www.mafengwo.cn/" target="_blank">蚂蜂窝</a></li>
-      <li><a href="http://www.lvmama.com/" target="_blank">驴妈妈旅游网</a></li>
-      <li><a href="http://www.eeyy.com/" target="_blank">网页游戏</a></li>
-      <li><a href="http://www.9ku.com/" target="_blank">九酷音乐网</a></li>
-      <li><a href="http://www.666ccc.com/" target="_blank">今生缘音乐网</a></li>
-      <li><a href="http://baike.1688.com/" target="_blank">生意经</a></li>
-      <li><a href="http://www.265g.com/" target="_blank">265G网页游戏</a></li>
-      <li><a href="http://www.pc6.com/" target="_blank">pc6下载站</a></li>
-      <li><a href="http://www.178.com/" target="_blank">178游戏网</a></li>
-      <li><a href="http://www.cr173.com/" target="_blank">西西软件园</a></li> 
-      <li><a href="http://www.mumayi.com/" target="_blank">木蚂蚁应用市场</a></li>
-      <li><a href="http://www.tgbus.com/" target="_blank">电玩巴士</a></li>
-      <li><a href="http://www.tianqi.com/" target="_blank">天气预报查询</a></li>
-      <li><a href="http://game.3533.com/" target="_blank">手机应用</a></li>       
-      <li><a href="http://www.91wan.com/" target="_blank">91wan网页游戏</a></li>
-      <li><a href="http://www.33lc.com/" target="_blank">绿茶软件下载</a></li>
-      <li><a href="http://news.4399.com/" target="_blank">4399游戏资讯</a></li>
-      <li><a href="http://www.newyx.net/" target="_blank">单机游戏下载</a></li>
-      <li><a href="http://www.cnmo.com/" target="_blank">手机中国</a></li>
-      <li><a href="http://www.hc360.com/" target="_blank">慧聪网</a></li>
-      <li><a href="http://www.jia.com/" target="_blank">装修</a></li>
-      <li><a href="/about/friend.shtml">更多</a></li>
-    </ul>
-  </div>
-</div>
-  <div class="partners">
-    <div class="ab">
-      <div class="bluetitle02">合作伙伴 <a href="/about/contact.shtml" target="_blank"  rel="nofollow">唱片公司合作</a></div>
-      <table cellspacing="0" cellpadding="5" border="0" width="100%">
-        <tbody>
-          <tr>
-            <td><div align="center"><img src="http://zy.yue365.com/images/company.gif"></div></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+ 
+
 <div id="footer">
   <div style="height:28px;line-height:28px;border-bottom:1px solid #DDDDDD;margin-bottom:10px;width:960px;" align="center">
 		<a href="/about/us.shtml" rel="nofollow">网站介绍</a> | 
