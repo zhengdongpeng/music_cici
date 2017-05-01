@@ -7,15 +7,17 @@
             zhujiId,
             zname,
             js,
-            songerId,
-            fxgs,
-            typeId,
-            fbtime,
-            cjtime,
-            img
+            zhuanji.songerId,
+            songer.sname as singername,
+            zhuanji.fxgs,
+            zhuanji.typeId,
+            zhuanji.fbtime,
+            zhuanji.cjtime,
+            zhuanji.img
         FROM
-            zhuanji
-        order by fbtime desc;
+            zhuanji,songer 
+            where zhuanji.songerId=songer.sid
+        order by fbtime desc  limit 0,6;
            
   </select>
   
@@ -35,20 +37,45 @@
            
   </select>
   
-  <select id="getsong_hot" resultType="com.cici.music.pojo.SongDto" >
-    SELECT
-            song.sid,
-            song.sname as name,
-            songer.sid as si_id,
-            songer.sname as singername        
-        FROM
-            song,songer
-        where
-        	song.songerid=songer.sid
-        order by fbtime desc
-        limit 0,15
-           
+  <select id="getTypeSong" resultType="com.cici.music.pojo.SongDto" >
+    	SELECT
+	song.sid,
+	song.sname AS NAME,
+	songer.sid AS si_id,
+	songer.sname AS singername
+FROM
+	songer,
+	song
+left join click on song.sid=click.id 
+WHERE
+	song.songerid = songer.sid and song.type=2
+ORDER BY
+	click.count DESC
+LIMIT 0,
+ 15
   </select>
+  
+  <select id="getHotSong"  parameterType="com.cici.music.pojo.Param"  resultType="com.cici.music.pojo.SongDto" >
+SELECT
+	song.sid,
+	song.sname AS NAME,
+	songer.sid AS si_id,
+	songer.sname AS singername
+FROM
+	songer,
+	song
+left join click on song.sid=click.id 
+WHERE
+	song.songerid = songer.sid
+ORDER BY
+<if test="searchType==1">
+	song.cjtime desc ,
+	</if>
+	click.count DESC
+	
+LIMIT #{start},
+ #{length}        
+ </select>
   
 </mapper>
 
