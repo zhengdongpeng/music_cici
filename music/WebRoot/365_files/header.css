@@ -29,13 +29,13 @@ a:hover {background: none repeat scroll 0 0 #AAEEDD;
 #main{ overflow:hidden; }
 #top{ height:100%; overflow:hidden; margin-bottom:8px;}
 #top h1{float:left;width:211px; height:72px; margin-top:8px;}
-#top h1 a{text-indent:-9999px;width:211px; height:72px; background:url(../images/logo.gif) no-repeat; display:block;}
+#top h1 a{text-indent:-9999px;width:211px; height:72px; background:url(../images/title.jpg) no-repeat; display:block;}
 
 #top .H1Logo{float:left;width:211px; height:72px; margin-top:8px;}
-#top .H1Logo a{text-indent:-9999px;width:211px; height:72px; background:url(../images/logo.gif) no-repeat; display:block;}
+#top .H1Logo a{text-indent:-9999px;width:211px; height:72px; background:url(../images/title.jpg) no-repeat; display:block;}
 
 #logo{ float:left;width:211px; height:72px; margin-top:8px;}
-#logo a{text-indent:-9999px;width:211px; height:72px; background:url(../images/logo.gif) no-repeat; display:block;}
+#logo a{text-indent:-9999px;width:211px; height:72px; background:url(../images/title.jpg) no-repeat; display:block;}
 #logo img{ border:none;} 
 #logo_play {float:left;width:168px;height:40px;margin-top:2px;}
 #logo_play a{text-indent:-9999px;width:168px;height:40px;background:url(../images/logo_play.gif) no-repeat; display:block;}

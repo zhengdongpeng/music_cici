@@ -5,6 +5,11 @@
     <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+boolean islogin=false;
+User user=(User)session.getAttribute("user");
+if(user!=null){
+	islogin=true;
+}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html >
@@ -24,11 +29,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link type="text/css" rel="stylesheet" href="365_files/newindex.css"/>
 <link type="text/css" rel="stylesheet" href="365_files/header.css?v=0907"/>
 <link href="http://zy.yue365.com/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+<link type="text/css" rel="stylesheet" href="css/common.css"/>
 <script type="text/javascript" src="365_files/jquery.js"></script>
 <script type="text/javascript" src="365_files/common.js"></script>
 <script type="text/javascript" src="js/mainpage.js"></script>
 
+
 <script>
+var islogin='<%=islogin%>';
 <!--
 /*第一种形式 第二种形式 更换显示样式*/
 eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('g p(h){2 5="";2 7=h.9("a");2 4=7.k;l(2 i=0;i<4;i++){2 3=7[i].n("3");j(3!=r&&3!=""){j(i==4-1){5+=3}o{5+=3+","}}};6.8("q").m=5;6.s.y()};g z(f,e,c){2 b=6.8(f).9("A");2 d=6.8(e).9("x");2 4=b.k;l(2 i=0;i<4;i++){b[i].t=i==c?"w":"";d[i].v.u=i==c?"":"B"}}',38,38,'||var|rel|count|url|document|allplays|getElementById|getElementsByTagName||navList|index|contList|contId|navId|function|list||if|length|for|value|getAttribute|else|play|id|null|form1|className|display|style|mover|ul|submit|showTab|li|none'.split('|'),0,{}))
@@ -108,9 +116,8 @@ $(document).keypress(function(e){if(e.which==13){onSearch();}})
                               <li><a target="_blank" class="pic" href="musiclist/77527.shtml">
                               <img height="80px" width="80px" src="${zhuanji.img }"></a>
                               <div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77527.shtml">${zhuanji. zname }</a></div>
-                              <a target="_blank" href="/mlist/14579.shtml">${zhuanji. songerId }</a></li>
+                              <a target="_blank" href="/mlist/14579.shtml">${zhuanji. singername}</a></li>
               </c:forEach>
-                <!--  <li><a target="_blank" class="pic" href="/musiclist/77551.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/396/77551_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77551.shtml">我喜欢上你时的内心活动(电影《喜欢你》主题曲)</a></div><a target="_blank" href="/mlist/396.shtml">陈绮贞</a></li><li><a target="_blank" class="pic" href="/musiclist/77547.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/2166/77547_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77547.shtml">真爱无坦途(电影《绑架者》片尾曲)</a></div><a target="_blank" href="/mlist/2166.shtml">李玖哲</a></li><li><a target="_blank" class="pic" href="/musiclist/77546.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/35292/77546_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77546.shtml">全世界把我遗弃</a></div><a target="_blank" href="/mlist/35292.shtml">朱盈盈</a></li><li><a target="_blank" class="pic" href="/musiclist/77545.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/8671/77545_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77545.shtml">忘忧集之爱如烟雨</a></div><a target="_blank" href="/mlist/8671.shtml">孟杨</a></li><li><a target="_blank" class="pic" href="/musiclist/77544.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/30454/77544_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77544.shtml">酒太伤</a></div><a target="_blank" href="/mlist/30454.shtml">邵杰</a></li><li><a target="_blank" class="pic" href="/musiclist/77543.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/13020/77543_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77543.shtml">梨花雪</a></div><a target="_blank" href="/mlist/13020.shtml">刘恺名</a></li>-->
               </ul>
              </div>
 	  </div>
@@ -119,9 +126,11 @@ $(document).keypress(function(e){if(e.which==13){onSearch();}})
             <ul class="title">
             <span>热歌</span>
           </ul>
-          <ul id="netSong">
-		   <dl><dt class="num numberone">1</dt><dt class="song"><a  target="m" href="/play/18083/336613.shtml" rel="2006_18083/48972/1.mp3|青春修炼手册|TFBOYS|336613|18083|48972|青春修炼手册">青春修炼手册</a></dt><dd><a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dd></dl><dl><dt class="num numbertwo">2</dt><dt class="song"><a  target="m" href="/play/18083/362215.shtml" rel="2006_18083/60192/1.mp3|大梦想家|TFBOYS|362215|18083|60192|大梦想家">大梦想家</a></dt><dd><a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dd></dl><dl><dt class="num numbertwo">3</dt><dt class="song"><a  target="m" href="/play/746/366624.shtml" rel="2006_746/62784/1.mp3|寻龙诀|陈坤|366624|746|62784|寻龙诀">寻龙诀</a></dt><dd><a href="/mlist/746.shtml" title="陈坤歌曲" target="_blank">陈坤</a></dd></dl><dl><dt class="num">4</dt><dt class="song"><a  target="m" href="/play/18083/324544.shtml" rel="2006_18083/44594/1.mp3|魔法城堡|TFBOYS|324544|18083|44594|魔法城堡">魔法城堡</a></dt><dd><a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dd></dl><dl><dt class="num">5</dt><dt class="song"><a  target="m" href="/play/951/395447.shtml" rel="2006_951/77067/2.mp3|高尚|薛之谦|395447|951|77067|高尚">高尚</a></dt><dd><a href="/mlist/951.shtml" title="薛之谦歌曲" target="_blank">薛之谦</a></dd></dl><dl><dt class="num">6</dt><dt class="song"><a  target="m" href="/play/1206/343934.shtml" rel="2006_1206/51776/1.mp3|小鸡小鸡|王蓉|343934|1206|51776|小鸡小鸡">小鸡小鸡</a></dt><dd><a href="/mlist/1206.shtml" title="王蓉歌曲" target="_blank">王蓉</a></dd></dl><dl><dt class="num">7</dt><dt class="song"><a  target="m" href="/play/1594/378657.shtml" rel="2006_1594/68810/1.mp3|绝地逃亡|羽泉|378657|1594|68810|绝地逃亡">绝地逃亡</a></dt><dd><a href="/mlist/1594.shtml" title="羽泉歌曲" target="_blank">羽泉</a></dd></dl><dl><dt class="num">8</dt><dt class="song"><a  target="m" href="/play/10203/359236.shtml" rel="2006_10203/58679/1.mp3|小水果|筷子兄弟|359236|10203|58679|小水果">小水果</a></dt><dd><a href="/mlist/10203.shtml" title="筷子兄弟歌曲" target="_blank">筷子兄弟</a></dd></dl><dl><dt class="num">9</dt><dt class="song"><a  target="m" href="/play/18083/344337.shtml" rel="2006_18083/51903/1.mp3|信仰之名|TFBOYS|344337|18083|51903|信仰之名">信仰之名</a></dt><dd><a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dd></dl><dl><dt class="num">10</dt><dt class="song"><a  target="m" href="/play/18083/309382.shtml" rel="2006_18083/40028/1.mp3|爱出发|TFBOYS|309382|18083|40028|爱出发">爱出发</a></dt><dd><a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dd></dl><dl><dt class="num">11</dt><dt class="song"><a  target="m" href="/play/10203/353063.shtml" rel="2006_10203/55669/1.mp3|最炫小苹果 - 筷子兄弟&凤凰传奇|筷子兄弟|353063|10203|55669|最炫小苹果">最炫小苹果</a></dt><dd><a href="/mlist/10203.shtml" title="筷子兄弟歌曲" target="_blank">筷子兄弟</a></dd></dl><dl><dt class="num">12</dt><dt class="song"><a  target="m" href="/play/18083/340855.shtml" rel="2006_18083/50506/1.mp3|幸运符号|TFBOYS|340855|18083|50506|幸运符号">幸运符号</a></dt><dd><a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dd></dl><dl><dt class="num">13</dt><dt class="song"><a  target="m" href="/play/28180/368167.shtml" rel="2006_28180/63605/1.mp3|幸福么么哒 - 邹市明&冉莹颖&轩轩|邹市明|368167|28180|63605|幸福么么哒">幸福么么哒</a></dt><dd><a href="/mlist/28180.shtml" title="邹市明歌曲" target="_blank">邹市明</a></dd></dl><dl><dt class="num">14</dt><dt class="song"><a  target="m" href="/play/16049/365221.shtml" rel="2006_16049/51171/6.mp3|小宝贝|夏天播放|365221|16049|51171|小宝贝">小宝贝</a></dt><dd><a href="/mlist/16049.shtml" title="夏天播放歌曲" target="_blank">夏天播放</a></dd></dl><dl><dt class="num">15</dt><dt class="song"><a  target="m" href="/play/18083/362869.shtml" rel="2006_18083/60550/1.mp3|剩下的盛夏 - TFBOYS&嘻游记|TFBOYS|362869|18083|60550|剩下的盛夏">剩下的盛夏</a></dt><dd><a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dd></dl>
+           <div id="main2">
+          <ul class="hotSong">
+          		
           </ul>
+           </div>
           </div>
           <div class="border">
             <ul id="menu2" class="title">
@@ -129,8 +138,8 @@ $(document).keypress(function(e){if(e.which==13){onSearch();}})
               <li class="mover">华语</li>
             </ul>
             <div id="main2">
-              <ul>
-                <li><dl class="singer"><a href="/mlist/35012.shtml" title="李志强歌曲" target="_blank">李志强</a></dl><span>1</span><dl  class="songname"><a  target="m" href="/play/35012/395134.shtml" rel="2006_35012/76901/1.mp3|脱下军装还是兵|李志强|395134|35012|76901|脱下军装还是兵">脱下军装还是兵</a></dl></li><li><dl class="singer"><a href="/mlist/17836.shtml" title="傅松歌曲" target="_blank">傅松</a></dl><span>2</span><dl  class="songname"><a  target="m" href="/play/17836/395776.shtml" rel="2006_17836/77282/1.mp3|老大|傅松|395776|17836|77282|老大">老大</a></dl></li><li><dl class="singer"><a href="/mlist/13219.shtml" title="张宇轩歌曲" target="_blank">张宇轩</a></dl><span>3</span><dl  class="songname"><a  target="m" href="/play/13219/395401.shtml" rel="2006_13219/77059/1.mp3|十年之约|张宇轩|395401|13219|77059|十年之约">十年之约</a></dl></li><li><dl class="singer"><a href="/mlist/34733.shtml" title="鲍鹏歌曲" target="_blank">鲍鹏</a></dl><span>4</span><dl  class="songname"><a  target="m" href="/play/34733/395537.shtml" rel="2006_34733/77146/1.mp3|朋友的圈|鲍鹏|395537|34733|77146|朋友的圈">朋友的圈</a></dl></li><li><dl class="singer"><a href="/mlist/10168.shtml" title="戴佳毅歌曲" target="_blank">戴佳毅</a></dl><span>5</span><dl  class="songname"><a  target="m" href="/play/10168/395453.shtml" rel="2006_10168/77103/1.mp3|我是真的很爱你|戴佳毅|395453|10168|77103|我是真的很爱你">我是真的很爱你</a></dl></li><li><dl class="singer"><a href="/mlist/8806.shtml" title="张牧阅歌曲" target="_blank">张牧阅</a></dl><span>6</span><dl  class="songname"><a  target="m" href="/play/8806/395248.shtml" rel="2006_8806/76977/1.mp3|无话可说|张牧阅|395248|8806|76977|无话可说">无话可说</a></dl></li><li><dl class="singer"><a href="/mlist/35021.shtml" title="大纯歌曲" target="_blank">大纯</a></dl><span>7</span><dl  class="songname"><a  target="m" href="/play/35021/395164.shtml" rel="2006_35021/76922/1.mp3|兄弟这份情谊我记得 - 大纯&袁飞扬|大纯|395164|35021|76922|兄弟这份情谊我记得">兄弟这份情谊我记得</a></dl></li><li><dl class="singer"><a href="/mlist/33661.shtml" title="索丽娜歌曲" target="_blank">索丽娜</a></dl><span>8</span><dl  class="songname"><a  target="m" href="/play/33661/394560.shtml" rel="2006_33661/76563/1.mp3|爱是对你最好的表达 - 索丽娜&南风|索丽娜|394560|33661|76563|爱是对你最好的表达">爱是对你最好的表达</a></dl></li><li><dl class="singer"><a href="/mlist/32334.shtml" title="郭旭歌曲" target="_blank">郭旭</a></dl><span>9</span><dl  class="songname"><a  target="m" href="/play/32334/394912.shtml" rel="2006_32334/76763/1.mp3|冬|郭旭|394912|32334|76763|冬">冬</a></dl></li><li><dl class="singer"><a href="/mlist/10833.shtml" title="望海高歌歌曲" target="_blank">望海高歌</a></dl><span>10</span><dl  class="songname"><a  target="m" href="/play/10833/394764.shtml" rel="2006_10833/76690/1.mp3|时光不老我们不散|望海高歌|394764|10833|76690|时光不老我们不散">时光不老我们不散</a></dl></li><li><dl class="singer"><a href="/mlist/34904.shtml" title="糖宝歌曲" target="_blank">糖宝</a></dl><span>11</span><dl  class="songname"><a  target="m" href="/play/34904/394723.shtml" rel="2006_34904/76663/1.mp3|你是我最爱的女人|糖宝|394723|34904|76663|你是我最爱的女人">你是我最爱的女人</a></dl></li><li><dl class="singer"><a href="/mlist/28758.shtml" title="四郎贡布歌曲" target="_blank">四郎贡布</a></dl><span>12</span><dl  class="songname"><a  target="m" href="/play/28758/394329.shtml" rel="2006_28758/76433/1.mp3|相伴一生 - 四郎贡布&索朗德吉|四郎贡布|394329|28758|76433|相伴一生">相伴一生</a></dl></li><li><dl class="singer"><a href="/mlist/10833.shtml" title="望海高歌歌曲" target="_blank">望海高歌</a></dl><span>13</span><dl  class="songname"><a  target="m" href="/play/10833/394001.shtml" rel="2006_10833/76261/1.mp3|红红火火又一年|望海高歌|394001|10833|76261|红红火火又一年">红红火火又一年</a></dl></li><li><dl class="singer"><a href="/mlist/27804.shtml" title="吴陌川歌曲" target="_blank">吴陌川</a></dl><span>14</span><dl  class="songname"><a  target="m" href="/play/27804/393602.shtml" rel="2006_27804/76011/1.mp3|怪叔叔有人爱|吴陌川|393602|27804|76011|怪叔叔有人爱">怪叔叔有人爱</a></dl></li><li><dl class="singer"><a href="/mlist/9159.shtml" title="祁隆歌曲" target="_blank">祁隆</a></dl><span>15</span><dl  class="songname"><a  target="m" href="/play/9159/393483.shtml" rel="2006_9159/75932/2.mp3|同学寄|祁隆|393483|9159|75932|同学寄">同学寄</a></dl></li>
+              <ul class="netSong">
+              
               </ul>
             </div>
           </div>
@@ -141,16 +150,6 @@ $(document).keypress(function(e){if(e.which==13){onSearch();}})
             </ul>
             <div id="main3">
               <ul class="newsong">
-               <!-- <li>
-                <dl class="singer">
-                	<a href="/mlist/951.shtml" title="薛之谦歌曲" target="_blank">薛之谦</a></dl>
-                	<span>1</span>
-                	<dl  class="songname">
-                	<a  target="m" href="/play/951/396179.shtml" rel="2006_951/77523/1.mp3|暧昧|薛之谦|396179|951|77523|暧昧">暧昧</a>
-                </dl>
-               </li> -->
-                	
-                	
               </ul>
             </div>
           </div>
@@ -170,185 +169,12 @@ $(document).keypress(function(e){if(e.which==13){onSearch();}})
         <div id="main4">
             <ul id="content1">
               <li>
-<dl class="singer"><a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dl>
-<span>1</span><input title=336613 class="check" type="checkbox" name='id' value='2006_18083/48972/1.mp3|青春修炼手册|TFBOYS|336613|18083|48972|青春修炼手册'/><dl class="songname"><a target="m" href="/play/18083/336613.shtml">青春修炼手册</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dl>
-<span>2</span><input title=362215 class="check" type="checkbox" name='id' value='2006_18083/60192/1.mp3|大梦想家|TFBOYS|362215|18083|60192|大梦想家'/><dl class="songname"><a target="m" href="/play/18083/362215.shtml">大梦想家</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dl>
-<span>3</span><input title=324544 class="check" type="checkbox" name='id' value='2006_18083/44594/1.mp3|魔法城堡|TFBOYS|324544|18083|44594|魔法城堡'/><dl class="songname"><a target="m" href="/play/18083/324544.shtml">魔法城堡</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/19913.shtml" title="谢帝歌曲" target="_blank">谢帝</a></dl>
-<span>4</span><input title=373910 class="check" type="checkbox" name='id' value='2006_19913/66439/1.mp3|绝世武神|谢帝|373910|19913|66439|绝世武神'/><dl class="songname"><a target="m" href="/play/19913/373910.shtml">绝世武神</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/866.shtml" title="李晓杰歌曲" target="_blank">李晓杰</a></dl>
-<span>5</span><input title=228727 class="check" type="checkbox" name='id' value='2006_866/20834/1.mp3|朋友的酒|李晓杰|228727|866|20834|朋友的酒'/><dl class="songname"><a target="m" href="/play/866/228727.shtml">朋友的酒</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/10203.shtml" title="筷子兄弟歌曲" target="_blank">筷子兄弟</a></dl>
-<span>6</span><input title=359236 class="check" type="checkbox" name='id' value='2006_10203/58679/1.mp3|小水果|筷子兄弟|359236|10203|58679|小水果'/><dl class="songname"><a target="m" href="/play/10203/359236.shtml">小水果</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dl>
-<span>7</span><input title=344337 class="check" type="checkbox" name='id' value='2006_18083/51903/1.mp3|信仰之名|TFBOYS|344337|18083|51903|信仰之名'/><dl class="songname"><a target="m" href="/play/18083/344337.shtml">信仰之名</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dl>
-<span>8</span><input title=309382 class="check" type="checkbox" name='id' value='2006_18083/40028/1.mp3|爱出发|TFBOYS|309382|18083|40028|爱出发'/><dl class="songname"><a target="m" href="/play/18083/309382.shtml">爱出发</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dl>
-<span>9</span><input title=359281 class="check" type="checkbox" name='id' value='2006_18083/58701/1.mp3|明天你好|TFBOYS|359281|18083|58701|明天你好'/><dl class="songname"><a target="m" href="/play/18083/359281.shtml">明天你好</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dl>
-<span>10</span><input title=340855 class="check" type="checkbox" name='id' value='2006_18083/50506/1.mp3|幸运符号|TFBOYS|340855|18083|50506|幸运符号'/><dl class="songname"><a target="m" href="/play/18083/340855.shtml">幸运符号</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/13957.shtml" title="南征北战歌曲" target="_blank">南征北战</a></dl>
-<span>11</span><input title=365198 class="check" type="checkbox" name='id' value='2006_13957/61935/1.mp3|萨瓦迪卡|南征北战|365198|13957|61935|萨瓦迪卡'/><dl class="songname"><a target="m" href="/play/13957/365198.shtml">萨瓦迪卡</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dl>
-<span>12</span><input title=362869 class="check" type="checkbox" name='id' value='2006_18083/60550/1.mp3|剩下的盛夏 - TFBOYS&嘻游记|TFBOYS|362869|18083|60550|剩下的盛夏'/><dl class="songname"><a target="m" href="/play/18083/362869.shtml">剩下的盛夏</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/1229.shtml" title="华人群星13歌曲" target="_blank">弦子</a></dl>
-<span>13</span><input title=207966 class="check" type="checkbox" name='id' value='2006_7656/18378/18.mp3|舍不得 - 弦子|弦子|207966|7656|18378|舍不得'/><dl class="songname"><a target="m" href="/play/7656/207966.shtml">舍不得</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dl>
-<span>14</span><input title=340993 class="check" type="checkbox" name='id' value='2006_18083/50551/1.mp3|快乐环岛|TFBOYS|340993|18083|50551|快乐环岛'/><dl class="songname"><a target="m" href="/play/18083/340993.shtml">快乐环岛</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dl>
-<span>15</span><input title=307478 class="check" type="checkbox" name='id' value='2006_18083/39432/1.mp3|heart|TFBOYS|307478|18083|39432|heart'/><dl class="songname"><a target="m" href="/play/18083/307478.shtml">heart</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/30572.shtml" title="MissMass歌曲" target="_blank">MissMass</a></dl>
-<span>16</span><input title=374937 class="check" type="checkbox" name='id' value='2006_30572/66969/1.mp3|Wake Up|MissMass|374937|30572|66969|Wake Up'/><dl class="songname"><a target="m" href="/play/30572/374937.shtml">Wake Up</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dl>
-<span>17</span><input title=337726 class="check" type="checkbox" name='id' value='2006_18083/49400/1.mp3|为梦想时刻准备着|TFBOYS|337726|18083|49400|为梦想时刻准备着'/><dl class="songname"><a target="m" href="/play/18083/337726.shtml">为梦想时刻准备着</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/7879.shtml" title="王祖蓝歌曲" target="_blank">王祖蓝</a></dl>
-<span>18</span><input title=373997 class="check" type="checkbox" name='id' value='2006_7879/66483/1.mp3|brother - 王祖蓝&刘维|王祖蓝|373997|7879|66483|brother'/><dl class="songname"><a target="m" href="/play/7879/373997.shtml">brother</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/23259.shtml" title="张碧晨歌曲" target="_blank">张碧晨</a></dl>
-<span>19</span><input title=365016 class="check" type="checkbox" name='id' value='2006_23259/61850/1.mp3|年少轻狂|张碧晨|365016|23259|61850|年少轻狂'/><dl class="songname"><a target="m" href="/play/23259/365016.shtml">年少轻狂</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dl>
-<span>20</span><input title=355944 class="check" type="checkbox" name='id' value='2006_18083/56955/1.mp3|样YOUNG|TFBOYS|355944|18083|56955|样YOUNG'/><dl class="songname"><a target="m" href="/play/18083/355944.shtml">样YOUNG</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/8693.shtml" title="王露凝歌曲" target="_blank">王露凝</a></dl>
-<span>21</span><input title=256665 class="check" type="checkbox" name='id' value='2006_8693/20956/3.mp3|眼泪的错觉|王露凝|256665|8693|20956|眼泪的错觉'/><dl class="songname"><a target="m" href="/play/8693/256665.shtml">眼泪的错觉</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dl>
-<span>22</span><input title=310820 class="check" type="checkbox" name='id' value='2006_18083/40444/1.mp3|梦想起航|TFBOYS|310820|18083|40444|梦想起航'/><dl class="songname"><a target="m" href="/play/18083/310820.shtml">梦想起航</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/20387.shtml" title="刘维歌曲" target="_blank">刘维</a></dl>
-<span>23</span><input title=370325 class="check" type="checkbox" name='id' value='2006_20387/64679/1.mp3|因为你是范晓萱|刘维|370325|20387|64679|因为你是范晓萱'/><dl class="songname"><a target="m" href="/play/20387/370325.shtml">因为你是范晓萱</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/25674.shtml" title="苏运莹歌曲" target="_blank">苏运莹</a></dl>
-<span>24</span><input title=380628 class="check" type="checkbox" name='id' value='2006_25674/69668/1.mp3|后来|苏运莹|380628|25674|69668|后来'/><dl class="songname"><a target="m" href="/play/25674/380628.shtml">后来</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/5505.shtml" title="金志文歌曲" target="_blank">金志文</a></dl>
-<span>25</span><input title=367455 class="check" type="checkbox" name='id' value='2006_5505/63236/1.mp3|尘|金志文|367455|5505|63236|尘'/><dl class="songname"><a target="m" href="/play/5505/367455.shtml">尘</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/1563.shtml" title="水木年华歌曲" target="_blank">水木年华</a></dl>
-<span>26</span><input title=364725 class="check" type="checkbox" name='id' value='2006_1563/61630/1.mp3|世界上最美的花|水木年华|364725|1563|61630|世界上最美的花'/><dl class="songname"><a target="m" href="/play/1563/364725.shtml">世界上最美的花</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/5608.shtml" title="萧敬腾歌曲" target="_blank">萧敬腾</a></dl>
-<span>27</span><input title=369591 class="check" type="checkbox" name='id' value='2006_5608/64305/1.mp3|我的大学|萧敬腾|369591|5608|64305|我的大学'/><dl class="songname"><a target="m" href="/play/5608/369591.shtml">我的大学</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/993.shtml" title="张杰歌曲" target="_blank">张杰</a></dl>
-<span>28</span><input title=342293 class="check" type="checkbox" name='id' value='2006_993/51081/1.mp3|My Sunshine|张杰|342293|993|51081|My Sunshine'/><dl class="songname"><a target="m" href="/play/993/342293.shtml">My Sunshine</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/15162.shtml" title="高姗歌曲" target="_blank">高姗</a></dl>
-<span>29</span><input title=350260 class="check" type="checkbox" name='id' value='2006_15162/54427/1.mp3|The Road Not Taken|高姗|350260|15162|54427|The Road Not Taken'/><dl class="songname"><a target="m" href="/play/15162/350260.shtml">The Road Not Taken</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/891.shtml" title="朴树歌曲" target="_blank">朴树</a></dl>
-<span>30</span><input title=364328 class="check" type="checkbox" name='id' value='2006_891/61406/1.mp3|好好地|朴树|364328|891|61406|好好地'/><dl class="songname"><a target="m" href="/play/891/364328.shtml">好好地</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/359.shtml" title="钟汉良歌曲" target="_blank">钟汉良</a></dl>
-<span>31</span><input title=349724 class="check" type="checkbox" name='id' value='2006_359/30783/10.mp3|何以爱情|钟汉良|349724|359|30783|何以爱情'/><dl class="songname"><a target="m" href="/play/359/349724.shtml">何以爱情</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/11430.shtml" title="崔恕歌曲" target="_blank">崔恕</a></dl>
-<span>32</span><input title=372868 class="check" type="checkbox" name='id' value='2006_11430/65900/1.mp3|长安乱 - 崔恕&赵佳霖|崔恕|372868|11430|65900|长安乱'/><dl class="songname"><a target="m" href="/play/11430/372868.shtml">长安乱</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/6026.shtml" title="王铮亮歌曲" target="_blank">王铮亮</a></dl>
-<span>33</span><input title=365491 class="check" type="checkbox" name='id' value='2006_6026/62083/1.mp3|相爱一场|王铮亮|365491|6026|62083|相爱一场'/><dl class="songname"><a target="m" href="/play/6026/365491.shtml">相爱一场</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/6540.shtml" title="李易峰歌曲" target="_blank">李易峰</a></dl>
-<span>34</span><input title=366270 class="check" type="checkbox" name='id' value='2006_6540/62568/1.mp3|请跟我联络|李易峰|366270|6540|62568|请跟我联络'/><dl class="songname"><a target="m" href="/play/6540/366270.shtml">请跟我联络</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/1086.shtml" title="金池歌曲" target="_blank">金池</a></dl>
-<span>35</span><input title=364480 class="check" type="checkbox" name='id' value='2006_1086/61511/1.mp3|反省|金池|364480|1086|61511|反省'/><dl class="songname"><a target="m" href="/play/1086/364480.shtml">反省</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/30342.shtml" title="TVBOYS歌曲" target="_blank">TVBOYS</a></dl>
-<span>36</span><input title=371884 class="check" type="checkbox" name='id' value='2006_30342/65366/1.mp3|春水|TVBOYS|371884|30342|65366|春水'/><dl class="songname"><a target="m" href="/play/30342/371884.shtml">春水</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/10913.shtml" title="杨泉歌曲" target="_blank">杨泉</a></dl>
-<span>37</span><input title=361494 class="check" type="checkbox" name='id' value='2006_10913/59797/3.mp3|喜欢两个人|杨泉|361494|10913|59797|喜欢两个人'/><dl class="songname"><a target="m" href="/play/10913/361494.shtml">喜欢两个人</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/13957.shtml" title="南征北战歌曲" target="_blank">南征北战</a></dl>
-<span>38</span><input title=303606 class="check" type="checkbox" name='id' value='2006_13957/32091/2.mp3|我的天空|南征北战|303606|13957|32091|我的天空'/><dl class="songname"><a target="m" href="/play/13957/303606.shtml">我的天空</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/8399.shtml" title="徐佳莹歌曲" target="_blank">徐佳莹</a></dl>
-<span>39</span><input title=370291 class="check" type="checkbox" name='id' value='2006_8399/64662/1.mp3|遗忘之前|徐佳莹|370291|8399|64662|遗忘之前'/><dl class="songname"><a target="m" href="/play/8399/370291.shtml">遗忘之前</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/1192.shtml" title="谭维维歌曲" target="_blank">谭维维</a></dl>
-<span>40</span><input title=377013 class="check" type="checkbox" name='id' value='2006_1192/67994/1.mp3|Take My Hand|谭维维|377013|1192|67994|Take My Hand'/><dl class="songname"><a target="m" href="/play/1192/377013.shtml">Take My Hand</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/22200.shtml" title="李明霖歌曲" target="_blank">李明霖</a></dl>
-<span>41</span><input title=336806 class="check" type="checkbox" name='id' value='2006_22200/49060/2.mp3|好男娃 - 李明霖&李宏毅|李明霖|336806|22200|49060|好男娃'/><dl class="songname"><a target="m" href="/play/22200/336806.shtml">好男娃</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/24413.shtml" title="孔垂楠歌曲" target="_blank">孔垂楠</a></dl>
-<span>42</span><input title=374536 class="check" type="checkbox" name='id' value='2006_24413/66750/1.mp3|遇见东京的雨|孔垂楠|374536|24413|66750|遇见东京的雨'/><dl class="songname"><a target="m" href="/play/24413/374536.shtml">遇见东京的雨</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/221.shtml" title="谭咏麟歌曲" target="_blank">谭咏麟</a></dl>
-<span>43</span><input title=368994 class="check" type="checkbox" name='id' value='2006_221/64015/1.mp3|棒棒哒|谭咏麟|368994|221|64015|棒棒哒'/><dl class="songname"><a target="m" href="/play/221/368994.shtml">棒棒哒</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/9357.shtml" title="星弟歌曲" target="_blank">星弟</a></dl>
-<span>44</span><input title=306768 class="check" type="checkbox" name='id' value='2006_9357/39184/1.mp3|制造浪漫|星弟|306768|9357|39184|制造浪漫'/><dl class="songname"><a target="m" href="/play/9357/306768.shtml">制造浪漫</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/1086.shtml" title="金池歌曲" target="_blank">金池</a></dl>
-<span>45</span><input title=364545 class="check" type="checkbox" name='id' value='2006_1086/60930/4.mp3|Super Girl|金池|364545|1086|60930|Super Girl'/><dl class="songname"><a target="m" href="/play/1086/364545.shtml">Super Girl</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/8074.shtml" title="门丽歌曲" target="_blank">门丽</a></dl>
-<span>46</span><input title=262646 class="check" type="checkbox" name='id' value='2006_8074/27122/1.mp3|都是为了爱|门丽|262646|8074|27122|都是为了爱'/><dl class="songname"><a target="m" href="/play/8074/262646.shtml">都是为了爱</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/24801.shtml" title="1931女子偶像组合歌曲" target="_blank">1931女子偶像组合</a></dl>
-<span>47</span><input title=374519 class="check" type="checkbox" name='id' value='2006_24801/66737/1.mp3|你要好好的|1931女子偶像组合|374519|24801|66737|你要好好的'/><dl class="songname"><a target="m" href="/play/24801/374519.shtml">你要好好的</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/31205.shtml" title="VAV歌曲" target="_blank">VAV</a></dl>
-<span>48</span><input title=376692 class="check" type="checkbox" name='id' value='2006_31205/67815/1.mp3|Brotherhood|VAV|376692|31205|67815|Brotherhood'/><dl class="songname"><a target="m" href="/play/31205/376692.shtml">Brotherhood</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/963.shtml" title="杨坤歌曲" target="_blank">杨坤</a></dl>
-<span>49</span><input title=308262 class="check" type="checkbox" name='id' value='2006_963/39669/1.mp3|我没你想的那么坚强|杨坤|308262|963|39669|我没你想的那么坚强'/><dl class="songname"><a target="m" href="/play/963/308262.shtml">我没你想的那么坚强</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/12670.shtml" title="蒋蒋歌曲" target="_blank">蒋蒋</a></dl>
-<span>50</span><input title=373430 class="check" type="checkbox" name='id' value='2006_12670/66202/1.mp3|故事1983|蒋蒋|373430|12670|66202|故事1983'/><dl class="songname"><a target="m" href="/play/12670/373430.shtml">故事1983</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/29629.shtml" title="Ume band歌曲" target="_blank">Ume band</a></dl>
-<span>51</span><input title=367982 class="check" type="checkbox" name='id' value='2006_29629/63517/1.mp3|Be My Lover|Ume band|367982|29629|63517|Be My Lover'/><dl class="songname"><a target="m" href="/play/29629/367982.shtml">Be My Lover</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/25540.shtml" title="谷亚潼歌曲" target="_blank">谷亚潼</a></dl>
-<span>52</span><input title=357997 class="check" type="checkbox" name='id' value='2006_25540/58033/1.mp3|繁星点点|谷亚潼|357997|25540|58033|繁星点点'/><dl class="songname"><a target="m" href="/play/25540/357997.shtml">繁星点点</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/28857.shtml" title="孙祖君歌曲" target="_blank">孙祖君</a></dl>
-<span>53</span><input title=364158 class="check" type="checkbox" name='id' value='2006_28857/61324/1.mp3|地心引力|孙祖君|364158|28857|61324|地心引力'/><dl class="songname"><a target="m" href="/play/28857/364158.shtml">地心引力</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/24801.shtml" title="1931女子偶像组合歌曲" target="_blank">1931女子偶像组合</a></dl>
-<span>54</span><input title=375025 class="check" type="checkbox" name='id' value='2006_24801/67022/1.mp3|梦想天空|1931女子偶像组合|375025|24801|67022|梦想天空'/><dl class="songname"><a target="m" href="/play/24801/375025.shtml">梦想天空</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/1086.shtml" title="金池歌曲" target="_blank">金池</a></dl>
-<span>55</span><input title=363505 class="check" type="checkbox" name='id' value='2006_1086/60930/1.mp3|混账|金池|363505|1086|60930|混账'/><dl class="songname"><a target="m" href="/play/1086/363505.shtml">混账</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/5608.shtml" title="萧敬腾歌曲" target="_blank">萧敬腾</a></dl>
-<span>56</span><input title=362006 class="check" type="checkbox" name='id' value='2006_5608/60085/1.mp3|僵尸全明星|萧敬腾|362006|5608|60085|僵尸全明星'/><dl class="songname"><a target="m" href="/play/5608/362006.shtml">僵尸全明星</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/8999.shtml" title="李治廷歌曲" target="_blank">李治廷</a></dl>
-<span>57</span><input title=376620 class="check" type="checkbox" name='id' value='2006_8999/67790/1.mp3|绅士作风|李治廷|376620|8999|67790|绅士作风'/><dl class="songname"><a target="m" href="/play/8999/376620.shtml">绅士作风</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/12873.shtml" title="周子琰歌曲" target="_blank">周子琰</a></dl>
-<span>58</span><input title=375003 class="check" type="checkbox" name='id' value='2006_12873/67007/1.mp3|爱的微积分|周子琰|375003|12873|67007|爱的微积分'/><dl class="songname"><a target="m" href="/play/12873/375003.shtml">爱的微积分</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/7078.shtml" title="赵照歌曲" target="_blank">赵照</a></dl>
-<span>59</span><input title=375552 class="check" type="checkbox" name='id' value='2006_7078/67319/1.mp3|犀安路999号|赵照|375552|7078|67319|犀安路999号'/><dl class="songname"><a target="m" href="/play/7078/375552.shtml">犀安路999号</a></dl></li>
-<li>
-<dl class="singer"><a href="/mlist/9625.shtml" title="徐良歌曲" target="_blank">徐良</a></dl>
-<span>60</span><input title=257391 class="check" type="checkbox" name='id' value='2006_9625/25108/8.mp3|即使说抱歉|徐良|257391|9625|25108|即使说抱歉'/><dl class="songname"><a target="m" href="/play/9625/257391.shtml">即使说抱歉</a></dl></li>
+<dl class="singer">
+<a href="/mlist/18083.shtml" title="TFBOYS歌曲" target="_blank">TFBOYS</a></dl>
+<span>1</span>
+<input title=336613 class="check" type="checkbox" name='id' value=''>
+<dl class="songname"><a target="m" href="/play/18083/336613.shtml">青春修炼手册</a></dl>
+</li>
 
             </ul>
             <ul id="content2" style="display:none;">
@@ -365,7 +191,27 @@ $(document).keypress(function(e){if(e.which==13){onSearch();}})
     </div>
     <div id="mainright">
       <div class="bord">
-        <p class="bordtitle"><span class="more"><a href="/bang/fenlei.shtml">歌曲分类</a></span>排行榜</p>
+         <ul id="menu5">
+          <span><a href="/bang/xinge.shtml" target="_blank">我的歌曲收藏夹</a></span>
+        </ul>
+        <div id="main5">
+          <ul class="musicList">
+			
+          </ul>
+      </div>
+      <div class="bord">
+        <p class="bordtitle"><span class="more"><a href="/mlist/singerlist.shtml" target="_blank" rel="nofollow">更多>></a></span><a href="/mlist/singerlist.shtml" target="_blank">歌手top500</a></p>
+        <ul class="singerpic">
+          <a href="/mlist/18083.shtml"><img src="http://pic.yue365.com/singer/90/10/18083.jpg" width="90" height="90"/></a><a href="/mlist/10675.shtml"><img src="http://pic.yue365.com/singer/90/6/10675.jpg" width="90" height="90"/></a>
+        </ul>
+        <ul class="top100" id="Top100">
+          <li><span>1</span><a href="/mlist/18083.shtml">TFBOYS</a></li><li><span>2</span><a href="/mlist/10675.shtml">乌兰图雅</a></li><li><span>3</span><a href="/mlist/427.shtml">范玮琪</a></li><li><span>4</span><a href="/mlist/9625.shtml">徐良</a></li><li><span>5</span><a href="/mlist/9159.shtml">祁隆</a></li><li><span>6</span><a href="/mlist/8160.shtml">冷漠</a></li><li><span>7</span><a href="/mlist/9626.shtml">阿悄</a></li><li><span>8</span><a href="/mlist/4350.shtml">陈瑞</a></li><li><span>9</span><a href="/mlist/10995.shtml">孙子涵</a></li><li><span>10</span><a href="/mlist/10203.shtml">筷子兄弟</a></li><li><span>11</span><a href="/mlist/809.shtml">后弦</a></li><li><span>12</span><a href="/mlist/9298.shtml">小贱</a></li><li><span>13</span><a href="/mlist/1238.shtml">香香</a></li><li><span>14</span><a href="/mlist/4603.shtml">蓝雨</a></li><li><span>15</span><a href="/mlist/7371.shtml">徐誉滕</a></li><li><span>16</span><a href="/mlist/4104.shtml">易欣</a></li><li><span>17</span><a href="/mlist/7099.shtml">陈玉建</a></li><li><span>18</span><a href="/mlist/4789.shtml">乌兰托娅</a></li>
+        </ul>
+		<div id="iSingerNav"><a href="/mlist/wangluo.shtml" target="_blank">网络歌手</a> &nbsp;&nbsp;<a href="/mlist/recsingerlist.shtml" target="_blank">推荐歌手</a></div>
+      </div>
+      <div class="bord">
+      
+         <p class="bordtitle"><span class="more"><a href="/bang/fenlei.shtml">歌曲分类</a></span>排行榜</p>
         <p class="intitle">歌曲排行榜</p>
         <ul>
           <li><a href="/bang/box100_w.shtml">歌曲总排行</a></li>
@@ -404,25 +250,9 @@ $(document).keypress(function(e){if(e.which==13){onSearch();}})
           <li><a href="/bang/tagpasheng.shtml">新歌爬升榜</a></li>
           <li><a href="/bang/tag13.shtml">好听的歌</a></li>
         </ul>
-      </div>
-      <div class="bord">
-        <p class="bordtitle"><span class="more"><a href="/mlist/singerlist.shtml" target="_blank" rel="nofollow">更多>></a></span><a href="/mlist/singerlist.shtml" target="_blank">歌手top500</a></p>
-        <ul class="singerpic">
-          <a href="/mlist/18083.shtml"><img src="http://pic.yue365.com/singer/90/10/18083.jpg" width="90" height="90"/></a><a href="/mlist/10675.shtml"><img src="http://pic.yue365.com/singer/90/6/10675.jpg" width="90" height="90"/></a>
-        </ul>
-        <ul class="top100" id="Top100">
-          <li><span>1</span><a href="/mlist/18083.shtml">TFBOYS</a></li><li><span>2</span><a href="/mlist/10675.shtml">乌兰图雅</a></li><li><span>3</span><a href="/mlist/427.shtml">范玮琪</a></li><li><span>4</span><a href="/mlist/9625.shtml">徐良</a></li><li><span>5</span><a href="/mlist/9159.shtml">祁隆</a></li><li><span>6</span><a href="/mlist/8160.shtml">冷漠</a></li><li><span>7</span><a href="/mlist/9626.shtml">阿悄</a></li><li><span>8</span><a href="/mlist/4350.shtml">陈瑞</a></li><li><span>9</span><a href="/mlist/10995.shtml">孙子涵</a></li><li><span>10</span><a href="/mlist/10203.shtml">筷子兄弟</a></li><li><span>11</span><a href="/mlist/809.shtml">后弦</a></li><li><span>12</span><a href="/mlist/9298.shtml">小贱</a></li><li><span>13</span><a href="/mlist/1238.shtml">香香</a></li><li><span>14</span><a href="/mlist/4603.shtml">蓝雨</a></li><li><span>15</span><a href="/mlist/7371.shtml">徐誉滕</a></li><li><span>16</span><a href="/mlist/4104.shtml">易欣</a></li><li><span>17</span><a href="/mlist/7099.shtml">陈玉建</a></li><li><span>18</span><a href="/mlist/4789.shtml">乌兰托娅</a></li>
-        </ul>
-		<div id="iSingerNav"><a href="/mlist/wangluo.shtml" target="_blank">网络歌手</a> &nbsp;&nbsp;<a href="/mlist/recsingerlist.shtml" target="_blank">推荐歌手</a></div>
-      </div>
-      <div class="bord">
-        <ul id="menu5">
-          <span><a href="/bang/xinge.shtml" target="_blank">最新歌曲</a></span>
-        </ul>
-        <div id="main5">
-          <ul class="musicList">
-			  <li><dl class="singer"><a href="/mlist/35234.shtml" title="指甲刀人魔歌曲" target="_blank">指甲刀人魔</a></dl><span>1</span><dl class="songname"><a target="m" href="/play/35234/396231.shtml" rel="2006_35234/77397/2.mp3|指甲刀人魔推广曲(伤心太平洋) - 汪东城|指甲刀人魔|396231|35234|77397|指甲刀人魔推广曲">指甲刀人魔推广曲</a></dl></li><li><dl class="singer"><a href="/mlist/35295.shtml" title="爱情冻住了歌曲" target="_blank">爱情冻住了</a></dl><span>2</span><dl class="songname"><a target="m" href="/play/35295/396230.shtml" rel="2006_35295/77552/1.mp3|爱情冻住了主题曲(宠儿) - 林宥嘉|爱情冻住了|396230|35295|77552|爱情冻住了主题曲">爱情冻住了主题曲</a></dl></li><li><dl class="singer"><a href="/mlist/35294.shtml" title="喜欢你歌曲" target="_blank">喜欢你</a></dl><span>3</span><dl class="songname"><a target="m" href="/play/35294/396229.shtml" rel="2006_35294/77550/2.mp3|喜欢你主题曲|喜欢你|396229|35294|77550|喜欢你主题曲">喜欢你主题曲</a></dl></li><li><dl class="singer"><a href="/mlist/35294.shtml" title="喜欢你歌曲" target="_blank">喜欢你</a></dl><span>4</span><dl class="songname"><a target="m" href="/play/35294/396228.shtml" rel="2006_35294/77550/1.mp3|电影喜欢你主题曲(我喜欢上你时的内心活动) - 陈绮贞|喜欢你|396228|35294|77550|电影喜欢你主题曲">电影喜欢你主题曲</a></dl></li><li><dl class="singer"><a href="/mlist/396.shtml" title="陈绮贞歌曲" target="_blank">陈绮贞</a></dl><span>5</span><dl class="songname"><a target="m" href="/play/396/396227.shtml" rel="2006_396/77551/1.mp3|我喜欢上你时的内心活动|陈绮贞|396227|396|77551|我喜欢上你时的内心活动">我喜欢上你时的内心活动</a></dl></li><li><dl class="singer"><a href="/mlist/35293.shtml" title="择天记电视剧歌曲" target="_blank">择天记电视剧</a></dl><span>6</span><dl class="songname"><a target="m" href="/play/35293/396226.shtml" rel="2006_35293/77548/2.mp3|择天记片尾曲|择天记电视剧|396226|35293|77548|择天记片尾曲">择天记片尾曲</a></dl></li><li><dl class="singer"><a href="/mlist/1270.shtml" title="周笔畅歌曲" target="_blank">周笔畅</a></dl><span>7</span><dl class="songname"><a target="m" href="/play/1270/396225.shtml" rel="2006_1270/77549/1.mp3|注定 - 周笔畅&白举纲|周笔畅|396225|1270|77549|注定">注定</a></dl></li><li><dl class="singer"><a href="/mlist/35293.shtml" title="择天记电视剧歌曲" target="_blank">择天记电视剧</a></dl><span>8</span><dl class="songname"><a target="m" href="/play/35293/396224.shtml" rel="2006_35293/77548/1.mp3|择天记电视剧片尾曲(注定) - 周笔畅&白举纲|择天记电视剧|396224|35293|77548|择天记电视剧片尾曲">择天记电视剧片尾曲</a></dl></li><li><dl class="singer"><a href="/mlist/2166.shtml" title="李玖哲歌曲" target="_blank">李玖哲</a></dl><span>9</span><dl class="songname"><a target="m" href="/play/2166/396223.shtml" rel="2006_2166/77547/1.mp3|真爱无坦途|李玖哲|396223|2166|77547|真爱无坦途">真爱无坦途</a></dl></li><li><dl class="singer"><a href="/mlist/35157.shtml" title="绑架者歌曲" target="_blank">绑架者</a></dl><span>10</span><dl class="songname"><a target="m" href="/play/35157/396222.shtml" rel="2006_35157/77205/2.mp3|绑架者片尾曲(真爱无坦途) - 李玖哲|绑架者|396222|35157|77205|绑架者片尾曲">绑架者片尾曲</a></dl></li><li><dl class="singer"><a href="/mlist/35292.shtml" title="朱盈盈歌曲" target="_blank">朱盈盈</a></dl><span>11</span><dl class="songname"><a target="m" href="/play/35292/396221.shtml" rel="2006_35292/77546/1.mp3|全世界把我遗弃|朱盈盈|396221|35292|77546|全世界把我遗弃">全世界把我遗弃</a></dl></li><li><dl class="singer"><a href="/mlist/8671.shtml" title="孟杨歌曲" target="_blank">孟杨</a></dl><span>12</span><dl class="songname"><a target="m" href="/play/8671/396220.shtml" rel="2006_8671/77545/10.mp3|犹如新知|孟杨|396220|8671|77545|犹如新知">犹如新知</a></dl></li><li><dl class="singer"><a href="/mlist/8671.shtml" title="孟杨歌曲" target="_blank">孟杨</a></dl><span>13</span><dl class="songname"><a target="m" href="/play/8671/396219.shtml" rel="2006_8671/77545/9.mp3|忘忧集|孟杨|396219|8671|77545|忘忧集">忘忧集</a></dl></li><li><dl class="singer"><a href="/mlist/8671.shtml" title="孟杨歌曲" target="_blank">孟杨</a></dl><span>14</span><dl class="songname"><a target="m" href="/play/8671/396218.shtml" rel="2006_8671/77545/8.mp3|伤恨古逸|孟杨|396218|8671|77545|伤恨古逸">伤恨古逸</a></dl></li><li><dl class="singer"><a href="/mlist/8671.shtml" title="孟杨歌曲" target="_blank">孟杨</a></dl><span>15</span><dl class="songname"><a target="m" href="/play/8671/396217.shtml" rel="2006_8671/77545/7.mp3|情依恋意|孟杨|396217|8671|77545|情依恋意">情依恋意</a></dl></li><li><dl class="singer"><a href="/mlist/8671.shtml" title="孟杨歌曲" target="_blank">孟杨</a></dl><span>16</span><dl class="songname"><a target="m" href="/play/8671/396216.shtml" rel="2006_8671/77545/6.mp3|念思雨泣|孟杨|396216|8671|77545|念思雨泣">念思雨泣</a></dl></li><li><dl class="singer"><a href="/mlist/8671.shtml" title="孟杨歌曲" target="_blank">孟杨</a></dl><span>17</span><dl class="songname"><a target="m" href="/play/8671/396215.shtml" rel="2006_8671/77545/5.mp3|梦如幻迹|孟杨|396215|8671|77545|梦如幻迹">梦如幻迹</a></dl></li><li><dl class="singer"><a href="/mlist/8671.shtml" title="孟杨歌曲" target="_blank">孟杨</a></dl><span>18</span><dl class="songname"><a target="m" href="/play/8671/396214.shtml" rel="2006_8671/77545/4.mp3|记忆点兮|孟杨|396214|8671|77545|记忆点兮">记忆点兮</a></dl></li><li><dl class="singer"><a href="/mlist/8671.shtml" title="孟杨歌曲" target="_blank">孟杨</a></dl><span>19</span><dl class="songname"><a target="m" href="/play/8671/396213.shtml" rel="2006_8671/77545/3.mp3|孤影怜惜|孟杨|396213|8671|77545|孤影怜惜">孤影怜惜</a></dl></li><li><dl class="singer"><a href="/mlist/8671.shtml" title="孟杨歌曲" target="_blank">孟杨</a></dl><span>20</span><dl class="songname"><a target="m" href="/play/8671/396212.shtml" rel="2006_8671/77545/2.mp3|冰若语诺|孟杨|396212|8671|77545|冰若语诺">冰若语诺</a></dl></li><li><dl class="singer"><a href="/mlist/8671.shtml" title="孟杨歌曲" target="_blank">孟杨</a></dl><span>21</span><dl class="songname"><a target="m" href="/play/8671/396211.shtml" rel="2006_8671/77545/1.mp3|爱如烟雨|孟杨|396211|8671|77545|爱如烟雨">爱如烟雨</a></dl></li><li><dl class="singer"><a href="/mlist/30454.shtml" title="邵杰歌曲" target="_blank">邵杰</a></dl><span>22</span><dl class="songname"><a target="m" href="/play/30454/396210.shtml" rel="2006_30454/77544/2.mp3|酒太伤Dj小志|邵杰|396210|30454|77544|酒太伤Dj小志">酒太伤Dj小志</a></dl></li><li><dl class="singer"><a href="/mlist/30454.shtml" title="邵杰歌曲" target="_blank">邵杰</a></dl><span>23</span><dl class="songname"><a target="m" href="/play/30454/396209.shtml" rel="2006_30454/77544/1.mp3|酒太伤|邵杰|396209|30454|77544|酒太伤">酒太伤</a></dl></li><li><dl class="singer"><a href="/mlist/13020.shtml" title="刘恺名歌曲" target="_blank">刘恺名</a></dl><span>24</span><dl class="songname"><a target="m" href="/play/13020/396208.shtml" rel="2006_13020/77543/1.mp3|梨花雪|刘恺名|396208|13020|77543|梨花雪">梨花雪</a></dl></li><li><dl class="singer"><a href="/mlist/34266.shtml" title="吴官辉歌曲" target="_blank">吴官辉</a></dl><span>25</span><dl class="songname"><a target="m" href="/play/34266/396207.shtml" rel="2006_34266/77542/1.mp3|有你的季节花最美|吴官辉|396207|34266|77542|有你的季节花最美">有你的季节花最美</a></dl></li><li><dl class="singer"><a href="/mlist/35289.shtml" title="王海州歌曲" target="_blank">王海州</a></dl><span>26</span><dl class="songname"><a target="m" href="/play/35289/396206.shtml" rel="2006_35289/77541/1.mp3|听老婆的话|王海州|396206|35289|77541|听老婆的话">听老婆的话</a></dl></li><li><dl class="singer"><a href="/mlist/23590.shtml" title="万海东歌曲" target="_blank">万海东</a></dl><span>27</span><dl class="songname"><a target="m" href="/play/23590/396205.shtml" rel="2006_23590/77540/1.mp3|带你装逼带你飞|万海东|396205|23590|77540|带你装逼带你飞">带你装逼带你飞</a></dl></li>
-          </ul>
+      
+      
+    
         </div>
       </div>
     </div>

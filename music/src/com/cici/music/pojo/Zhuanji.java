@@ -7,6 +7,13 @@ public class Zhuanji {
 	private String zname;
 	private String js;
 	private int songerId;
+	private String singername;
+	public String getSingername() {
+		return singername;
+	}
+	public void setSingername(String singername) {
+		this.singername = singername;
+	}
 	private String fxgs;
 	private int typeId;
 	private Date fbtime;

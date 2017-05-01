@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cici.music.pojo.Song;
+import com.cici.music.pojo.User;
 import com.cici.music.pojo.Zhuanji;
 import com.cici.music.service.IndexService;
 @Controller
@@ -37,4 +38,16 @@ public class IndexController {
 	public String toaaa(HttpServletRequest request,Model model){
 		return indexService.getNewSong();
 	}
+	
+	@ResponseBody
+	@RequestMapping("rightview")
+	public String toRightView(HttpServletRequest request,Model model){
+		User user=(User) request.getSession().getAttribute("user");
+		if(user==null){
+			return indexService.getRecommend();
+		}else{
+			return indexService.getCollectSong();
+		}
+	}
+	
 }
