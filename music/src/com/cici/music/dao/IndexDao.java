@@ -3,6 +3,7 @@ package com.cici.music.dao;
 import java.util.List;
 
 import com.cici.music.pojo.Param;
+import com.cici.music.pojo.Singer;
 import com.cici.music.pojo.Song;
 import com.cici.music.pojo.SongDto;
 import com.cici.music.pojo.Test;
@@ -19,6 +20,8 @@ public interface IndexDao {
 
 	List<SongDto> getHotSong(Param param);
 
-	List<SongDto> getTypeSong();
+	List<SongDto> getTypeSong(Param param);
+
+	List<Singer> getSinger(Param param);
 
 }

@@ -50,4 +50,21 @@ public class IndexController {
 		}
 	}
 	
+	/**
+	 * 获取中部的几个列表的数据
+	 * @param request
+	 * @param model
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("middlelist")
+	public String toMiddlelist(HttpServletRequest request,Model model){
+		return indexService.getMiddleList();
+	}
+	
+	@ResponseBody
+	@RequestMapping("rightsinger")
+	public String getRightsinger(HttpServletRequest request,Model model){
+		return indexService.getRightSinger();
+	}
 }

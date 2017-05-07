@@ -37,7 +37,7 @@
            
   </select>
   
-  <select id="getTypeSong" resultType="com.cici.music.pojo.SongDto" >
+  <select id="getTypeSong"  parameterType="com.cici.music.pojo.Param"  resultType="com.cici.music.pojo.SongDto" >
     	SELECT
 	song.sid,
 	song.sname AS NAME,
@@ -48,11 +48,11 @@ FROM
 	song
 left join click on song.sid=click.id 
 WHERE
-	song.songerid = songer.sid and song.type=2
+	song.songerid = songer.sid and song.type= #{songType}
 ORDER BY
 	click.count DESC
-LIMIT 0,
- 15
+LIMIT #{start},
+ #{length}  
   </select>
   
   <select id="getHotSong"  parameterType="com.cici.music.pojo.Param"  resultType="com.cici.music.pojo.SongDto" >
@@ -73,6 +73,34 @@ ORDER BY
 	</if>
 	click.count DESC
 	
+LIMIT #{start},
+ #{length}        
+ </select>
+ 
+ <select id="getSinger"  parameterType="com.cici.music.pojo.Param"  resultType="com.cici.music.pojo.Singer" >
+SELECT
+	s.sid,
+	s.sname,
+	s.sex,
+	s.jieshao,
+	s.head,
+	s.typeid
+FROM
+	songer s
+LEFT JOIN (
+	SELECT
+		sum(c.count) AS count,
+		s1.songerid
+	FROM
+		song s1,
+		click c
+	WHERE
+		s1.sid = c.id
+	GROUP BY
+		s1.songerid
+	ORDER BY
+		count DESC
+) s2 ON s.sid = s2.songerid
 LIMIT #{start},
  #{length}        
  </select>
