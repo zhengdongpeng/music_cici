@@ -28,7 +28,7 @@ function singer(){
 		         */
 		        var head=data.head;
 		       for(var i=0;i<head.length;i++){
-		    	   $(".singerpic").append("<a href='"+data.url+"?sid="+head[i].sid+"'> <img src='"+head[i].head+"' width='90' height='90' /> </a>");
+		    	   $(".singerpic").append("<a href='"+data.url+"?sid="+head[i].sid+"'> <img src='"+head[i].head+"' width='90' height='90' ></img> </a>");
 		       }
 		       
 		       var singer=data.singer;
