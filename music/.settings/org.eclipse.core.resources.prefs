@@ -1,3 +1,7 @@
 eclipse.preferences.version=1
+encoding//WebRoot/WEB-INF/jsp/Album.jsp=UTF-8
+encoding//WebRoot/WEB-INF/jsp/head.jsp=UTF-8
+encoding//WebRoot/WEB-INF/jsp/login.jsp=UTF-8
 encoding//WebRoot/index.jsp=UTF-8
 encoding//src/com/cici/music/dao/IndexDao.java=UTF-8
+encoding/<project>=UTF-8

@@ -2,10 +2,85 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cici.music.dao.IndexDao">
 
-  <select id="queryForNew" resultType="com.cici.music.pojo.Zhuanji" >
+<select id="getSearchSong" parameterType="com.cici.music.pojo.Param"  resultType="com.cici.music.pojo.Song" >
+SELECT
+	song.sid,
+	song.sname,
+	song.songerid,
+	songer.sname AS songername,
+	zhuanji.zname AS zjname,
+	song.zjid
+FROM
+	songer,
+	song
+LEFT JOIN zhuanji ON song.zjid = zhuanji.zhujiid
+WHERE
+	song.songerid = songer.sid
+AND song.sname LIKE 
+ CONCAT('%','${searchParam}','%' ) 
+ORDER BY
+	song.cjtime DESC
+LIMIT #{start},
+ #{length}  
+</select>
+
+<select id="getSearchCount" resultType="int" parameterType="hashmap">
+select count(*) 
+ from 
+ <if test="type==1">
+	songer,
+	song
+LEFT JOIN zhuanji ON song.zjid = zhuanji.zhujiid
+WHERE
+	song.songerid = songer.sid
+AND song.sname LIKE  CONCAT('%','${value}','%' )
+ </if>
+  <if test="type==2">
+   zhuanji
+
+
+WHERE
+zhuanji.zname LIKE  CONCAT('%','${value}','%' )
+ </if>
+  <if test="type==3">
+   songer
+      WHERE
+songer.sname LIKE  CONCAT('%','${value}','%' )
+ </if>
+</select>
+
+<select id="getSearchSinger" parameterType="com.cici.music.pojo.Param"  resultType="com.cici.music.pojo.Singer" >
+SELECT
+songer.sname,
+songer.sid,
+songer.head
+FROM
+	songer
+WHERE
+songer.sname LIKE  CONCAT('%','${searchParam}','%' )
+ORDER BY
+	songer.sid DESC
+	LIMIT #{start},
+ #{length} 
+</select>
+<select id="getSearchAlbum" parameterType="com.cici.music.pojo.Param"  resultType="com.cici.music.pojo.Album" >
+SELECT
+zhuanji.zname as aname,
+zhuanji.zhujiid as albumId,
+zhuanji.img 
+FROM
+	zhuanji
+WHERE
+zhuanji.zname LIKE  CONCAT('%','${searchParam}','%' )
+ORDER BY
+	zhuanji.zhujiid DESC
+	LIMIT #{start},
+ #{length} 
+</select>
+  <select id="queryForNew" resultType="com.cici.music.pojo.Album" >
     SELECT
-            zhujiId,
-            zname,
+            zhujiId as albumid,
+            zname as aname,
             js,
             zhuanji.songerId,
             songer.sname as singername,

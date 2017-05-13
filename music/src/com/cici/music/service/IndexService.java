@@ -1,7 +1,9 @@
 package com.cici.music.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -15,14 +17,17 @@ import com.cici.music.pojo.Param;
 import com.cici.music.pojo.Singer;
 import com.cici.music.pojo.Song;
 import com.cici.music.pojo.SongDto;
-import com.cici.music.pojo.Zhuanji;
+import com.cici.music.pojo.Album;
 
 @Service
 public class IndexService {
 	@Resource
 	IndexDao indexDao;
 	
-	public List<Zhuanji> getNewZhuanji() {
+	
+	
+	
+	public List<Album> getNewZhuanji() {
 		return indexDao.queryForNew();
 	}
 
@@ -50,7 +55,7 @@ public class IndexService {
 
 
 	/**
-	 * »ñÈ¡ÍÆ¼ö  ÍÆ¼ö»ñÈ¡ÊÇ¸ù¾Ýµã»÷Á¿ÅÅÐòºó£¬È»ºóËæ»ú»ñÈ¡10ÌõÊý¾Ý
+	 * ï¿½ï¿½È¡ï¿½Æ¼ï¿½  ï¿½Æ¼ï¿½ï¿½ï¿½È¡ï¿½Ç¸ï¿½Ýµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡10ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 */
 	public String getRecommend() {
@@ -92,9 +97,29 @@ public class IndexService {
 		JSONObject  obj=new JSONObject();
 		obj.put("head", head.toArray());
 		obj.put("singer", singer.toArray());
-		obj.put("url", "");
-		String o= obj.toJSONString(SerializerFeature.DisableCircularReferenceDetect);
+		obj.put("url", "playMusic.do");
+		String o= obj.toJSONString(obj,SerializerFeature.DisableCircularReferenceDetect);
 		return o;
+	}
+
+	public List<Song> getSearchSong(Param param) {
+		return indexDao.getSearchSong(param);
+	}
+
+
+	public List<Singer> getSearchSinger(Param param) {
+		return indexDao.getSearchSinger(param);
+	}
+
+	public List<Album> getSearchAlbum(Param param) {
+		return indexDao.getSearchAlbum(param);
+	}
+
+	public int getSearchCount(String value,int type) {
+		Map<String,Object> map =new HashMap<String,Object>();
+		map.put("value", value);
+		map.put("type", type);
+		return indexDao.getSearchCount(map);
 	}
 	
 	

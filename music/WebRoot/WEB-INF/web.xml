@@ -30,6 +30,7 @@
     <listener>  
         <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>  
     </listener>  
+ 
   
     <!-- Spring MVC servlet -->  
     <servlet>  
@@ -42,16 +43,27 @@
         <load-on-startup>1</load-on-startup>  
         <async-supported>true</async-supported>  
     </servlet>  
+    <servlet> 
+    <servlet-name>AuthImage</servlet-name> 
+    <servlet-class>com.cici.music.utils.AuthImage</servlet-class> 
+    </servlet> 
+    <servlet-mapping> 
+    <servlet-name>AuthImage</servlet-name> 
+    <url-pattern>/authImage</url-pattern> 
+ </servlet-mapping>
     <servlet-mapping>  
         <servlet-name>SpringMVC</servlet-name>  
         <!-- 此处可以可以配置成*.do，对应struts的后缀习惯 -->  
-        <url-pattern>/</url-pattern>  
+        <url-pattern>*.do</url-pattern>  
     </servlet-mapping>  
     <servlet-mapping>   
         <servlet-name>default</servlet-name>    
         <url-pattern>*.jpg</url-pattern>    
     </servlet-mapping>    
-  
+     <servlet-mapping>   
+        <servlet-name>default</servlet-name>    
+        <url-pattern>*.mp3</url-pattern>    
+    </servlet-mapping>
     <servlet-mapping>   
         <servlet-name>default</servlet-name>   
         <url-pattern>*.gif</url-pattern>   

@@ -9,6 +9,7 @@
                         http://www.springframework.org/schema/context/spring-context-3.1.xsd    
                         http://www.springframework.org/schema/mvc    
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">  
+   
     <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->  
     <context:component-scan base-package="com.cici.music.controller" />  
     <!--避免IE执行AJAX时，返回JSON出现下载文件 -->  
@@ -46,5 +47,13 @@
         <!-- 内存中的最大值 -->  
         <property name="maxInMemorySize" value="40960" />    
     </bean>   
-  
+    
+  <mvc:interceptors>  
+    <!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->  
+    <mvc:interceptor>  
+        <mvc:mapping path="/userCenter.do"/>  
+        <!-- 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->  
+        <bean class="com.cici.music.interceptor.LoginInterceptor"/>  
+    </mvc:interceptor>  
+</mvc:interceptors>  
 </beans>  

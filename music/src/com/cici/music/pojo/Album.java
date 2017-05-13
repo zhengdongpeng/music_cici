@@ -2,40 +2,41 @@ package com.cici.music.pojo;
 
 import java.util.Date;
 
-public class Zhuanji {
-	private int zhujiId ;
-	private String zname;
+public class Album {
+	private int albumId ;
+	private String aname;
 	private String js;
 	private int songerId;
 	private String singername;
+	private String fxgs;
+	private int typeId;
+	private Date fbtime;
+	private Date cjtime;
+	private String img;
 	public String getSingername() {
 		return singername;
 	}
 	public void setSingername(String singername) {
 		this.singername = singername;
 	}
-	private String fxgs;
-	private int typeId;
-	private Date fbtime;
-	private Date cjtime;
-	private String img;
+	
 	public String getImg() {
 		return img;
 	}
 	public void setImg(String img) {
 		this.img = img;
 	}
-	public int getZhujiId() {
-		return zhujiId;
+	public int getAlbumId() {
+		return albumId;
 	}
-	public void setZhujiId(int zhujiId) {
-		this.zhujiId = zhujiId;
+	public void setAlbumId(int albumId) {
+		this.albumId = albumId;
 	}
-	public String getZname() {
-		return zname;
+	public String getAname() {
+		return aname;
 	}
-	public void setZname(String zname) {
-		this.zname = zname;
+	public void setAname(String aname) {
+		this.aname = aname;
 	}
 	public String getJs() {
 		return js;

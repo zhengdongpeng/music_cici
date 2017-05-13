@@ -1,5 +1,6 @@
 package com.cici.music.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,12 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
+import com.cici.music.contans.MusicConts;
+import com.cici.music.pojo.Param;
+import com.cici.music.pojo.Singer;
 import com.cici.music.pojo.Song;
 import com.cici.music.pojo.User;
-import com.cici.music.pojo.Zhuanji;
+import com.cici.music.pojo.Album;
 import com.cici.music.service.IndexService;
 @Controller
 public class IndexController {
@@ -21,14 +27,75 @@ public class IndexController {
 	
 	@RequestMapping("index")
 	public String toIndex(HttpServletRequest request,Model model){
-		List<Zhuanji> zList=indexService.getNewZhuanji();
+		List<Album> zList=indexService.getNewZhuanji();
 		request.setAttribute("zuixinzj", zList);
 		return "index";
 	}
 	
+	@ResponseBody
+	@RequestMapping("searchlist")
+	public String searchlist(HttpServletRequest request,Model model){
+		String type=request.getParameter("type");
+		int pager = Integer.valueOf(request.getParameter("pager"));
+		String val =request.getParameter("val");
+		JSONObject json = new JSONObject();
+		if(MusicConts.TYPE_SONG.equals(type)){
+			List<Song> song=indexService.getSearchSong(new Param(pager*MusicConts.PAGER_COUNT,
+					pager*MusicConts.PAGER_COUNT+MusicConts.PAGER_COUNT,val,0,0));
+			json.put("list", song);
+		}else if(MusicConts.TYPE_ALBUM.equals(type)){
+			List<Album> album=indexService.getSearchAlbum(new Param(pager*MusicConts.PAGER_COUNT,
+					pager*MusicConts.PAGER_COUNT+MusicConts.PAGER_COUNT,val,0,0));
+			json.put("list", album);
+		}else if(MusicConts.TYPE_SINGER.equals(type)){
+			List<Singer> singer=indexService.getSearchSinger(new Param(pager*MusicConts.PAGER_COUNT,
+					pager*MusicConts.PAGER_COUNT+MusicConts.PAGER_COUNT,val,0,0));
+			json.put("list", singer);
+
+		}
+		
+		return json.toJSONString();
+	}
+	
+	@RequestMapping("search")
+	public String toSearch(HttpServletRequest request,String type,String value){
+		if(StringUtils.isEmpty(type)){
+			
+		}else{
+			if(StringUtils.isEmpty(value)){
+				request.setAttribute("type", null);
+				request.setAttribute("size", 0);
+			}
+			try {
+				value = new String(value.getBytes("iso-8859-1"), "utf-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}  
+			request.setAttribute("value", value);
+			if(MusicConts.TYPE_SONG.equals(type)){
+				List<Song> song=indexService.getSearchSong(new Param(0,20,value,0,0));
+				request.setAttribute("type", MusicConts.TYPE_SONG);
+				request.setAttribute("size", indexService.getSearchCount(value,1));
+				request.setAttribute("list", song);
+			}else if(MusicConts.TYPE_ALBUM.equals(type)){
+				List<Album> album=indexService.getSearchAlbum(new Param(0,20,value,0,0));
+				request.setAttribute("type", MusicConts.TYPE_ALBUM);
+				request.setAttribute("list", album);
+				request.setAttribute("size", indexService.getSearchCount(value,2));
+			}else if(MusicConts.TYPE_SINGER.equals(type)){
+				List<Singer> singer=indexService.getSearchSinger(new Param(0,20,value,0,0));
+				request.setAttribute("type", MusicConts.TYPE_SINGER);
+				request.setAttribute("list", singer);
+				request.setAttribute("size", indexService.getSearchCount(value,3));
+
+			}
+		}
+		return "search";
+	}
+	
 	/**
-	 * ¸ºÔð½ÓÊÕÇ°Ì¨´«À´µÄÇëÇó£¬Õâ¸öÇëÇóÊôÓÚajaxÇëÇó£¬ËùÒÔÐèÒª¼ÓÉÏ@ResponseBody×¢½â£¬ÕâÑù·µ»ØµÄ¾ÍÊÇ×Ö·û´®
-	 * ¶ø²»ÊÇjspÒ³ÃæµÄÃû×Ö
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ajaxï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½@ResponseBody×¢ï¿½â£¬ï¿½ï¿½ï¿½ï¿½ØµÄ¾ï¿½ï¿½ï¿½ï¿½Ö·ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½jspÒ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param request
 	 * @param model
 	 * @return
@@ -51,7 +118,7 @@ public class IndexController {
 	}
 	
 	/**
-	 * »ñÈ¡ÖÐ²¿µÄ¼¸¸öÁÐ±íµÄÊý¾Ý
+	 * ï¿½ï¿½È¡ï¿½Ð²ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param request
 	 * @param model
 	 * @return

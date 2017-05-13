@@ -1,15 +1,52 @@
 package com.cici.music.pojo;
 
+import java.util.Date;
+
 public class Song {
 	private int sid;
 	private String sname;
 	private String song;
 	private double length;
 	private int type;
+	private  String typeName;
+	public String getTypeName() {
+		return typeName;
+	}
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
+	}
 	private int songerid;
 	private String fxgs;
 	private String lyric;
 	private int zjid;
+	private String zjName;
+	private Date fbtime;
+	public Date getFbtime() {
+		return fbtime;
+	}
+	public void setFbtime(Date fbtime) {
+		this.fbtime = fbtime;
+	}
+	public String getZjName() {
+		return zjName;
+	}
+	public void setZjName(String zjName) {
+		this.zjName = zjName;
+	}
+	private String songerName;
+	private String img;
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+	public String getSongerName() {
+		return songerName;
+	}
+	public void setSongerName(String songerName) {
+		this.songerName = songerName;
+	}
 	public int getSid() {
 		return sid;
 	}

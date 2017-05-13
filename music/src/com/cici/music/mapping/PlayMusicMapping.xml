@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cici.music.dao.PlayMusicDao">
+<select id="getForId"  parameterType="int"  resultType="com.cici.music.pojo.Song" >
+select song.sid,
+	song.sname,
+	song.song,
+	songer.sname as songerName,
+	song.lyric,
+	song.img
+ from song,songer
+where song.songerid=songer.sid and
+song.sid=#{id}
+</select>
+
+<select id="queryCollectForId" parameterType="com.cici.music.pojo.Collect" resultType="com.cici.music.pojo.Collect">
+	select uid,sid
+	from
+	<if test="type==1">
+		collectsong
+	</if>
+	<if test="type==2">
+	collectzhuanji
+	</if>
+	where uid=#{uid} and sid=#{sid}
+</select>
+<select id="queryCollectAll" parameterType="com.cici.music.pojo.Collect" resultType="com.cici.music.pojo.Collect">
+	select uid,sid,sctime
+	from
+	<if test="type==1">
+		collectsong
+	</if>
+	<if test="type==2">
+	collectzhuanji
+	</if>
+	where uid=#{uid} 
+</select>
+
+<insert id="insertConllectSong" parameterType="com.cici.music.pojo.Collect">
+	insert into collectsong values(#{uid},#{sid},#{sctime})
+</insert>
+<insert id="insertConllectAlubm" parameterType="com.cici.music.pojo.Collect">
+insert into collectzhuanji values(#{uid},#{sid},#{sctime})
+</insert>
+</mapper>

@@ -6,16 +6,18 @@ $().ready(function(){
 	singer();
 });
 
+
+
 function singer(){
 	$.ajax({
-		  url:'rightsinger',
+		  url:'rightsinger.do',
 		    type:'POST', //GET
-		    async:true,    //»òfalse,ÊÇ·ñÒì²½
+		    async:true,    //ï¿½ï¿½false,ï¿½Ç·ï¿½ï¿½ì²½
 		    data:{
 		       
 		    },
-		    timeout:5000,    //³¬Ê±Ê±¼ä
-		    dataType:'json',    //·µ»ØµÄÊý¾Ý¸ñÊ½£ºjson/xml/html/script/jsonp/text
+		    timeout:5000,    //ï¿½ï¿½Ê±Ê±ï¿½ï¿½
+		    dataType:'json',    //ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ý¸ï¿½Ê½ï¿½ï¿½json/xml/html/script/jsonp/text
 		   
 		    success:function(data,textStatus,jqXHR){
 		    	debugger;
@@ -28,7 +30,7 @@ function singer(){
 		         */
 		        var head=data.head;
 		       for(var i=0;i<head.length;i++){
-		    	   $(".singerpic").append("<a href='"+data.url+"?sid="+head[i].sid+"'> <img src='"+head[i].head+"' width='90' height='90' ></img> </a>");
+		    	   $(".singerpic").append("<a href='"+data.url+"?id="+head[i].sid+"'> <img src='"+head[i].head+"' width='90' height='90' ></img> </a>");
 		       }
 		       
 		       var singer=data.singer;
@@ -36,7 +38,7 @@ function singer(){
 		        * <li><span>1</span><a href="/mlist/18083.shtml">TFBOYS</a></li>
 		        */
 		       for(var i=0;i<singer.length;i++){
-		    	   $("#Top100").append("<li><span>'"+i+"'</span>  <a href='"+data.url+"?sid="+singer[i].sid+"'>"+singer[i].sname+"</a></li>");
+		    	   $("#Top100").append("<li><span>'"+i+"'</span>  <a href='"+data.url+"?id="+singer[i].sid+"'>"+singer[i].sname+"</a></li>");
 		       }
 		       },
 		    error:function(xhr,textStatus){
@@ -47,14 +49,14 @@ function singer(){
 
 function middlelist(){
 	$.ajax({
-		  url:'middlelist',
+		  url:'middlelist.do',
 		    type:'POST', //GET
-		    async:true,    //»òfalse,ÊÇ·ñÒì²½
+		    async:true,    //ï¿½ï¿½false,ï¿½Ç·ï¿½ï¿½ì²½
 		    data:{
 		       
 		    },
-		    timeout:5000,    //³¬Ê±Ê±¼ä
-		    dataType:'json',    //·µ»ØµÄÊý¾Ý¸ñÊ½£ºjson/xml/html/script/jsonp/text
+		    timeout:5000,    //ï¿½ï¿½Ê±Ê±ï¿½ï¿½
+		    dataType:'json',    //ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ý¸ï¿½Ê½ï¿½ï¿½json/xml/html/script/jsonp/text
 		   
 		    success:function(data,textStatus,jqXHR){
 		    	debugger;
@@ -76,14 +78,14 @@ function middlelist(){
 
 function newSongInit(){
 	$.ajax({
-		  url:'aaa',
+		  url:'aaa.do',
 		    type:'POST', //GET
-		    async:true,    //»òfalse,ÊÇ·ñÒì²½
+		    async:true,    //ï¿½ï¿½false,ï¿½Ç·ï¿½ï¿½ì²½
 		    data:{
 		       
 		    },
-		    timeout:5000,    //³¬Ê±Ê±¼ä
-		    dataType:'json',    //·µ»ØµÄÊý¾Ý¸ñÊ½£ºjson/xml/html/script/jsonp/text
+		    timeout:5000,    //ï¿½ï¿½Ê±Ê±ï¿½ï¿½
+		    dataType:'json',    //ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ý¸ï¿½Ê½ï¿½ï¿½json/xml/html/script/jsonp/text
 		   
 		    success:function(data,textStatus,jqXHR){
 		        $(".hotSong").html("");
@@ -103,7 +105,7 @@ function newSongInit(){
 function createList(clazz,song){
 	 for(var i=0;i<song.length;i++){
      	$(clazz).append("<li> <dl class='singer'> <a href='' title="+song[i].singername+"target='_blank'>"+song[i].singername+"</a></dl>"
-     			+"<span class='"+((i+1)<=3?"numbertwo":"num")+"'>"+(i+1)+"</span>"+"<dl class='songname'> <a target='m' href='"+song[i].url+"' >"+song[i].name+"</a>   </dl> </li>");
+     			+"<span class='"+((i+1)<=3?"numbertwo":"num")+"'>"+(i+1)+"</span>"+"<dl class='songname'> <a target='m' href='playMusic.do?id="+song[i].sid+"' >"+song[i].name+"</a>   </dl> </li>");
      }
 }
 
@@ -114,13 +116,13 @@ function rigthview(){
 	}else if(islogin=='false'){
 		debugger;
 		$.ajax({
-			  url:'rightview',
+			  url:'rightview.do',
 			    type:'POST', //GET
-			    async:true,    //»òfalse,ÊÇ·ñÒì²½
+			    async:true,    //ï¿½ï¿½false,ï¿½Ç·ï¿½ï¿½ì²½
 			    data:{
 			    },
-			    timeout:5000,    //³¬Ê±Ê±¼ä
-			    dataType:'json',    //·µ»ØµÄÊý¾Ý¸ñÊ½£ºjson/xml/html/script/jsonp/text
+			    timeout:5000,    //ï¿½ï¿½Ê±Ê±ï¿½ï¿½
+			    dataType:'json',    //ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½Ý¸ï¿½Ê½ï¿½ï¿½json/xml/html/script/jsonp/text
 			   
 			    success:function(data,textStatus,jqXHR){
 			        debugger;

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cici.music.dao.PlayAlbumDao">
+<select id="getForId"  parameterType="int"  resultType="com.cici.music.pojo.Album" >
+SELECT
+	zhujiid as albumId,
+	zname as aname,
+	js,
+	songerid,
+	fxgs,
+	fbtime,
+	cjtime,
+	img,
+	songer.sname as singername
+FROM
+	zhuanji,
+	songer
+WHERE
+	zhuanji.songerid = songer.sid
+AND zhujiid =#{id}       
+</select>
+<select id="getMusicList"  resultType="com.cici.music.pojo.Song">
+select * from 
+
+song where song.zjid=#{0};
+</select>
+</mapper>

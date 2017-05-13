@@ -10,6 +10,41 @@ public class User {
 	private String head;
 	private String email;
 	private Date zctime;
+	private String yanzhengma;
+	private String uname;
+	private String city;
+	private Date birthday;
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public Date getBirthday() {
+		return birthday;
+	}
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+	private int code;//删除标识，0是存在，1是删除
+	public int getCode() {
+		return code;
+	}
+	public void setCode(int code) {
+		this.code = code;
+	}
+	public String getUname() {
+		return uname;
+	}
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+	public String getYanzhengma() {
+		return yanzhengma;
+	}
+	public void setYanzhengma(String yanzhengma) {
+		this.yanzhengma = yanzhengma;
+	}
 	public int getUid() {
 		return uid;
 	}
@@ -52,4 +87,5 @@ public class User {
 	public void setZctime(Date zctime) {
 		this.zctime = zctime;
 	}
+	
 }

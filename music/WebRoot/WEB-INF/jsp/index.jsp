@@ -15,20 +15,14 @@ if(user!=null){
 <html >
 <head>
     <base href="<%=basePath%>">
-<script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script>
 
-<!-- foreign country -->
-<script type="text/javascript">BAIDU_CLB_fillSlot("1111134");</script>
-<!-- 手机 -->
-<script type="text/javascript">BAIDU_CLB_fillSlot("203363");</script>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>cici的音乐网站</title>
 <meta name="keywords" content="音乐,音乐网,音乐网站,最新音乐,歌曲,mp3,歌曲mp3,mp3下载,好听的歌曲,网络歌曲" />
 <meta name="description" content="高品质音乐Mp3下载试听网站，提供最新最好听的流行歌曲、网络歌曲，以及权威、全面的歌曲排行榜。" />
 
 <link type="text/css" rel="stylesheet" href="365_files/newindex.css"/>
 <link type="text/css" rel="stylesheet" href="365_files/header.css?v=0907"/>
-<link href="http://zy.yue365.com/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 <link type="text/css" rel="stylesheet" href="css/common.css"/>
 <script type="text/javascript" src="365_files/jquery.js"></script>
 <script type="text/javascript" src="365_files/common.js"></script>
@@ -37,63 +31,15 @@ if(user!=null){
 
 <script>
 var islogin='<%=islogin%>';
-<!--
-/*第一种形式 第二种形式 更换显示样式*/
-eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('g p(h){2 5="";2 7=h.9("a");2 4=7.k;l(2 i=0;i<4;i++){2 3=7[i].n("3");j(3!=r&&3!=""){j(i==4-1){5+=3}o{5+=3+","}}};6.8("q").m=5;6.s.y()};g z(f,e,c){2 b=6.8(f).9("A");2 d=6.8(e).9("x");2 4=b.k;l(2 i=0;i<4;i++){b[i].t=i==c?"w":"";d[i].v.u=i==c?"":"B"}}',38,38,'||var|rel|count|url|document|allplays|getElementById|getElementsByTagName||navList|index|contList|contId|navId|function|list||if|length|for|value|getAttribute|else|play|id|null|form1|className|display|style|mover|ul|submit|showTab|li|none'.split('|'),0,{}))
--->
 </script>
 </head>
 <body bgcolor='#000000'>
+
 <div id="wrapper">
-  <script type="text/javascript" src="http://cbjs.baidu.com/js/s.js"></script>
-<!-- foreign country -->
-<script type="text/javascript">BAIDU_CLB_fillSlot("1111134");</script>
-<div id="top">
-	<span class="H1Logo"><a href="/" title="cici音乐网(cici.com) - 最新最好听的网络歌曲分享" >cici音乐网</a></span>
-	<div id="search">
-	<input  id="KeyWords" name="KeyWords" class="searchinput" />
-	<input type="button"   value=" " id="searchbotton"  onclick="onSearch();"/>
-	<div id="searchradio">
-		<input name="type"  type="radio" value="album">
-		<span>专辑</span>
-		<input name="type" checked="checked"  type="radio" value="song">
-		<span>歌曲</span>
-		<input name="type"  type="radio" value="artist">
-		<span>歌手</span>
-        <input name="type"  type="radio" value="geci">
-		<span>歌词</span>
-	</div>
-	<div style="display:inline-block; float:left; margin-top:7px;"><script type="text/javascript">BAIDU_CLB_fillSlot("186412");</script> <a href="http://www.yue365.com/tv/" target="_blank">电视剧</a> <a href="http://www.yue365.com/movie/" target="_blank">电影</a> <a href="http://www.yue365.com/zongyi/" target="_blank">综艺</a> <a href="http://www.yue365.com/zixun/" target="_blank">资讯</a></div>
-	
+<div>
+<jsp:include page="head.jsp"></jsp:include>
 </div>
-  
-  <div id="login">
-<!--     <script language="javascript" src="http://my.yue365.com/Indexlogin.aspx"></script>
-	<a target="_self" href="javascript:loginhtml();">登录</a> | <a target="_self" href="javascript:reghtml();">注册</a> -->
-	    <span>欢迎来到cici－－音乐网</span>
- </div>
-  <ul id="nav">
-    <li><a href="/">首页</a></li>
-    <li><a href="/bang/">排行榜</a></li>
-	<li><a href="/bang/tag13.shtml">好听的歌</a></li>
-    <li><a href="/geci/">歌词搜索</a></li>
-    <li><a href="/mlist/singerlist.shtml">歌手</a></li>
-    <li><a href="/musiclist/ablumlist.shtml">专辑</a></li>
-    <li><a href="/bang/fenlei.shtml">音乐分类</a></li>
-	
-	 <li><a  target="_self" href="javascript:loginhtml();">登陆</a></li>
-    <li><a target="_self" href="javascript:reghtml();">注册</a></li>
 
-  </ul>
-</div>
-<script type="text/javascript">
-function navSel(){var navs=$('#nav li');var urlstr=document.location.toString();$('#nav li .hot').remove();if(urlstr.indexOf("/tag13")!=-1||urlstr.indexOf("/tag9")!=-1||urlstr.indexOf("/tag10")!=-1||urlstr.indexOf("/haoting")!=-1){navs[2].className="navmover";$("#nav li:eq(1)").append("<div class=\"hot\" style=\"margin-left:-25px;\"><img src=\"http://zy.yue365.com/images/hot.gif\" /></div>")}else if(urlstr.indexOf("/geci/")!=-1){navs[3].className="navmover"}else if(urlstr.indexOf("/mlist")!=-1||urlstr.indexOf("/music/")!=-1){navs[4].className="navmover"}else if(urlstr.indexOf("/musiclist")!=-1||urlstr.indexOf("/zlist")!=-1){navs[5].className="navmover"}else if(urlstr.indexOf("/bang/fenlei")!=-1 || urlstr.indexOf("/paihang/fenlei")!=-1){navs[6].className="navmover"}else if(urlstr.indexOf("/bang")!=-1){navs[1].className="navmover";$("#nav li:eq(2)").append("<div class=\"hot\"><img src=\"http://zy.yue365.com/images/hot.gif\" /></div>")}else{navs[0].className="navmover"}if(navs[1].className==""&&navs[2].className==""){$("#nav li:eq(2)").append("<div class=\"hot\"><img src=\"http://zy.yue365.com/images/hot.gif\" /></div>")}}navSel();
-$(document).keypress(function(e){if(e.which==13){onSearch();}})
-</script>
-
-<script type="text/javascript">
-	BAIDU_CLB_fillSlot("45023");
-</script>
 
   <div id="main">
     <div id="mainleft">
@@ -113,9 +59,9 @@ $(document).keypress(function(e){if(e.which==13){onSearch();}})
               </ul>
               <ul style="display:none;">
               <c:forEach var="zhuanji" items="${zuixinzj }">
-                              <li><a target="_blank" class="pic" href="musiclist/77527.shtml">
+                              <li><a target="_blank" class="pic" href="playAlbum.do?id=${zhuanji.albumId}">
                               <img height="80px" width="80px" src="${zhuanji.img }"></a>
-                              <div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77527.shtml">${zhuanji. zname }</a></div>
+                              <div class="ablumname"><a target="_blank" class="ablumlink" href="playAlbum.do?id=${zhuanji.albumId}">${zhuanji. aname }</a></div>
                               <a target="_blank" href="/mlist/14579.shtml">${zhuanji. singername}</a></li>
               </c:forEach>
               </ul>
@@ -240,11 +186,6 @@ $(document).keypress(function(e){if(e.which==13){onSearch();}})
           <li><a href="/bang/tagpasheng.shtml">新歌爬升榜</a></li>
           <li><a href="/bang/tag13.shtml">好听的歌</a></li>
         </ul>
-      
-      
-    
-        </div>
-      </div>
     </div>
   </div>
  
@@ -253,23 +194,11 @@ $(document).keypress(function(e){if(e.which==13){onSearch();}})
   <div style="height:28px;line-height:28px;border-bottom:1px solid #DDDDDD;margin-bottom:10px;width:960px;" align="center">
 		<a href="/about/us.shtml" rel="nofollow">网站介绍</a> | 
 		<a href="/about/copy.shtml" rel="nofollow">版权声明</a> | 
-		<a href="/about/company.shtml" rel="nofollow">合作单位</a> | 
 		<a href="/about/contact.shtml" rel="nofollow">联系方式</a> | 
-		<a href="/about/gctg.shtml" rel="nofollow">歌曲推广</a> | 
-		<a href="/about/ad.shtml" rel="nofollow">广告投放</a> | 
-        <a href="/about/gequruku.shtml" rel="nofollow">歌曲入库</a>
 	</div>
   <div>
     <div align="center">
 		<a href="http://www.yue365.com/" target="_blank">cici音乐网</a> 在线音乐门户，分享最新网络歌曲，带给你最好听的新歌 <br />
-		记住我们的域名：www.yue365.com
-		<script language="javascript"> document.write("<a href='http://www.miitbeian.gov.cn/' target='_blank'>闽ICP备10016424号-4</a>");</script>&nbsp;&nbsp;
-		<script type="text/javascript" src="http://cbjs.baidu.com/js/s.js"></script>
-		<script type="text/javascript">BAIDU_CLB_singleFillSlot("117775");</script>
-		<!-- 鸿媒体 -->
-		<script type="text/javascript">BAIDU_CLB_fillSlot("243238");</script>
-		<!-- 广告位：yue365_tuijian_ 创建于 2015-05-30 -->
-		<script type="text/javascript">BAIDU_CLB_fillSlot("1092205");</script>
 		
 		<div style="  width:300px;margin:0 auto; padding:0px;">
 			<a style="display:inline-block;text-decoration:none;height:20px;line-height:20px;" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=35020302000124" target="_blank">
@@ -280,19 +209,9 @@ $(document).keypress(function(e){if(e.which==13){onSearch();}})
 		
 			
 		<div style="display:none;">
-		<script language="javascript" type="text/javascript" src="http://js.users.51.la/591322.js"></script>
-		<script type="text/javascript" src="http://zy.yue365.com/js/tongji.js"></script>
-		<script type="text/javascript">
-	    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-	    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F1b5ab692bf3dcc99a9ff4d3a916b0c59' type='text/javascript'%3E%3C/script%3E"));
-        </script>
+		
 		</div>
-		<script type="text/javascript" id="bdshare_js" data="type=slide&amp;img=6&amp;uid=400402" ></script>
-		<script type="text/javascript" id="bdshell_js"></script>
-		<script type="text/javascript">
-			var bds_config={"bdTop":79};
-			document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?t=" + new Date().getHours();
-		</script>
+		
 	  </div>
   </div>
 </div>
@@ -303,6 +222,9 @@ $(document).keypress(function(e){if(e.which==13){onSearch();}})
       <p class="loading">正为您在处理数据, 请稍候...</p>
     </div>
     <span onclick="closedialog();" class="closeDiv">关闭</span></div>
+</div>
+</div>
+</div>
 </div>
 <script type="text/javascript">
 function numstyle(id){var tli=document.getElementById(id).getElementsByTagName("li");for(i=0;i<tli.length;i++){var tspan=tli[i].getElementsByTagName("span");if(i==0){tspan[0].className="numberone"};if(i==1||i==2){tspan[0].className="numbertwo"}}};numstyle('main2');numstyle('main3');numstyle('main5');numstyle('content1');numstyle('content2');numstyle('content3');numstyle('content4');numstyle('Top100');
