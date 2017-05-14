@@ -111,15 +111,19 @@ function createList(clazz,song){
 
 
 function rigthview(){
+	var type=1;
 	if(islogin=='true'){
-		
+		tyep=2;
 	}else if(islogin=='false'){
+		type=1;
+	}
 		debugger;
 		$.ajax({
 			  url:'rightview.do',
 			    type:'POST', //GET
 			    async:true,    //��false,�Ƿ��첽
 			    data:{
+			    	type:type
 			    },
 			    timeout:5000,    //��ʱʱ��
 			    dataType:'json',    //���ص���ݸ�ʽ��json/xml/html/script/jsonp/text
@@ -135,5 +139,5 @@ function rigthview(){
 			    },
 			   
 		});
-	}
+	
 }
