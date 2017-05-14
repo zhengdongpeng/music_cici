@@ -11,10 +11,12 @@
 <html>
 <script type="text/javascript" src="js/search.js"></script>
 <body >
+<div class="div-1"  style="width:956px; margin:auto;">
+
 <div style="background:url('images/banner.jpg') no-repeat;height:200px">
 </div>
 <div id="top">
-	<span class="H1Logo"><a href="/" title="cici音乐网(cici.com) - 最新最好听的网络歌曲分享" >cici音乐网</a></span>
+	
 	<div id="search">
 	<input  id="KeyWords" name="KeyWords" class="searchinput" />
 	<input type="button"   value=" " id="searchbotton"  onclick="toSearch();"/>
@@ -38,7 +40,7 @@
     <li><a href="index.do">首页</a></li>
     <li><a href="/bang/">排行榜</a></li>
 	<li><a href="/bang/tag13.shtml">好听的歌</a></li>
-    <li><a href="/geci/">歌词搜索</a></li>
+    <li><a href="gameintro.do">游戏宣传</a></li>
     <li><a href="/mlist/singerlist.shtml">歌手</a></li>
     <li><a href="/musiclist/ablumlist.shtml">专辑</a></li>
     <li><a href="/bang/fenlei.shtml">音乐分类</a></li>
@@ -51,6 +53,6 @@
 <%} %>
   </ul>
 </div>
-
+</div></div>
 </body>
 </html>
