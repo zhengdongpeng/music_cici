@@ -30,4 +30,27 @@ select
  from 
 song ,type  t where song.type=t.tid and song.zjid=#{0};
 </select>
+
+
+<select id="getAlbumAll"  resultType="com.cici.music.pojo.Album" parameterType="com.cici.music.pojo.Param">
+	select 
+	<if test="searchType==1">
+	zhuanji.zhujiid as albumId
+	</if>
+	<if test="searchType!=1">
+	zhuanji.zhujiid as albumId,
+	zhuanji.zname as aname,
+	zhuanji.fxgs,
+	zhuanji.fbtime,
+	zhuanji.img
+	</if>
+	from zhuanji
+	
+	<if test="searchType!=1">
+	order by zhuanji.fbtime desc
+	LIMIT #{start},
+ 	#{length}  
+	</if>
+</select>
+
 </mapper>

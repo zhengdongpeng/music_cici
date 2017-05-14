@@ -13,6 +13,18 @@ where song.songerid=songer.sid and
 song.sid=#{id}
 </select>
 
+<select id="getSingerAll" resultType="com.cici.music.pojo.Singer" parameterType="com.cici.music.pojo.Param">
+	select songer.sid,
+	songer.sname,
+	songer.head
+	from songer
+ <if test="searchType!=1">
+	order by songer.sid desc
+	LIMIT #{start},
+ 	#{length}  
+</if>
+</select>
+
 <select id="getAlbumForSinger" parameterType="hashmap" resultType="com.cici.music.pojo.Album">
 	select zhuanji.zhujiid as albumId,
 	zhuanji.zname as aname,

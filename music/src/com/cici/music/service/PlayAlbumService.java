@@ -11,8 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.alibaba.fastjson.JSONObject;
+import com.cici.music.contans.MusicConts;
 import com.cici.music.dao.PlayAlbumDao;
 import com.cici.music.pojo.Album;
+import com.cici.music.pojo.Param;
 import com.cici.music.pojo.Song;
 
 @Service
@@ -42,6 +44,29 @@ public class PlayAlbumService {
 		json.put("size", list.size());
 		json.put("list", list);
 		json.put("stats", "success");
+		return json.toJSONString();
+	}
+
+	public int getAlbumAll(HttpServletRequest request, int i) {
+		if(i==1){
+			List<Album> list = playAlbumDao.getAlbumAll(new Param(0,0,"",1,0));
+			return list.size();
+		}
+		return 0;
+	}
+
+	public String albumListData(HttpServletRequest request) {
+		String n1 = request.getParameter("n");
+		int n=Integer.parseInt(n1);
+		JSONObject json = new JSONObject();
+		json.put("stats", "error");
+		Param p=new Param(n*MusicConts.PAGER_COUNT,
+				n*MusicConts.PAGER_COUNT+MusicConts.PAGER_COUNT,"",2,0);
+		List<Album> list = playAlbumDao.getAlbumAll(p);
+		if(list!=null){
+			json.put("stats", "success");
+			json.put("list", list);
+		}
 		return json.toJSONString();
 	}
 		
