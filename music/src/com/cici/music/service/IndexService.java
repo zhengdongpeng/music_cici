@@ -13,16 +13,20 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.cici.music.dao.IndexDao;
+import com.cici.music.dao.PlayMusicDao;
 import com.cici.music.pojo.Param;
 import com.cici.music.pojo.Singer;
 import com.cici.music.pojo.Song;
 import com.cici.music.pojo.SongDto;
 import com.cici.music.pojo.Album;
+import com.cici.music.pojo.User;
 
 @Service
 public class IndexService {
 	@Resource
 	IndexDao indexDao;
+	@Resource
+	PlayMusicDao playMusicDao;
 	
 	
 	
@@ -67,9 +71,13 @@ public class IndexService {
 		return obj.toJSONString();
 	}
 
-	public String getCollectSong() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getCollectSong(User user) {
+		List<SongDto> list=playMusicDao.getCollectForUid(new Param(0,10,user.getUid()+"",1,0));
+		JSONArray array=new JSONArray();
+		array.add(list);
+		JSONObject obj=new JSONObject();
+		obj.put("recommend",array);
+		return obj.toJSONString();
 	}
 
 	public String getMiddleList() {
