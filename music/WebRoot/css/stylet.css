@@ -1,14 +1,19 @@
 
 .tab-contain{
 	margin: 50px auto;
-	width: 1300px;
+	width: 1170px;
 	padding:30px;
-	background-color:rgba(238,130,238,0.2);
+	background-color:rgba(238,130,238,0.25);
 	
 }
+
 #tabs {
 	overflow: hidden;
 	width: 100%;
+	font-size:12px;
+
+	font-weight:bold;
+
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -53,8 +58,16 @@ li a {
 	display: block;
 }
 .thead{
+	height:80px;
 	background-color:rgba(255,20,147,0.3);
 	color:#FF6;
 	font-size:36px;
+	font-weight:bold;
+}
+.datahang{
+	height:30px;
+	background-color:rgba(204,225,0,0.5);
+	color:#F39;
+	font-size:30px;
 	font-weight:bold;
 }

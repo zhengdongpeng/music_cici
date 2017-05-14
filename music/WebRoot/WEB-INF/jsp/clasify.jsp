@@ -7,14 +7,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>tab标签</title>
-  <link href="css/stylet.css" type="text/css" rel="stylesheet" >
   <link type="text/css" rel="stylesheet" href="365_files/newindex.css"/>
 <link type="text/css" rel="stylesheet" href="365_files/header.css?v=0907"/>
+  <link href="css/stylet.css" type="text/css" rel="stylesheet" >
 <link type="text/css" rel="stylesheet" href="css/common.css"/>
 <script type="text/javascript" src="365_files/jquery.js"></script>
 <script type="text/javascript" src="365_files/common.js"></script>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="js/jquery.page.js"></script>
+  <style type="text/css">a:link {color: #00000;!important;}</style>
 </head>
 <body background="images/typebg.jpg">
   <div class="tab-contain">
@@ -32,7 +33,7 @@
     <!-- 对应显示内容 -->
     <div id="content">
       <div id="tab1" class="item show">
-         <table width="1019" height="532" >
+         <table width="1019" >
                    <thead>
           <tr class="thead">
             <td width="261">歌曲名</td>
@@ -47,7 +48,7 @@
         <div class="page1" style="width:500px;margin-top:50px"></div>
         </div>
       <div id="tab2" class="item">
-    	  <table width="1019" height="532" >
+    	  <table width="1019" >
                    <thead>
           <tr class="thead">
             <td width="261">歌曲名</td>
@@ -62,7 +63,7 @@
 			<div class="page2" style="width:500px;margin-top:50px"></div>
       </div>
       <div id="tab3" class="item">
-         <table width="1019" height="532" >
+         <table width="1019" >
                    <thead>
           <tr class="thead">
             <td width="261">歌曲名</td>
@@ -79,7 +80,7 @@
       </div>
        <div id="tab4" class="item">
        
-     <table width="1019" height="532" >
+     <table width="1019" >
                    <thead>
           <tr class="thead">
             <td width="261">歌曲名</td>
@@ -95,7 +96,7 @@
       </div>
        <div id="tab5" class="item">
        
-     <table width="1019" height="532" >
+     <table width="1019" >
                    <thead>
           <tr class="thead">
             <td width="261">歌曲名</td>
@@ -111,7 +112,7 @@
       </div>
        <div id="tab6" class="item">
        
-     <table width="1019" height="532" >
+     <table width="1019" >
                    <thead>
           <tr class="thead">
             <td width="261">歌曲名</td>
@@ -127,7 +128,7 @@
       </div>
        <div id="tab7" class="item">
        
-     <table width="1019" height="532" >
+     <table width="1019" >
                    <thead>
           <tr class="thead">
             <td width="261">歌曲名</td>
@@ -142,7 +143,7 @@
 				<div class="page7" style="width:500px;margin-top:50px"></div>
       </div>
        <div id="tab8" class="item">
-         <table width="1019" height="532" >
+         <table width="1019" >
                    <thead>
           <tr class="thead">
             <td width="261">歌曲名</td>
@@ -152,6 +153,7 @@
           </tr>
           </thead>
            <tbody class="table_8">
+           
         </tbody>
         </table>
    
@@ -223,8 +225,9 @@ function setSingerPager(n,type){
 		    		$(clazz).html("");
 		    		var list = data.list;
 		    		for(var i=0;i<list.length;i++){
-		    			var str="<tr><td><a href='playMusic.do?sid="+list[i].sid
-		    			+"'></td><td>"+list[i].sname+"</td><td>"+list[i].songerName+"</td><td>"+list[i].zjName+"</td><td></td></a></tr>";
+		    			var str="<tr class='datahang' height='30px'><td><a href='playMusic.do?id="+list[i].sid
+		    			+"'\>"+list[i].sname+"</td><td>"+list[i].songerName+"</td><td>"+list[i].zjName+"</td><td><a href='playMusic.do?id="+list[i].sid
+		    			+"'><img  src='images/player.png' /></a></td></tr>";
 		    			$(clazz).append(str);
 		    		}
 		    	}
