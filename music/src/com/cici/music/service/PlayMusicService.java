@@ -12,18 +12,24 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cici.music.contans.MusicConts;
+import com.cici.music.dao.IndexDao;
 import com.cici.music.dao.PlayMusicDao;
 import com.cici.music.pojo.Album;
 import com.cici.music.pojo.Collect;
 import com.cici.music.pojo.Param;
 import com.cici.music.pojo.Singer;
 import com.cici.music.pojo.Song;
+import com.cici.music.pojo.SongDto;
 import com.cici.music.pojo.User;
 
 @Service
 public class PlayMusicService {
 	@Resource
 	PlayMusicDao playMusicDao;
+	
+	@Resource
+	IndexDao indexDao;
+	
 	public Song getSongForId(int songId) {
 		return playMusicDao.getForId(songId);
 		
@@ -176,6 +182,18 @@ public class PlayMusicService {
 			json.put("stats", "success");
 			json.put("list", list);
 		}
+		return json.toJSONString();
+	}
+
+
+	public String rangkingData() {
+		JSONObject json = new JSONObject();
+		List<SongDto> list1 =indexDao.getHotSong(new Param(0,50,"",0,0));
+		List<SongDto> list2 =indexDao.getsongLimit(new Param(0,50,"",0,0));
+		List<SongDto> list3 =playMusicDao.getCollectRanking(new Param(0,50,"",0,0));
+		json.put("hot", list1.toArray());
+		json.put("news", list2.toArray());
+		json.put("rank", list3.toArray());
 		return json.toJSONString();
 	}
 

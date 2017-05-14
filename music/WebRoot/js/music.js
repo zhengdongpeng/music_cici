@@ -5,6 +5,41 @@
 		ajaxSinger(id,2);
 	}
 	
+	function initRanking(){
+		$.ajax({
+			  url:'rankingData.do',
+			    type:'POST', //GET
+			    async:true,    //��false,�Ƿ��첽
+			    data:{
+			    },
+			    timeout:5000,    //��ʱʱ��
+			    dataType:'json',    //���ص���ݸ�ʽ��json/xml/html/script/jsonp/text
+			    success:function(data){
+			    	debugger;
+			    	//data=JSON.parse(data);
+			    	
+			        $(".collect").html("");
+			        $(".hot").html("");
+			        $(".new").html("");
+			        data=JSON.parse(data);
+			        createList(".collect",data.rank);
+			        createList(".hot",data.hot);
+			        createList(".new",data.news);
+			    },
+			    error:function(xhr){
+			    },
+			   
+		});
+	}
+	function createList(clazz,song){
+		 for(var i=0;i<song.length;i++){
+	     	$(clazz).append("<tr width='100%' height='30px'> <td><span class='"+((i+1)<=3?"numbertwo":"span1")+"'>"+(i+1)+"</span></td>"+
+	     			" <td  width='50%'><a  target='m' href='playMusic.do?id="+song[i].sid+"' >"+song[i].name+"</a> </td>"
+	     			+" <td width='20%'> <a  href='singer.do?sid="+song[i].si_id+"' title="+song[i].singername+"target='_blank'>"+song[i].singername+"</a></td>" +
+	     					""
+	     			);
+	     }
+	}
 	function createSingerSong(data,t,id){
 		var list = data.list;
 		debugger;

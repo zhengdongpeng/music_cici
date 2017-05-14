@@ -36,6 +36,17 @@ public class playMusicController {
 		
 	}
 	
+	@RequestMapping("ranking")
+	public String toRanking(HttpServletRequest request){
+		return "Ranking";
+	}
+	
+	@ResponseBody
+	@RequestMapping("rankingData")
+	public String rankingData(HttpServletRequest request){
+		return playMusicService.rangkingData();
+	}
+	
 	@RequestMapping("singer")
 	public String toSinger(HttpServletRequest request,String sid){
 		if(StringUtils.isEmpty(sid)){

@@ -34,5 +34,7 @@ public interface IndexDao {
 
 	List<com.cici.music.pojo.TypeNum> getTypeNum();
 
+	List<SongDto> getsongLimit(Param param);
+
 
 }
