@@ -118,7 +118,7 @@ function setSingerPager(n){
 		    		$(".albumul").html("");
 		    		var list = data.list;
 		    		for(var i=0;i<list.length;i++){
-		    			var str="<li><div class='li-div1'><a href='playAlbum.do?id="+list[i].sid
+		    			var str="<li><div class='li-div1'><a href='singer.do?sid="+list[i].sid
 		    			+"'><img src='"+list[i].head+"' width='120' height='120' /></a><p>"+list[i].sname+"</p></div></li>";
 		    			$(".albumul").append(str);
 		    		}
