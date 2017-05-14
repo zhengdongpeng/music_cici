@@ -44,15 +44,17 @@ text-align:center;
 <script type="text/javascript" src="js/music.js"></script>
 <style type="text/css">
 .div-a{ float:left;width:30%; height:200px; background-color: #FFE4E1;} 
-.div-d{ float:right;width:66%;height:200px;}
-.div-b{ font-size: 18px;margin-top:20px} 
-.div-c{ font-size: 18px;margin-top:10px} 
+.div-d{ float:right;width:66%;height:200px;font-size: 18px;margin-top:20px}
+.div-b{ font-size: 18px;margin-top:1px;width:958px;float:left;overflow:hidden;} 
+.div-c{ float:left;font-size: 18px;margin-top:10px;width:900px;} 
+.div-e{ margin-top:20px;} 
 .li-div1{ float:left;width:49%; height:60px;} 
 .albumul ul{
-width:900px;
+width:1200px;
 }
+.ul-song{width:1200px;}
 ul li{
-width:30%;float:left;
+width:33.33%;float:left;height: 120px;
 }
 </style>
 </head>
@@ -70,28 +72,32 @@ width:30%;float:left;
 </div> 
 
 <div  class="div-d">
-	<%=singer.getSname() %>,<%=singer.getSex() %><br>
+	<%=singer.getSname() %>,<%=singer.getSex() %><br><br>
 	<%=singer.getJieshao() %>
 	
 </div>
-
+<div class="data-div">
 <div class="div-b">
-<div><img src="images/album.png" width="78" height="128" />薛之轩全部专辑个数为10，点击查看全部专辑</div>
-<div>
-<ul id="albumul" class="albumul">
-<li>
-<div class="li-div1">
-<img src="images/album.png" width="78" height="128" />
-</div>
-<div class="li-div1">
-<img src="images/album.png" width="78" height="128" />
-</div>
-</li>
-</ul>
-</div>
+	<div><img src="images/album.png" width="78" height="128" /><a class="text-1" onclick="ajaxSinger(<%=singer.getSid() %>,4)">点击查看全部专辑>></a></div>
+	<div class="div-e">
+	<ul id="albumul" class="albumul">
+	</ul>
+	</div>
 </div>
 <div class="div-c">
-<div><img src="images/song.png" width="78" height="128" />薛之轩全部歌曲个数为10，点击查看全部歌曲</div>
+<div><img src="images/song.png" width="78" height="128" /><a class="text-1" onclick="ajaxSinger(<%=singer.getSid() %>,3)">点击查看全部歌曲>></a></div>
+<div>
+<ul class = "ul-song">
+	<li style="width:20%;height: 30px;"> <a>dsdsdsd</a></li>
+	<li style="width:20%;height: 30px;"> <a>dsdsdsd</a></li>
+	<li style="width:20%;height: 30px;"> <a>dsdsdsd</a></li>
+	<li style="width:20%;height: 30px;"> <a>dsdsdsd</a></li>
+	<li style="width:20%;height: 30px;"> <a>dsdsdsd</a></li>
+</ul>
+</div>
+
+</div>
+
 </div>
 </div>
 </div>

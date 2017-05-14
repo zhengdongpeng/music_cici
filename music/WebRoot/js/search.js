@@ -60,19 +60,6 @@ function setPager(n,val,type){
 		        	 }
 		        }
 		        
-		        
-		        var head=data.head;
-		       for(var i=0;i<head.length;i++){
-		    	   $(".singerpic").append("<a href='"+data.url+"?id="+head[i].sid+"'> <img src='"+head[i].head+"' width='90' height='90' ></img> </a>");
-		       }
-		       
-		       var singer=data.singer;
-		       /*
-		        * <li><span>1</span><a href="/mlist/18083.shtml">TFBOYS</a></li>
-		        */
-		       for(var i=0;i<singer.length;i++){
-		    	   $("#Top100").append("<li><span>'"+i+"'</span>  <a href='"+data.url+"?id="+singer[i].sid+"'>"+singer[i].sname+"</a></li>");
-		       }
 		       },
 		    error:function(xhr,textStatus){
 		    },

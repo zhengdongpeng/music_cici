@@ -30,7 +30,7 @@ function singer(){
 		         */
 		        var head=data.head;
 		       for(var i=0;i<head.length;i++){
-		    	   $(".singerpic").append("<a href='"+data.url+"?id="+head[i].sid+"'> <img src='"+head[i].head+"' width='90' height='90' ></img> </a>");
+		    	   $(".singerpic").append("<a href='singer.do?sid="+head[i].sid+"'> <img src='"+head[i].head+"' width='90' height='90' ></img> </a>");
 		       }
 		       
 		       var singer=data.singer;
@@ -38,7 +38,7 @@ function singer(){
 		        * <li><span>1</span><a href="/mlist/18083.shtml">TFBOYS</a></li>
 		        */
 		       for(var i=0;i<singer.length;i++){
-		    	   $("#Top100").append("<li><span>'"+i+"'</span>  <a href='"+data.url+"?id="+singer[i].sid+"'>"+singer[i].sname+"</a></li>");
+		    	   $("#Top100").append("<li><span>'"+i+"'</span>  <a href='singer.do?sid="+singer[i].sid+"'>"+singer[i].sname+"</a></li>");
 		       }
 		       },
 		    error:function(xhr,textStatus){
@@ -104,7 +104,7 @@ function newSongInit(){
 }
 function createList(clazz,song){
 	 for(var i=0;i<song.length;i++){
-     	$(clazz).append("<li> <dl class='singer'> <a href='' title="+song[i].singername+"target='_blank'>"+song[i].singername+"</a></dl>"
+     	$(clazz).append("<li> <dl class='singer'> <a href='singer.do?sid="+song[i].si_id+"' title="+song[i].singername+"target='_blank'>"+song[i].singername+"</a></dl>"
      			+"<span class='"+((i+1)<=3?"numbertwo":"num")+"'>"+(i+1)+"</span>"+"<dl class='songname'> <a target='m' href='playMusic.do?id="+song[i].sid+"' >"+song[i].name+"</a>   </dl> </li>");
      }
 }
