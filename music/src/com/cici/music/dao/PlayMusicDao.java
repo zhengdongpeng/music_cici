@@ -8,6 +8,7 @@ import com.cici.music.pojo.Collect;
 import com.cici.music.pojo.Param;
 import com.cici.music.pojo.Singer;
 import com.cici.music.pojo.Song;
+import com.cici.music.pojo.SongDto;
 
 public interface PlayMusicDao {
 
@@ -26,5 +27,7 @@ public interface PlayMusicDao {
 	public List<Song> getSongForSinger(Map<String, Object> map);
 
 	public List<Singer> getSingerAll(Param param);
+
+	public List<SongDto> getCollectForUid(Param param);
 
 }
