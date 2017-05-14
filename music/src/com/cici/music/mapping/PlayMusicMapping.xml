@@ -97,6 +97,25 @@ from songer
 	where uid=#{uid} 
 </select>
 
+<select id="getCollectForUid"  resultType="com.cici.music.pojo.SongDto" parameterType="com.cici.music.pojo.Param">
+SELECT
+	song.sid,
+	song.sname as name,
+	song.songerid as si_id,
+	s1.sname AS singername
+FROM
+	song,
+	collectsong c,
+	songer s1
+WHERE
+	c.uid = #{searchParam}
+AND c.sid=song.sid  and song.songerid=s1.sid
+order by c.sctime desc
+limit #{start},#{length}
+</select>
+
+
+
 <insert id="insertConllectSong" parameterType="com.cici.music.pojo.Collect">
 	insert into collectsong values(#{uid},#{sid},#{sctime})
 </insert>

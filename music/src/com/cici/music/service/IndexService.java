@@ -22,14 +22,14 @@ import com.cici.music.pojo.Song;
 import com.cici.music.pojo.SongDto;
 import com.cici.music.pojo.Album;
 import com.cici.music.pojo.TypeNum;
+import com.cici.music.pojo.User;
 
 @Service
 public class IndexService {
 	@Resource
 	IndexDao indexDao;
 	@Resource
-	PlayMusicDao pylMusicDao;
-	
+	PlayMusicDao playMusicDao;
 	
 	
 	public List<Album> getNewZhuanji() {
@@ -72,9 +72,13 @@ public class IndexService {
 		return obj.toJSONString();
 	}
 
-	public String getCollectSong() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getCollectSong(User user) {
+		List<SongDto> list=playMusicDao.getCollectForUid(new Param(0,10,user.getUid()+"",1,0));
+		JSONArray array=new JSONArray();
+		array.add(list);
+		JSONObject obj=new JSONObject();
+		obj.put("recommend",array);
+		return obj.toJSONString();
 	}
 
 	public String getMiddleList() {
@@ -147,7 +151,7 @@ public class IndexService {
 		obj.put("stats", "error");
 		int type = Integer.parseInt(request.getParameter("type"));
 		int n =  Integer.parseInt(request.getParameter("n"));
-		List<Song> song = pylMusicDao.getSongByType(new Param(MusicConts.PAGER_COUNT*n,MusicConts.PAGER_COUNT*n+MusicConts.PAGER_COUNT,type+"",0,0));
+		List<Song> song = playMusicDao.getSongByType(new Param(MusicConts.PAGER_COUNT*n,MusicConts.PAGER_COUNT*n+MusicConts.PAGER_COUNT,type+"",0,0));
 		if(song.size()>0){
 			obj.put("stats", "success");
 			obj.put("success", "收藏成功！");
