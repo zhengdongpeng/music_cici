@@ -10,21 +10,35 @@
 <script type="text/javascript" src="365_files/jquery.js"></script>
 <link type="text/css" rel="stylesheet" href="css/common.css"/>
 <script type="text/javascript" src="js/login.js"></script>
+<style type="text/css">
+.tou{
+color:#F39;
+font-size:48px;
+	font-weight:bold;
+	
+}
+.kuang{
+color:#F39;
+font-size:20px;
+	font-weight:bold;
+}
+
+</style>
 </head>
 <body>
 <div id="wrapper">
 <jsp:include page="head.jsp"></jsp:include>
   
-  <table width="1085" height="207" border="0">
+  <table width="1085" height="207"  >
     <tr>
       <td width="453">
       <img src="images/a.png" width="453" height="553" />
       </td>
       
        <td >   
-       <h1 >登录</h1>
+       <h1 class="tou">登录</h1><br/><br/>
        <div class="logindiv">
-           <table width="432" height="359" border="1">
+           <table width="432" height="359" border="1" class="kuang"> 
             <tr>
               <td width="122" height="48">账号</td>
               <td width="294"><input type="text" class="username" name="username"/></td>

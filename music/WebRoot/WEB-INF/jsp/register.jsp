@@ -11,6 +11,19 @@
 <link type="text/css" rel="stylesheet" href="css/common.css"/>
 <script type="text/javascript" src="js/login.js"></script>
 <title>注册</title>
+<style type="text/css">
+.tou{
+color:#F39;
+font-size:48px;
+	font-weight:bold;
+	
+}
+.kuang{
+color:#F39;
+font-size:20px;
+	font-weight:bold;
+}
+</style>
 </head>
 <body>
 <div id="wrapper">
@@ -23,9 +36,9 @@
       </td>
       
        <td >   
-       <h1 >登录</h1>
+       <h1 class="tou">注册</h1><br/>
        <div>
-    <table height="477" border="1">
+    <table height="477" border="1" class="kuang">
     <tr>
         <td width="138" colspan="2" align="center"><img src="images/register.png" width="457" height="157" /></td>
         
@@ -75,7 +88,7 @@
       </tr>
       <tr>
         <td colspan="2">
-        <button  class="sumbit" onclick="userregister()"> 注册</button></td>
+        <button  class="sumbit" onclick="userregister()" align="center"> 注册</button></td>
         
       </tr>
     </table>
