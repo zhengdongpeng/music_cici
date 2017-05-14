@@ -46,8 +46,8 @@
     <li><a href="/bang/">排行榜</a></li>
 	<li><a href="/bang/tag13.shtml">好听的歌</a></li>
     <li><a href="gameintro.do">游戏宣传</a></li>
-    <li><a href="/mlist/singerlist.shtml">歌手</a></li>
-    <li><a href="/musiclist/ablumlist.shtml">专辑</a></li>
+    <li><a href="singerlist.do">歌手</a></li>
+    <li><a href="albumList.do">专辑</a></li>
     <li><a href="/bang/fenlei.shtml">音乐分类</a></li>
 	<% if(islogin){ %>
 	<li><a  target="_self" href="userCenter.do">个人中心</a></li>

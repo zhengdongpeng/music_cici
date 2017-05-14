@@ -15,6 +15,7 @@ import com.cici.music.contans.MusicConts;
 import com.cici.music.dao.PlayMusicDao;
 import com.cici.music.pojo.Album;
 import com.cici.music.pojo.Collect;
+import com.cici.music.pojo.Param;
 import com.cici.music.pojo.Singer;
 import com.cici.music.pojo.Song;
 import com.cici.music.pojo.User;
@@ -151,6 +152,30 @@ public class PlayMusicService {
 			
 		}
 		json.put("error", "查询出错");
+		return json.toJSONString();
+	}
+
+
+	public int getSingerAll(HttpServletRequest request) {
+			List<Singer> list = playMusicDao.getSingerAll(new Param(0,0,"",1,0));
+			if(list!=null)
+				return list.size();
+			return 0;
+	}
+
+
+	public String getSingerAllData(HttpServletRequest request) {
+		String n1 = request.getParameter("n");
+		int n=Integer.parseInt(n1);
+		JSONObject json = new JSONObject();
+		json.put("stats", "error");
+		Param p=new Param(n*MusicConts.PAGER_COUNT,
+				n*MusicConts.PAGER_COUNT+MusicConts.PAGER_COUNT,"",2,0);
+		List<Singer> list = playMusicDao.getSingerAll(p);
+		if(list!=null){
+			json.put("stats", "success");
+			json.put("list", list);
+		}
 		return json.toJSONString();
 	}
 

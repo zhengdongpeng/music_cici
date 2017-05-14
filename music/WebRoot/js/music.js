@@ -20,6 +20,43 @@
 		}
 	}
 	
+	function setAlbumPager(n){
+		$.ajax({
+			  url:'albumListData.do',
+			    type:'POST', //GET
+			    async:true,    //��false,�Ƿ��첽
+			    data:{
+			     n:n-1
+			    },
+			    timeout:5000,    //��ʱʱ��
+			    dataType:'json',    //���ص���ݸ�ʽ��json/xml/html/script/jsonp/text
+			    success:function(data){
+			    	debugger;
+			    	data=JSON.parse(data);
+			    	if(data.stats=='error'){
+			    		window.location.href="index.do";
+			    		return;
+			    	}
+			    	if(data.stats=='success'){
+			    		$(".albumul").html("");
+			    		var list = data.list;
+			    		for(var i=0;i<list.length;i++){
+			    			var newDate = new Date();
+			    			newDate.setTime(list[i].fbtime );
+			    			var str="<li><div class='li-div1'><a href='playAlbum.do?id="+list[i].albumId
+			    			+"'><img src='"+list[i].img+"' width='120' height='120' /></a>";
+			    			str=str+"</div><div class='li-div1'><p>专辑："+list[i].aname+"</p><p>发行公司："+list[i].fxgs+"</p><p>时间："
+			    			+newDate.toLocaleDateString()+"</p></div></li>";
+			    			$(".albumul").append(str);
+			    		}
+			    	}
+			    },
+			    error:function(xhr){
+			    },
+			   
+		});
+	}
+	
 	function createSingerAlbum(data,t,id){
 		var list = data.list;
 		debugger;

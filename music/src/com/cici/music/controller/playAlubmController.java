@@ -31,8 +31,20 @@ public class playAlubmController {
 		}else{	
 			return "404";
 		}
-		
 	}
+	
+	@RequestMapping("albumList")
+	public String toAlbumList(HttpServletRequest request,Model model){
+		request.setAttribute("size", playAlbumService.getAlbumAll(request,1));
+			return "AlbumList";
+	}
+	
+	@ResponseBody
+	@RequestMapping("albumListData")
+	public String albumListData(HttpServletRequest request){
+		return playAlbumService.albumListData(request);
+	}
+	
 	@ResponseBody
 	@RequestMapping("musicList")
 	public String musicList(HttpServletRequest request){

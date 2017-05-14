@@ -49,7 +49,18 @@ public class playMusicController {
 		return "singer";
 	}
 	
+	@RequestMapping("singerlist")
+	public String singerlist(HttpServletRequest request){
+		request.setAttribute("size", playMusicService.getSingerAll(request));
+		return "singerList";
+	}
 	
+	
+	@ResponseBody
+	@RequestMapping("singerlistData")
+	public String singerlistData(HttpServletRequest request){
+		return playMusicService.getSingerAllData(request);
+	}
 	@ResponseBody
 	@RequestMapping("singerdata")
 	public String singerdata(HttpServletRequest request){
