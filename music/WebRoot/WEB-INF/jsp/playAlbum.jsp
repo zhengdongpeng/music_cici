@@ -48,13 +48,16 @@ text-align:center;
 <script type="text/javascript" src="js/mainpage.js"></script>
 <script type="text/javascript" src="js/music.js"></script>
 <style> 
-.div-a{ float:left;width:30%; height:200px; border:1px solid #F00} 
-.div-d{ float:right;width:66%;height:200px;border:1px solid #000}
-.div-b{ float:left;width:49%;height:200px;border:0px solid #000} 
-.div-c{ float:right;width:49%;height:200px;border:0px solid #000} 
+.div-a{ float:left;width:30%; height:200px; background-color: #FFE4E1;} 
+.div-d{ float:right;width:66%;height:200px;}
+.div-b{ float:left;width:49%;height:200px;font-size: 18px;margin-top:20px} 
+.div-c{ float:right;width:49%;height:200px;border:0px solid #000;font-size: 18px;margin-top:10px} 
 .div-f{float:left; width:100%;margin:0 auto;margin-top:10px }
+.div-img{float:left;width:50px;height:50px;}
 .zjgq{ height: 30px;font-size: 30px;font-weight: bold;background-color: lime;width: 100% ;}
+.tables{margin-top:13px;}
 .musiclist{font-size: 20px;height: 30px;}
+li{height:30px;}
 </style> 
 </head>
 <body >
@@ -63,7 +66,7 @@ text-align:center;
  <jsp:include page="head.jsp"></jsp:include>
  </div>
 <div >
-<div class="div-a">
+<div class="div-a" align="center">
 <div>
 <img src="<%=album.getImg() %>" width="150" height="150"/></div>
 <div>
@@ -91,7 +94,7 @@ text-align:center;
 	
 <div class="div-f">
 <div class="zjgq">专辑歌曲</div>
-<div>
+<div class="tables">
 <table>
 <tbody class ="musicList">
 <tr>

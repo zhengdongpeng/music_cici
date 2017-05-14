@@ -9,18 +9,18 @@ public class Song {
 	private double length;
 	private int type;
 	private  String typeName;
-	public String getTypeName() {
-		return typeName;
-	}
-	public void setTypeName(String typeName) {
-		this.typeName = typeName;
-	}
 	private int songerid;
 	private String fxgs;
 	private String lyric;
 	private int zjid;
 	private String zjName;
 	private Date fbtime;
+	public String getTypeName() {
+		return typeName;
+	}
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
+	}
 	public Date getFbtime() {
 		return fbtime;
 	}

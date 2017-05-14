@@ -20,8 +20,14 @@ WHERE
 AND zhujiid =#{id}       
 </select>
 <select id="getMusicList"  resultType="com.cici.music.pojo.Song">
-select * from 
-
-song where song.zjid=#{0};
+select 
+	song.sid,
+	song.sname,
+	song.song,
+	song.img,
+	t.name as typeName,
+	song.fbtime
+ from 
+song ,type  t where song.type=t.tid and song.zjid=#{0};
 </select>
 </mapper>

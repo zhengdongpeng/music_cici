@@ -13,6 +13,37 @@ where song.songerid=songer.sid and
 song.sid=#{id}
 </select>
 
+<select id="getAlbumForSinger" parameterType="hashmap" resultMap="com.cici.music.pojo.Album">
+	select zhuanji.zhujiid as albumId,
+	zhuanji.zname as aname,
+	zhuanji.fxgs,
+	zhuanji.fbtime,
+	zhuanji.img
+	from zhuanji
+	where zhuanji.songerid=#{id}
+	<if test="type==1">
+	 limit 0,10
+	</if>
+</select>
+
+<select id="getSongForSinger" parameterType="hashmap" resultMap="com.cici.music.pojo.Song">
+	select 
+	sid,sname from song
+	where song.songerid=#{id}
+	<if test="type==1">
+	 limit 0,50
+	</if>
+</select>
+
+<select id="getSingerForId" resultType="com.cici.music.pojo.Singer">
+select songer.sid,
+songer.sname,
+songer.sex,
+songer.jieshao,
+songer.head
+from songer
+ where songer.sid=#{0}
+</select>
 <select id="queryCollectForId" parameterType="com.cici.music.pojo.Collect" resultType="com.cici.music.pojo.Collect">
 	select uid,sid
 	from
