@@ -122,7 +122,7 @@ public class IndexController {
 		if(user==null){
 			return indexService.getRecommend();
 		}else{
-			return indexService.getCollectSong();
+			return indexService.getCollectSong(user);
 		}
 	}
 	
