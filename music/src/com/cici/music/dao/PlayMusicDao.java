@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.cici.music.pojo.Album;
 import com.cici.music.pojo.Collect;
+import com.cici.music.pojo.Param;
 import com.cici.music.pojo.Singer;
 import com.cici.music.pojo.Song;
 
@@ -23,5 +24,7 @@ public interface PlayMusicDao {
 
 	public List<Album> getAlbumForSinger(Map<String, Object> map);
 	public List<Song> getSongForSinger(Map<String, Object> map);
+
+	public List<Singer> getSingerAll(Param param);
 
 }
