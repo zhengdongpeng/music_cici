@@ -36,6 +36,10 @@ public class IndexController {
 	public String gameintro(HttpServletRequest request,Model model){
 		return "gameintro";
 	}
+	@RequestMapping("clasify")
+	public String clasify(HttpServletRequest request,Model model){
+		return "clasify";
+	}
 	
 	@ResponseBody
 	@RequestMapping("searchlist")
