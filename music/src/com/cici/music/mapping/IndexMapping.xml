@@ -23,7 +23,14 @@
 	LIMIT #{start},
  	#{length}  
 </select>
+<select id="getTypeNum" resultType="com.cici.music.pojo.TypeNum">
+	select 
+  song.type as key_,
+  count(song.sid) as value_
+	 from song
 
+GROUP BY type;
+	</select>
 <select id="getSearchCount" resultType="int" parameterType="hashmap">
 	select count(*) 
  	from 

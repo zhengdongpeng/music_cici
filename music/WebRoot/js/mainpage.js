@@ -1,4 +1,5 @@
 
+
 $().ready(function(){
 	newSongInit();
 	rigthview();

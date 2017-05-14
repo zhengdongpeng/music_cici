@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cici.music.dao.PlayMusicDao">
-<select id="getForId"  parameterType="int"  resultType="com.cici.music.pojo.Song" >
-select song.sid,
-	song.sname,
-	song.song,
-	songer.sname as songerName,
-	song.lyric,
-	song.img
- from song,songer
-where song.songerid=songer.sid and
-song.sid=#{id}
-</select>
-
-<select id="getSingerAll" resultType="com.cici.music.pojo.Singer" parameterType="com.cici.music.pojo.Param">
-	select songer.sid,
-	songer.sname,
+	<mapper namespace="com.cici.music.dao.PlayMusicDao">
+	<select id="getForId"  parameterType="int"   resultType="com.cici.music.pojo.Song" >
+		select song.sid,
+		song.sname,
+		song.song,
+		songer.sname as songerName,
+		song.lyric,
+		song.img
+	 from song,songer
+	where song.songerid=songer.sid and
+	song.sid=#{id}
+	</select>
+	
+	<select id="getSingerAll" resultType="com.cici.music.pojo.Singer" parameterType="com.cici.music.pojo.Param">
+		select songer.sid,
+		songer.sname,
 	songer.head
+	
 	from songer
  <if test="searchType!=1">
 	order by songer.sid desc
@@ -25,6 +26,23 @@ song.sid=#{id}
 </if>
 </select>
 
+
+
+	<select id="getSongByType"  parameterType="com.cici.music.pojo.Param"   resultType="com.cici.music.pojo.Song" >
+		select song.sid,
+		song.sname,
+		songer.sname as songerName,
+		zhuanji.zname as zjName
+		
+	 from song,songer,zhuanji
+	where song.songerid=songer.sid and zhuanji.zhujiid=song.zjid and
+	song.type=#{searchParam}
+	order by  song.fbtime
+	limit #{start},#{length}
+	</select>
+	
+	
+	
 <select id="getAlbumForSinger" parameterType="hashmap" resultType="com.cici.music.pojo.Album">
 	select zhuanji.zhujiid as albumId,
 	zhuanji.zname as aname,

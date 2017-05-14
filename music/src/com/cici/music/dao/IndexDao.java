@@ -7,7 +7,6 @@ import com.cici.music.pojo.Param;
 import com.cici.music.pojo.Singer;
 import com.cici.music.pojo.Song;
 import com.cici.music.pojo.SongDto;
-import com.cici.music.pojo.Test;
 import com.cici.music.pojo.Album;
 
 public interface IndexDao {
@@ -32,5 +31,8 @@ public interface IndexDao {
 	List<Album> getSearchAlbum(Param param);
 
 	int getSearchCount(Map<String, Object> map);
+
+	List<com.cici.music.pojo.TypeNum> getTypeNum();
+
 
 }

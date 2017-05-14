@@ -38,9 +38,14 @@ public class IndexController {
 	}
 	@RequestMapping("clasify")
 	public String clasify(HttpServletRequest request,Model model){
+		request.setAttribute("typenum",  indexService.getNum());
 		return "clasify";
 	}
-	
+	@ResponseBody
+	@RequestMapping("clasifySong")
+	public String clasifySong(HttpServletRequest request,Model model){
+	return indexService.getClasifySong(request);
+	}
 	@ResponseBody
 	@RequestMapping("searchlist")
 	public String searchlist(HttpServletRequest request,Model model){

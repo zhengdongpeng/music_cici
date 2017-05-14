@@ -26,5 +26,7 @@ public interface PlayMusicDao {
 	public List<Song> getSongForSinger(Map<String, Object> map);
 
 	public List<Singer> getSingerAll(Param param);
+	
+	public List<Song> getSongByType(Param param);
 
 }

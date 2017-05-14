@@ -6,24 +6,29 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.cici.music.contans.MusicConts;
 import com.cici.music.dao.IndexDao;
+import com.cici.music.dao.PlayMusicDao;
 import com.cici.music.pojo.Param;
 import com.cici.music.pojo.Singer;
 import com.cici.music.pojo.Song;
 import com.cici.music.pojo.SongDto;
 import com.cici.music.pojo.Album;
+import com.cici.music.pojo.TypeNum;
 
 @Service
 public class IndexService {
 	@Resource
 	IndexDao indexDao;
-	
+	@Resource
+	PlayMusicDao pylMusicDao;
 	
 	
 	
@@ -120,6 +125,35 @@ public class IndexService {
 		map.put("value", value);
 		map.put("type", type);
 		return indexDao.getSearchCount(map);
+	}
+
+	public Map<Integer,Integer>  getNum() {
+		List<TypeNum> typenum = indexDao.getTypeNum();
+		Map<Integer,Integer> map = new HashMap<Integer,Integer>();
+		for(TypeNum t : typenum){
+			int num = 0;
+			if(t.getValue_()%MusicConts.PAGER_COUNT==0){
+				num=t.getValue_()/MusicConts.PAGER_COUNT;
+			}else{
+				num =t.getValue_()/MusicConts.PAGER_COUNT+1;
+			}
+			map.put(t.getKey_(),num);
+		}
+		return map;
+	}
+
+	public String getClasifySong(HttpServletRequest request) {
+		JSONObject  obj=new JSONObject();
+		obj.put("stats", "error");
+		int type = Integer.parseInt(request.getParameter("type"));
+		int n =  Integer.parseInt(request.getParameter("n"));
+		List<Song> song = pylMusicDao.getSongByType(new Param(MusicConts.PAGER_COUNT*n,MusicConts.PAGER_COUNT*n+MusicConts.PAGER_COUNT,type+"",0,0));
+		if(song.size()>0){
+			obj.put("stats", "success");
+			obj.put("success", "收藏成功！");
+			obj.put("list",song);
+		}
+		return obj.toJSONString();
 	}
 	
 	
