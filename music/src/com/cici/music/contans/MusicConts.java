@@ -7,5 +7,5 @@ public interface MusicConts {
 	String TYPE_SONG="song";
 	String TYPE_ALBUM="album";
 	String TYPE_SINGER="singer";
-	int PAGER_COUNT=3;
+	int PAGER_COUNT=7;
 }
