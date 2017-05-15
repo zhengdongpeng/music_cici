@@ -36,9 +36,19 @@ public class playMusicController {
 		
 	}
 	
+	@ResponseBody
+	@RequestMapping("musiclistForUid")
+	public String musiclistForUid(HttpServletRequest request){
+		return playMusicService.musiclistForUid(request);
+	}
+	
 	@RequestMapping("ranking")
 	public String toRanking(HttpServletRequest request){
 		return "Ranking";
+	}
+	@RequestMapping("playMusicList")
+	public String playMusicList(HttpServletRequest request){
+		return "playMusicList";
 	}
 	
 	@ResponseBody

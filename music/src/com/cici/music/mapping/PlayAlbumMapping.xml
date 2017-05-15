@@ -19,6 +19,16 @@ WHERE
 	zhuanji.songerid = songer.sid
 AND zhujiid =#{id}       
 </select>
+<select id="getAlbumListForUid"  resultType="com.cici.music.pojo.Album"  parameterType="com.cici.music.pojo.Param">
+select zhuanji.zhujiid as albumId,
+zhuanji.img,
+zhuanji.zname as aname
+
+from zhuanji ,collectzhuanji c
+
+where c.uid=#{searchParam} and zhuanji.zhujiid=c.sid
+</select>
+
 <select id="getMusicList"  resultType="com.cici.music.pojo.Song">
 select 
 	song.sid,

@@ -88,7 +88,7 @@ width:20%;float:left;
       <% for(Singer s : list){%>
       <li>
        <div align="center">
-      <a href="" target="_blank">
+      <a href="singer.do?sid=<%=s.getSid() %>"   target="_blank">
       <img src="<%=s.getHead()  %>" height="120px",width="120px"></a>
       <br><a href="" target="_blank">
       <%=s.getSname() %></a>
@@ -105,9 +105,9 @@ width:20%;float:left;
       <% for(Album s : list){%>
       <li>
       <div align="center">
-      <a href="" target="_blank">
-      <img src="<%=s.getImg() %>" height="120px",width="120px"></a>
-      <br><a href="" target="_blank">
+      <a href="'playAlbum.do?id=<%=s.getAlbumId() %>'  target="_blank">
+      <img src="<%=s.getImg() %>" height="120px",width="120px">
+      <br>
       <%=s.getAname() %></a>
       </div>
       </li>

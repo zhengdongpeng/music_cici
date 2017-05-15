@@ -10,7 +10,9 @@
            head,
            email,
            zctime,
-           uname
+           uname,
+           city,
+           birthday
         FROM
             user
         WHERE

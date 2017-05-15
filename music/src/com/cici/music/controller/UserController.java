@@ -32,7 +32,13 @@ public class UserController {
 	public String getUserCenter(HttpServletRequest request,Model model){
 		return "user_center/userCenter";
 	}
-	
+	@RequestMapping("userCollect")
+	public String getUserCollect(HttpServletRequest request,Model model){
+		if(request.getSession().getAttribute("user")==null){
+			return "redirect:/login.do";
+		}
+		return "user_center/userCollect";
+	}
 	@ResponseBody
 	@RequestMapping("userHeadupload")
 	public String userHeadupload(HttpServletRequest request){

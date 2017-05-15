@@ -14,4 +14,6 @@ public interface PlayAlbumDao {
 
 	public List<Album> getAlbumAll(Param param);
 
+	public List<Album> getAlbumListForUid(Param p);
+
 }

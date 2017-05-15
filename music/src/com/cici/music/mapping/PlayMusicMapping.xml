@@ -12,6 +12,18 @@
 	where song.songerid=songer.sid and
 	song.sid=#{id}
 	</select>
+	
+	<select id="getMusicListForUid"  resultType="com.cici.music.pojo.Song"   parameterType="com.cici.music.pojo.Param" >
+	select song.sid,
+song.img,
+song.sname,
+song.song
+
+from song ,collectsong c
+
+where c.uid=#{searchParam} and song.sid=c.sid
+	</select>
+	
 	<select id="getCollectRanking" parameterType="com.cici.music.pojo.Param" resultType="com.cici.music.pojo.SongDto">
 	 select   song.sid,
             song.sname as name,

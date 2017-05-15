@@ -46,6 +46,12 @@ public class playAlubmController {
 	}
 	
 	@ResponseBody
+	@RequestMapping("albumlistForUid")
+	public String albumlistForUid(HttpServletRequest request){
+		return playAlbumService.albumlistForUid(request);
+	}
+	
+	@ResponseBody
 	@RequestMapping("musicList")
 	public String musicList(HttpServletRequest request){
 		return playAlbumService.musicList(request);
