@@ -12,7 +12,17 @@
 	where song.songerid=songer.sid and
 	song.sid=#{id}
 	</select>
-	
+	<select id="getCollectRanking" parameterType="com.cici.music.pojo.Param" resultType="com.cici.music.pojo.SongDto">
+	 select   song.sid,
+            song.sname as name,
+            songer.sid as si_id,
+            songer.sname as singername   
+	 from songer, song LEFT JOIN 
+(select count(*) ,sid from collectsong GROUP BY sid) coll on song.sid=coll.sid
+where song.songerid=songer.sid
+order by coll.sid desc
+limit #{start},#{length}
+	</select>
 	<select id="getSingerAll" resultType="com.cici.music.pojo.Singer" parameterType="com.cici.music.pojo.Param">
 		select songer.sid,
 		songer.sname,

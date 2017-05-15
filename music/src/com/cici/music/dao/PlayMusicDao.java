@@ -33,4 +33,6 @@ public interface PlayMusicDao {
 
 	public List<SongDto> getCollectForUid(Param param);
 
+	public List<SongDto> getCollectRanking(Param param);
+
 }

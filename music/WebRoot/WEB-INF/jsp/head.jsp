@@ -43,7 +43,7 @@
  <div>
   <ul id="nav">
     <li><a href="index.do">首页</a></li>
-    <li><a href="/bang/">排行榜</a></li>
+    <li><a href="ranking.do">排行榜</a></li>
 	<li><a href="/bang/tag13.shtml">好听的歌</a></li>
     <li><a href="gameintro.do">游戏宣传</a></li>
     <li><a href="singerlist.do">歌手</a></li>

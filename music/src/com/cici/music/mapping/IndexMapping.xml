@@ -116,6 +116,19 @@ ORDER BY
         limit 0,15
            
   </select>
+  <select id="getsongLimit"  parameterType="com.cici.music.pojo.Param" resultType="com.cici.music.pojo.SongDto">
+   SELECT
+            song.sid,
+            song.sname as name,
+            songer.sid as si_id,
+            songer.sname as singername        
+        FROM
+            song,songer
+        where
+        	song.songerid=songer.sid
+        order by fbtime desc
+        limit #{start},#{length}
+  </select>
   
   <select id="getTypeSong"  parameterType="com.cici.music.pojo.Param"  resultType="com.cici.music.pojo.SongDto" >
     	SELECT
