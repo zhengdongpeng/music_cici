@@ -197,4 +197,19 @@ public class PlayMusicService {
 		return json.toJSONString();
 	}
 
+
+	public String musiclistForUid(HttpServletRequest request) {
+		JSONObject json = new JSONObject();
+		String uid= request.getParameter("uid");
+		json.put("stats", "error");
+		Param p=new Param(0,
+				0,uid,2,0);
+		List<Song> list = playMusicDao.getMusicListForUid(p);
+		if(list!=null){
+			json.put("stats", "success");
+			json.put("list", list);
+		}
+		return json.toJSONString();
+	}
+
 }
