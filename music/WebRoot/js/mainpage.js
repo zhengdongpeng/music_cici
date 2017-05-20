@@ -5,10 +5,39 @@ $().ready(function(){
 	rigthview();
 	middlelist();
 	singer();
+	initRanking();
 });
 
-
-
+function initRanking(){
+	$.ajax({
+		  url:'rankingData.do',
+		    type:'POST', //GET
+		    async:true,    //��false,�Ƿ��첽
+		    data:{
+		    },
+		    timeout:5000,    //��ʱʱ��
+		    dataType:'json',    //���ص���ݸ�ʽ��json/xml/html/script/jsonp/text
+		    success:function(data){
+		    	debugger;
+		    	//data=JSON.parse(data);
+		    	
+		        $(".collect").html("");
+		     
+		        data=JSON.parse(data);
+		        createList1(".collect",data.rank);
+		        
+	
+		    },
+		    error:function(xhr){
+		    },
+		   
+	});
+}
+function createList1(clazz,song){
+	 for(var i=0;i<song.length;i++){
+	$(clazz).append("<li><dl class='songname'> <a target='m' href='playMusic.do?id="+song[i].sid+"' >"+song[i].name+"</a>   </dl> </li>");
+	 }
+	 }
 function singer(){
 	$.ajax({
 		  url:'rightsinger.do',

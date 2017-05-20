@@ -1,5 +1,9 @@
 package com.cici.music.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.cici.music.pojo.User;
 
 public interface UserDao {
@@ -14,4 +18,10 @@ public interface UserDao {
 	public int updateUser(User user);
 
 	public int updatePassword(User user);
+
+	public int getUserTotal();
+
+	public List<User> getUserForType(@Param("type") String type,@Param("username")  String username);
+
+	public int delete(String str, int co);
 }

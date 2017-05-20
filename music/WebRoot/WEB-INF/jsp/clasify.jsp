@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"	   pageEncoding="utf-8" import="java.util.*,com.cici.music.pojo.*"%>
     <%  Map<Integer,Integer> typenum =(Map<Integer,Integer>) request.getAttribute("typenum"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+ <jsp:include page="head.jsp"></jsp:include>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -18,22 +18,25 @@
   <style type="text/css">a:link {color: #00000;!important;}</style>
 </head>
 <body background="images/typebg.jpg">
+<div id="wrapper">
+
+
   <div class="tab-contain">
     <!-- tab栏 -->
     <ul id="tabs">
-      <li class="current"><a href="#" title="tab1" >民谣</a></li>
-      <li><a href="#" title="tab2">古典音乐</a></li>
-      <li><a href="#" title="tab3">影视金曲</a></li>
-      <li><a href="#" title="tab4">网络金曲</a></li>
-      <li><a href="#" title="tab5">摇滚金曲</a></li>
-      <li><a href="#" title="tab6">流行金曲</a></li>
-      <li><a href="#" title="tab7">情歌对唱</a></li>
-      <li><a href="#" title="tab8">草原金曲</a></li>
+      <li class="current"><a href="#" title="tab1"  class="a-t">民谣</a></li>
+      <li><a href="#" title="tab2"  class="a-t">古典音乐</a></li>
+      <li><a href="#" title="tab3" class="a-t">影视金曲</a></li>
+      <li><a href="#" title="tab4" class="a-t">网络金曲</a></li>
+      <li><a href="#" title="tab5" class="a-t">摇滚金曲</a></li>
+      <li><a href="#" title="tab6" class="a-t">流行金曲</a></li>
+      <li><a href="#" title="tab7" class="a-t">情歌对唱</a></li>
+      <li><a href="#" title="tab8" class="a-t">草原金曲</a></li>
     </ul>
     <!-- 对应显示内容 -->
     <div id="content">
       <div id="tab1" class="item show">
-         <table width="1019" >
+         <table width="900" >
                    <thead>
           <tr class="thead">
             <td width="261">歌曲名</td>
@@ -48,7 +51,7 @@
         <div class="page1" style="width:500px;margin-top:50px"></div>
         </div>
       <div id="tab2" class="item">
-    	  <table width="1019" >
+    	  <table width="900" >
                    <thead>
           <tr class="thead">
             <td width="261">歌曲名</td>
@@ -63,7 +66,7 @@
 			<div class="page2" style="width:500px;margin-top:50px"></div>
       </div>
       <div id="tab3" class="item">
-         <table width="1019" >
+         <table width="900" >
                    <thead>
           <tr class="thead">
             <td width="261">歌曲名</td>
@@ -80,7 +83,7 @@
       </div>
        <div id="tab4" class="item">
        
-     <table width="1019" >
+     <table width="900" >
                    <thead>
           <tr class="thead">
             <td width="261">歌曲名</td>
@@ -96,7 +99,7 @@
       </div>
        <div id="tab5" class="item">
        
-     <table width="1019" >
+     <table width="900" >
                    <thead>
           <tr class="thead">
             <td width="261">歌曲名</td>
@@ -112,7 +115,7 @@
       </div>
        <div id="tab6" class="item">
        
-     <table width="1019" >
+     <table width="900" >
                    <thead>
           <tr class="thead">
             <td width="261">歌曲名</td>
@@ -128,7 +131,7 @@
       </div>
        <div id="tab7" class="item">
        
-     <table width="1019" >
+     <table width="900" >
                    <thead>
           <tr class="thead">
             <td width="261">歌曲名</td>
@@ -143,7 +146,7 @@
 				<div class="page7" style="width:500px;margin-top:50px"></div>
       </div>
        <div id="tab8" class="item">
-         <table width="1019" >
+         <table width="900" >
                    <thead>
           <tr class="thead">
             <td width="261">歌曲名</td>
@@ -160,7 +163,9 @@
 			<div class="page8" style="width:500px;margin-top:50px"></div>
       </div>
       </div>
-
+ </div>
+ </div>
+ 
 
   <script type="text/javascript" src="js/js.js"></script>
 </body>
@@ -180,23 +185,28 @@ $('.page3').createPage(function(n){
 		setSingerPager(n,3);
 },{
 	pageCount:<%=(typenum.containsKey(3)?(Integer)(typenum.get(3)):0) %>,//总页码,默认10
-});$('.page4').createPage(function(n){
+});
+$('.page4').createPage(function(n){
 		setSingerPager(n,4);
 },{
 	pageCount:<%=(typenum.containsKey(4)?(Integer)(typenum.get(4)):0) %>,//总页码,默认10
-});$('.page5').createPage(function(n){
+});
+$('.page5').createPage(function(n){
 		setSingerPager(n,5);
 },{
 	pageCount:<%=(typenum.containsKey(5)?(Integer)(typenum.get(5)):0) %>,//总页码,默认10
-});$('.page6').createPage(function(n){
+});
+$('.page6').createPage(function(n){
 		setSingerPager(n,6);
 },{
 	pageCount:<%=(typenum.containsKey(6)?(Integer)(typenum.get(6)):0) %>,//总页码,默认10
-});$('.page7').createPage(function(n){
+});
+$('.page7').createPage(function(n){
 		setSingerPager(n,7);
 },{
 	pageCount:<%=(typenum.containsKey(7)?(Integer)(typenum.get(7)):0) %>,//总页码,默认10
-});$('.page8').createPage(function(n){
+});
+$('.page8').createPage(function(n){
 		setSingerPager(n,8);
 },{
 	pageCount:<%=(typenum.containsKey(8)?(Integer)(typenum.get(8)):0) %>,//总页码,默认10
@@ -216,8 +226,8 @@ function setSingerPager(n,type){
 		    dataType:'json',    //���ص���ݸ�ʽ��json/xml/html/script/jsonp/text
 		    success:function(data){
 		    	data=JSON.parse(data);
+		    	debugger;
 		    	if(data.stats=='error'){
-		    		window.location.href="index.do";
 		    		return;
 		    	}
 		    	if(data.stats=='success'){
@@ -226,7 +236,7 @@ function setSingerPager(n,type){
 		    		var list = data.list;
 		    		for(var i=0;i<list.length;i++){
 		    			var str="<tr class='datahang' height='30px'><td><a href='playMusic.do?id="+list[i].sid
-		    			+"'\>"+list[i].sname+"</td><td>"+list[i].songerName+"</td><td>"+list[i].zjName+"</td><td><a href='playMusic.do?id="+list[i].sid
+		    			+"'\>"+list[i].sname+"</td><td>"+list[i].songerName+"</td><td>"+(list[i].zjName?list[i].zjName:"")+"</td><td><a href='playMusic.do?id="+list[i].sid
 		    			+"'><img  src='images/player.png' /></a></td></tr>";
 		    			$(clazz).append(str);
 		    		}

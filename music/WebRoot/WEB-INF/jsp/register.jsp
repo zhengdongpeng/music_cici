@@ -82,7 +82,7 @@ font-size:20px;
       
       <tr>
         <td>验证码</td>
-        <td><input type="text" class="yanzhengma" name="yanhengma"/>
+        <td><input type="text" class="yanzhengma" name="yanhengma"  style="width:120px;"/>
         <a href='#' onclick="javascript:changeImg()" > <img id="img" src="authImage" />
         <label >看不清？</label></a></td>
       </tr>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cici.music.dao.MangeDao">
+ <select id="queryMUser" resultType="com.cici.music.pojo.MUser" parameterType="com.cici.music.pojo.MUser">
+    SELECT
+           mid,
+           username,
+           password,
+           head,
+           zctime,
+           jibie
+        FROM
+            muser
+        WHERE
+            username=#{username}
+            and password=#{password}
+  </select>
+    <insert id="insertMUser" parameterType="com.cici.music.pojo.MUser">
+  	   insert into muser(username,password,jibie,zctime) 
+  	   values(#{username},#{password},#{jibie},#{zctime})
+  </insert>
+  
+    <update id="updateMUser" parameterType="com.cici.music.pojo.MUser">
+  	update muser set password=#{password}
+  	where username = #{username}
+  </update>
+  
+  <delete id="delete"  parameterType="java.lang.String">
+  	delete from muser where username=#{0}
+  </delete>
+  
+  <!-- <select id="getName" resultType="com.cici.music.pojo.User" parameterType="com.cici.music.pojo.User">
+	  SELECT
+           username
+        FROM
+            user
+        WHERE
+            username=#{username}
+  </select>
+  
+  <insert id="insertMUser" parameterType="com.cici.music.pojo.User">
+  	   insert into user(username,password,sex,head,email,zctime,uname,code) 
+  	   values(#{username},#{password},#{sex},#{head},#{email},#{zctime},
+  	   #{uname},0)
+  </insert>
+  <update id="updateHeadImage" parameterType="com.cici.music.pojo.User">
+  	update user set head = #{head} where uid = #{uid}
+  </update>
+  <update id="updateUser" parameterType="com.cici.music.pojo.User">
+  	update user set city = #{city} , birthday =#{birthday} ,sex=#{sex},uname=#{uname}
+  	where uid = #{uid}
+  </update>
+  <update id="updateMUser" parameterType="com.cici.music.pojo.User">
+  	update user set password=#{password}
+  	where uid = #{uid}
+  </update> -->
+  </mapper>

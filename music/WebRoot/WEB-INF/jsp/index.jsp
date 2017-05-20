@@ -38,7 +38,7 @@ eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a
 var islogin='<%=islogin%>';
 </script>
 </head>
-<body bgcolor='#000000'>
+<body >
 
 <div id="wrapper">
 <div>
@@ -107,8 +107,9 @@ var islogin='<%=islogin%>';
         </div>
       
         
-      <div id="tags"><strong>热门标签:</strong>
-<a target="_blank"  href="/mlist/4789.shtml">乌兰托娅</a> <a target="_blank"  href="/bang/box100_w.shtml" class="brown f16 blod">歌曲大全</a> <a target="_blank"  href="/guangchangwu/wudui/1774/">郑多燕减肥舞</a> <a target="_blank"  href="/bang/tag9.shtml" class="green f16 blod">好听的英文歌</a> <a target="_blank"  href="/bang/tag147.shtml">父亲节歌曲</a> <a target="_blank"  href="/bang/tag17.shtml" class="red f16 blod">儿歌大全100首</a> <a target="_blank"  href="/mlist/9625.shtml" class="green blod">徐良</a> <a target="_blank"  href="/bang/tag2.shtml">老歌</a><br /> <a target="_blank"  href="/bang/tag13.shtml" class="red f15 blod">最好听的歌</a> <a target="_blank"  href="/mlist/3345.shtml">凤凰传奇最新歌曲</a> <a target="_blank"  href="/mlist/4486.shtml">许嵩的歌</a> <a target="_blank"  href="/mlist/8793.shtml" class="brown f16 blod">降央卓玛歌曲大全</a> <a target="_blank"  href="/mlist/9707.shtml">汪苏泷</a> <a target="_blank"  href="/bang/tag89.shtml">古风歌曲</a> <a target="_blank"  href="/mlist/8160.shtml" class="green f16 blod">冷漠</a> <a target="_blank"  href="/bang/tag14.shtml">好听的铃声</a> <a target="_blank"  href="/mlist/8968.shtml" class="red f16 blod">六哲</a><br /> <a target="_blank"  href="/bang/tag147.shtml">父亲节歌曲</a> <a target="_blank"  href="/mlist/6130.shtml" class="green f16 blod">王麟</a> <a target="_blank"  href="/mlist/4499.shtml">龚玥</a> <a target="_blank"  href="/bang/tag13.shtml" class="red">好听的歌曲推荐2017</a> <a target="_blank"  href="/bang/tag40.shtml">摇滚</a> <a target="_blank"  href="/bang/tag13.shtml" class="green f16 blod">有什么好听的歌</a> <a target="_blank"  href="/bang/tag93.shtml">神曲排行榜</a> <a target="_blank" href="/bang/box100_w.shtml">流行歌曲排行榜2017</a> </div>
+      <div style="width: 696px;height: 97px">
+      <img src="images/banner.jpg" alt=""  width='696px' height=' 97px'/>
+ </div>
       <div id="listen">
         <ul id="menu4">
           <span>歌曲排行</span>
@@ -143,53 +144,16 @@ var islogin='<%=islogin%>';
           </ul>
       </div>
       <div class="bord">
-        <p class="bordtitle"><span class="more"><a href="/mlist/singerlist.shtml" target="_blank" rel="nofollow">更多>></a></span><a href="/mlist/singerlist.shtml" target="_blank">歌手top500</a></p>
+        <p class="bordtitle"><span class="more"><a href="singerlist.do" target="_blank" rel="nofollow">更多>></a></span><a href="singerlist.do" target="_blank">歌手top500</a></p>
         <ul class="singerpic">
         </ul>
         <ul class="top100" id="Top100">
         </ul>
-		<div id="iSingerNav"><a href="/mlist/wangluo.shtml" target="_blank">网络歌手</a> &nbsp;&nbsp;<a href="/mlist/recsingerlist.shtml" target="_blank">推荐歌手</a></div>
       </div>
-      <div class="bord">
+      <div class="main5">
       
-         <p class="bordtitle"><span class="more"><a href="/bang/fenlei.shtml">歌曲分类</a></span>排行榜</p>
-        <p class="intitle">歌曲排行榜</p>
-        <ul>
-          <li><a href="/bang/box100_w.shtml">歌曲总排行</a></li>
-          <li><a href="/bang/">新歌排行榜</a></li>
-        </ul>
-        <p class="intitle">歌曲分类排行榜</p>
-        <ul>
-          <li><a href="/bang/tag4.shtml">网络歌曲</a></li>
-          <li><a href="/bang/tag5.shtml">伤感歌曲</a></li>
-          <li><a href="/bang/tag9.shtml">英文歌曲</a></li>
-          <li><a href="/bang/tag6.shtml">韩国歌曲</a></li>
-          <li><a href="/bang/tag11.shtml">情歌对唱</a></li>
-          <li><a href="/bang/tag8.shtml">草原歌曲</a></li>
-          <li><a href="/bang/tag10.shtml">粤语歌曲</a></li>
-          <li><a href="/bang/tag2.shtml">经典老歌</a></li>
-          <li><a href="/bang/tag20.shtml">KTV歌曲</a></li>
-          <li><a href="/bang/tag12.shtml">影视金曲</a></li>
-          <li><a href="/bang/tag7.shtml">劲爆歌曲</a></li>
-          <li><a href="/bang/tag3.shtml">非主流歌曲</a></li>
-          <li><a href="/bang/tag17.shtml">儿童歌曲大全</a></li>
-          <li><a href="/bang/tag19.shtml">红歌</a></li>
-          <li><a href="/bang/tag16.shtml">通俗歌曲</a></li>
-          <li><a href="/bang/tag23.shtml">励志歌曲</a></li>
-	  <li><a href="/bang/tag22.shtml">闽南语歌曲</a></li>
-          <li><a href="/bang/tag18.shtml">轻音乐</a></li>
-	  <li><a href="/bang/tag24.shtml">胎教音乐</a></li>
-	  <li><a href="/bang/tag25.shtml">佛教音乐</a></li>
-	  <li><a href="/bang/tag26.shtml">基督教歌曲</a></li>
-	  <li><a href="/bang/tag27.shtml">结婚歌曲</a></li>
-	  <li><a href="/bang/tag72.shtml">DJ舞曲</a></li>
-	  <li><a href="/bang/tag36.shtml">毕业歌曲</a></li>
-        </ul>
-        <p class="intitle">歌曲推荐排行榜</p>
-        <ul>
-          <li><a href="http://www.yue365.com/bang/bang1.shtml">好歌人气榜</a></li>
-          <li><a href="/bang/tagpasheng.shtml">新歌爬升榜</a></li>
-          <li><a href="/bang/tag13.shtml">好听的歌</a></li>
+         <p class="bordtitle"><span class="more"><a href="ranking.do">歌曲分类</a></span>收藏排行榜</p>
+        <ul class="collect">
         </ul>
     </div>
   </div>

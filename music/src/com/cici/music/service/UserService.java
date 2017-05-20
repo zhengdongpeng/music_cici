@@ -3,6 +3,7 @@ package com.cici.music.service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -145,6 +146,44 @@ public class UserService {
 			return json.toJSONString();
 		}else{
 			json.put("error", "修改失败！");
+		}
+		return json.toJSONString();
+	}
+	public int  getUserTotal() {
+		return userDao.getUserTotal();
+	}
+	public String queryUserForType(HttpServletRequest request) {
+		JSONObject json =new JSONObject();
+		json.put("stats", "error");
+		String type = request.getParameter("type");
+		String username = request.getParameter("username");
+		List<User> list = userDao.getUserForType(type,username);
+		if(list==null || list.size()<=0){
+			json.put("error", "未查询到信息");
+			return json.toJSONString();
+		}
+		json.put("stats", "success");
+		json.put("success", "修改成功！");
+		json.put("list", list.toArray());
+		return json.toJSONString();
+	}
+	public String delete(HttpServletRequest request) {
+		JSONObject json =new JSONObject();
+		json.put("stats", "error");
+		String str = request.getParameter("id");
+		String code = request.getParameter("code");
+		int co=Integer.parseInt(code);
+		if(co==1){
+			co=0;
+		}else{
+			co=1;
+		}
+		int i=userDao.delete(str,co);
+		if(i>0){
+			json.put("stats", "success");
+			json.put("success", "成功");
+		}else{
+			json.put("error", "不存在该账户");
 		}
 		return json.toJSONString();
 	}

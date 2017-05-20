@@ -16,4 +16,8 @@ public interface PlayAlbumDao {
 
 	public List<Album> getAlbumListForUid(Param p);
 
+	public int insertAlbum(Album song);
+
+	public int deleteAlbum(String str);
+
 }

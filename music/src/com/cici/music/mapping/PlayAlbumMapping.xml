@@ -19,6 +19,14 @@ WHERE
 	zhuanji.songerid = songer.sid
 AND zhujiid =#{id}       
 </select>
+<delete id="deleteAlbum" parameterType="java.lang.String">
+	delete from zhuanji where zhujiid=#{0}
+</delete>
+<insert id="insertAlbum" parameterType="com.cici.music.pojo.Album">
+	insert into zhuanji(zname,js,songerid,fxgs,typeid,fbtime,cjtime,img)
+	values(#{aname},#{js},#{songerId},#{fxgs},#{typeid},#{fbtime},#{cjtime},#{img})
+</insert>
+
 <select id="getAlbumListForUid"  resultType="com.cici.music.pojo.Album"  parameterType="com.cici.music.pojo.Param">
 select zhuanji.zhujiid as albumId,
 zhuanji.img,
@@ -45,7 +53,8 @@ song ,type  t where song.type=t.tid and song.zjid=#{0};
 <select id="getAlbumAll"  resultType="com.cici.music.pojo.Album" parameterType="com.cici.music.pojo.Param">
 	select 
 	<if test="searchType==1">
-	zhuanji.zhujiid as albumId
+	zhuanji.zhujiid as albumId,
+	zhuanji.zname as aname
 	</if>
 	<if test="searchType!=1">
 	zhuanji.zhujiid as albumId,

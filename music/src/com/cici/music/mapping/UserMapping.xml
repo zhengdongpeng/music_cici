@@ -20,7 +20,28 @@
             and password=#{password}
             and code=#{code}
   </select>
-  
+   <delete id="delete"  >
+  	update user set code=#{1} where uid=#{0}
+  </delete>
+  <select id="getUserTotal"  resultType="java.lang.Integer">
+  select count(*) from user;
+  </select>
+  <select id="getUserForType"   resultType="com.cici.music.pojo.User" >
+  select * 
+  from user 
+  where 
+  <if test="type==1">
+  username  LIKE 
+ 	CONCAT('%','${username}','%' ) 
+  </if>
+    <if test="type==2">
+  uid=#{username}
+  </if>
+    <if test="type==3">
+  uname  LIKE 
+ 	CONCAT('%','${username}','%' ) 
+  </if>
+  </select>
   <select id="getName" resultType="com.cici.music.pojo.User" parameterType="com.cici.music.pojo.User">
 	  SELECT
            username

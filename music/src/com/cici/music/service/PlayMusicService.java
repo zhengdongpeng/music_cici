@@ -1,5 +1,6 @@
 package com.cici.music.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import com.alibaba.fastjson.JSONObject;
 import com.cici.music.contans.MusicConts;
 import com.cici.music.dao.IndexDao;
+import com.cici.music.dao.PlayAlbumDao;
 import com.cici.music.dao.PlayMusicDao;
 import com.cici.music.pojo.Album;
 import com.cici.music.pojo.Collect;
@@ -29,6 +31,9 @@ public class PlayMusicService {
 	
 	@Resource
 	IndexDao indexDao;
+	
+	@Resource
+	PlayAlbumDao playAlbumDao;
 	
 	public Song getSongForId(int songId) {
 		return playMusicDao.getForId(songId);
@@ -168,6 +173,10 @@ public class PlayMusicService {
 				return list.size();
 			return 0;
 	}
+	public 	List<Singer> getSingerAll() {
+		List<Singer> list = playMusicDao.getSingerAll(new Param(0,0,"",1,0));
+		return list;
+}
 
 
 	public String getSingerAllData(HttpServletRequest request) {
@@ -204,12 +213,43 @@ public class PlayMusicService {
 		json.put("stats", "error");
 		Param p=new Param(0,
 				0,uid,2,0);
+		List<Album> list1 = playAlbumDao.getAlbumListForUid(p);
+		List<Integer> li = new ArrayList<Integer>();
+		
 		List<Song> list = playMusicDao.getMusicListForUid(p);
 		if(list!=null){
 			json.put("stats", "success");
 			json.put("list", list);
 		}
 		return json.toJSONString();
+	}
+
+
+	public int insertSong(Song song) {
+		int i= playMusicDao.insertSong(song);
+		return i;
+	}
+
+
+	public int insertSinger(Singer song) {
+		int i= playMusicDao.insertSinger(song);
+		return i;
+	}
+
+
+	public void songCountAdd(int sid) {
+		int i=playMusicDao.getClickCount(sid);
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("sid", sid);
+		map.put("type",1);
+		map.put("updatetime", new Date());
+		if(i>0){
+			map.put("count", i+1);
+			playMusicDao.ModifyClickUp(map);
+			return;
+		}
+		map.put("count", 1);
+		playMusicDao.ModifyClickAdd(map);
 	}
 
 }

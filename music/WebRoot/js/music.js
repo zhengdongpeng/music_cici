@@ -34,7 +34,7 @@
 	function createList(clazz,song){
 		 for(var i=0;i<song.length;i++){
 	     	$(clazz).append("<tr width='100%' height='30px'> <td><span class='"+((i+1)<=3?"numbertwo":"span1")+"'>"+(i+1)+"</span></td>"+
-	     			" <td  width='50%'><a  target='m' href='playMusic.do?id="+song[i].sid+"' >"+song[i].name+"</a> </td>"
+	     			" <td  width='144px'><a  target='m' href='playMusic.do?id="+song[i].sid+"' >"+song[i].name+"</a> </td>"
 	     			+" <td width='20%'> <a  href='singer.do?sid="+song[i].si_id+"' title="+song[i].singername+"target='_blank'>"+song[i].singername+"</a></td>" +
 	     					""
 	     			);

@@ -37,4 +37,20 @@ public interface PlayMusicDao {
 
 	public List<Song> getMusicListForUid(Param p);
 
+	public int insertSong(Song song);
+
+	public int delete(String str);
+	
+	public int deleteSinger(String str);
+
+	public int insertSinger(Singer song);
+
+	public int getClickCount(int sid);
+
+	public void ModifyClickAdd(Map<String, Object> map);
+
+	public void ModifyClickUp(Map<String, Object> map);
+
+
+
 }

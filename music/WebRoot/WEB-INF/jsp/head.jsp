@@ -52,6 +52,7 @@
 	<% if(islogin){ %>
 	<li><a  target="_self" href="userCenter.do">个人中心</a></li>
 	欢迎您！<%=user.getUname() %> <%= "男".equals(user.getSex())?"先生":"女士" %>
+	<a  target="_self" href="userloginout.do">退出</a>
 	<%} else{ %>
 	 <li><a  target="_self" href="login.do">登陆</a></li>
     <li><a target="_self" href="register.do">注册</a></li>

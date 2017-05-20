@@ -15,6 +15,13 @@ public class Song {
 	private int zjid;
 	private String zjName;
 	private Date fbtime;
+	private Date cjtime;
+	public Date getCjtime() {
+		return cjtime;
+	}
+	public void setCjtime(Date cjtime) {
+		this.cjtime = cjtime;
+	}
 	public String getTypeName() {
 		return typeName;
 	}

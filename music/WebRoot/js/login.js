@@ -1,4 +1,64 @@
 
+function confirmd() {  
+            var msg = "您真的确定要删除吗？/n/n请确认！";  
+            if (confirm(msg)==true){  
+                return true;  
+            }else{  
+                return false;  
+            }  
+        }  
+
+
+function mangeuserlogin(){
+	var username = $(".username").val();
+	var password = $(".password").val();
+	var yanzhengma=$(".yanzhengma").val();
+	if(!yanzhengma.trim()){
+		$(".tishi").text("验证码不能为空");
+		return;
+	}
+	if(!username.trim()){
+		$(".tishi").text("账号不能为空");
+		return;
+	}
+	if(!password.trim){
+		$(".tishi").text("密码不能为空");
+		return;
+	}
+	$.ajax({
+		  url:'mangelogin.do',
+		    type:'POST', //GET
+		    async:true,    //��false,�Ƿ��첽
+		    data:{
+		       username:username,
+		       password:password,
+		       yanzhengma:yanzhengma
+	
+		    },
+		    timeout:5000,    //��ʱʱ��
+		    dataType:'json',    //���ص���ݸ�ʽ��json/xml/html/script/jsonp/text
+		   
+		    success:function(data,textStatus,jqXHR){
+		    	debugger;
+		    	data=JSON.parse(data);
+		    	if(data.stats=='error'){
+		    		$(".tishi").text(data.error);
+		    		return;
+		    	}
+		    	if(data.stats=='success'){
+		    		$(".logindiv").html("");
+		    		$(".logindiv").html("正在跳转，请稍后...");
+		    		window.location.href="mangepager.do";
+		    	}
+		    	
+		      },
+		    error:function(xhr,textStatus){
+		    },
+		   
+	});
+}
+
+
 function chooseHead(head){
 	$.ajax({
 		  url:'userHeadupload.do',

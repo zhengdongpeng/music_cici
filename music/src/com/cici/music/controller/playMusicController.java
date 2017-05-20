@@ -28,6 +28,7 @@ public class playMusicController {
 		Song song=playMusicService.getSongForId(songId);
 		if(song!=null)
 		{
+			playMusicService.songCountAdd(song.getSid());
 			request.setAttribute("song", song);
 			return "playMusic";
 		}else{	

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cici.music.pojo.MUser;
 import com.cici.music.pojo.User;
 
 public class LoginInterceptor implements HandlerInterceptor {

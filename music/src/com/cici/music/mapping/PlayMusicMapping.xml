@@ -7,12 +7,37 @@
 		song.song,
 		songer.sname as songerName,
 		song.lyric,
-		song.img
+		song.img,
+		song.songerid
 	 from song,songer
 	where song.songerid=songer.sid and
 	song.sid=#{id}
 	</select>
 	
+	<select id="getClickCount"  resultType="java.lang.Integer">
+		select count(*) from click where id=#{0}
+	</select>
+	<insert id="ModifyClickAdd"  parameterType="hashmap">
+		insert into click (type,id,count,updatetime) values(#{type},#{sid},#{count},#{updatetime})
+	</insert>
+	<update id="ModifyClickUp"  parameterType="hashmap">
+		update click set count = #{count} , updatetime =#{updatetime} where id=#{sid}
+	</update>
+	<delete id="delete"  parameterType="java.lang.String">
+	delete from song where sid=#{0};
+	</delete>
+		<delete id="deleteSinger"  parameterType="java.lang.String">
+	delete from songer where sid=#{0};
+	</delete>
+	<insert id="insertSong"   parameterType="com.cici.music.pojo.Song" >
+			insert into song(sname,song,type,songerid,fxgs,lyric,zjid,fbtime,cjtime,img)
+			values(#{sname},#{song},#{type},#{songerid},#{fxgs}
+			,#{lyric},#{zjid},#{fbtime},#{cjtime},#{img})
+	</insert>
+	<insert id="insertSinger"   parameterType="com.cici.music.pojo.Singer" >
+		insert into songer (sname,sex,jieshao,head)
+		values(#{sname},#{sex},#{jieshao},#{head})
+	</insert>
 	<select id="getMusicListForUid"  resultType="com.cici.music.pojo.Song"   parameterType="com.cici.music.pojo.Param" >
 	select song.sid,
 song.img,
@@ -56,8 +81,8 @@ limit #{start},#{length}
 		songer.sname as songerName,
 		zhuanji.zname as zjName
 		
-	 from song,songer,zhuanji
-	where song.songerid=songer.sid and zhuanji.zhujiid=song.zjid and
+	 from songer,song left join zhuanji on song.zjid=zhuanji.zhujiid
+	where song.songerid=songer.sid and 
 	song.type=#{searchParam}
 	order by  song.fbtime
 	limit #{start},#{length}

@@ -69,7 +69,7 @@ text-align:center;
 
 
 <p><%=song.getSname() %></p>
-<p>演唱：<%=song.getSongerName()%></p>
+<p>演唱：<a href='singer.do?sid=<%=song.getSongerid()%>'><%=song.getSongerName()%></a></p>
 <p><%=song.getLyric() %></p>
 </div> 
 

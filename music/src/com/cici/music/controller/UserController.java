@@ -24,6 +24,20 @@ public class UserController {
 		}
 		return "login";
 	}
+	@RequestMapping("userloginout")
+	public String userloginout(HttpServletRequest request,Model model){
+		User user = (User) request.getSession().getAttribute("user");
+		if(user!=null){
+			request.getSession().removeAttribute("user");
+		}
+		return "redirect:/index.do";
+	}
+	@ResponseBody
+	@RequestMapping("userdelete")
+	public String userdelete(HttpServletRequest request){
+		return userService.delete(request);
+	}
+	
 	@RequestMapping("register")
 	public String getRegister(HttpServletRequest request,Model model){
 		return "register";

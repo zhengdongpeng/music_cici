@@ -43,8 +43,8 @@ a:hover {background: none repeat scroll 0 0 #AAEEDD;
 #logo_play_right {width:555px;float:right;margin:3px 0 0 5px;}
 
 #search{ float:left; width:503px; height:72px; overflow:hidden; margin-left:90px; display:inline;}
-#search a:hover{ background:none;color: #044CB8;}
-#search a:visited{ background:none;color: #044CB8;}
+#search a:hover{ background:none;color: #EEAADD;}
+#search a:visited{ background:none;color: #EEAADD;}
 #search .b_link{ padding-left:35px; display:inline;}
 .searchinput{ float:left; width:409px; height:33px; background:#EEAADD; border:none; margin:11px 0 0 0px; line-height:33px; font-size:16px; background:url(../images/searctext.gif) no-repeat; padding:0 5px; }
 #searchbotton{ float:left; width:80px; height:33px; border:none; margin-top:11px; background:url(../images/searchbut.gif) no-repeat; cursor:pointer;}

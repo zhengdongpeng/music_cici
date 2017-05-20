@@ -7,6 +7,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -54,6 +55,10 @@ public class PlayAlbumService {
 		}
 		return 0;
 	}
+	public List<Album> getAlbumAll() {
+			List<Album> list = playAlbumDao.getAlbumAll(new Param(0,0,"",1,0));
+		return list;
+	}
 
 	public String albumListData(HttpServletRequest request) {
 		String n1 = request.getParameter("n");
@@ -82,6 +87,10 @@ public class PlayAlbumService {
 			json.put("list", list);
 		}
 		return json.toJSONString();
+	}
+
+	public int insertAlbum(Album song) {
+		return playAlbumDao.insertAlbum(song);
 	}
 		
 
