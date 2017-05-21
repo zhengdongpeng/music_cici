@@ -175,7 +175,13 @@ function userregister(){
 		alert("两次密码输入不一致");
 		return;
 	}
-	
+    var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+                 if(!myreg.test(email))
+                 {
+                      alert('提示\n\n请输入有效的E_mail！');
+                    myreg.focus();
+                     return ;
+                }   
 	$.ajax({
 		  url:'userregister.do',
 		    type:'POST', //GET

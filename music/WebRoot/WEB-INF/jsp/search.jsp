@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8" import="java.util.*,com.cici.music.pojo.*"%>
+    pageEncoding="utf-8" import="java.util.*,com.cici.music.pojo.*,com.cici.music.contans.*"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -43,7 +43,7 @@ width:20%;float:left;
 
 </div>
  <div id="div1">
-      <div>搜索"<font id="kw" size="10px"><%=request.getAttribute("value") %></font>" 约<font size="10px" id="outCount" color="red"><%=request.getAttribute("size") %></font>项结果</div>
+      <div>搜索"<font id="kw" size="5px"  color="#FF00FF"><%=request.getAttribute("value") %></font>" 约<font size="6px" id="outCount" color="red"><%=request.getAttribute("size") %></font>项结果<hr></div>
     <% 
     if("song".equals(type)) {
     List<Song> list = (List<Song> )request.getAttribute("list");%>
@@ -62,19 +62,20 @@ width:20%;float:left;
     %>
       <tr class="data" >
 
-      	<td class="songname" width="200px">
+      	<td class="songname">
       		<a href="playMusic.do?id=<%=s.getSid() %>" target="_blank">
-      		<%=s.getSname() %></a>
+      		<%=(s.getSname().replace((String)request.getAttribute("value"), "<font color=#FF00FF>"+request.getAttribute("value")+"</font>"))%></a>
+      		
       	</td>
-      	<td class="singer" width="300px">
+      	<td class="singer" >
       		<%=s.getSongerName() %>
       	</td>
-      	<td class="ablum" width="300px">
+      	<td class="ablum" >
       	<% if(!"".equals(s.getZjName()) && ! (null== s.getZjName())){%>
       		<a href="playMusic.do?id=<%=s.getZjid()%>"  target="_blank"><%=s.getZjName() %></a>
       	<%} %>
       	</td>
-      	      	<td class="operation" width="100px">
+      	      	<td class="operation" >
       		<a class="listen" href="playMusic.do?id=<%=s.getSid() %>" title="试听歌曲"><img  src="images/college.png"></a>
       	</td>
       </tr>
@@ -121,10 +122,10 @@ width:20%;float:left;
 
  <% int count=Integer.parseInt(request.getAttribute("size").toString());
  int num=0;
- if(count%3==0){
-	 num=count/3;
+ if(count%MusicConts.PAGER_COUNT==0){
+	 num=count/MusicConts.PAGER_COUNT;
  }else{
-	 num=count/3+1;
+	 num=count/MusicConts.PAGER_COUNT+1;
  }
  %>
 <div class="page" style="width:500px;"></div>

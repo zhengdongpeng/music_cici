@@ -54,6 +54,16 @@ font-size:20px;
        		<br>
        		<br>
        		<br>
+       		<p>查询账号</p>
+       		<hr>
+       		查询账号<input type="text"  name="usernamequery" class="usernamequery"/>
+       		<button onclick="queryMange()">查询账号</button>
+       		<br>
+       		<ul class="query" style="width: 600px">
+       		</ul>
+       		
+       		<br>
+       		<br>
        		<p>删除账号</p>
        		<hr>
        		删除账号<input type="text"  name="username1" class="username1"/><br>
@@ -77,9 +87,86 @@ font-size:20px;
 </body>
 </html>
 <script>
+function queryMange(){
+	var username = $(".usernamequery").val();
+	if(!username.trim()){
+		return;
+	}
+	$.ajax({
+		  url:"mangequery.do",
+		    type:'POST',  async:true,    
+		    data:{username:username,
+		    	type:'managequery'},
+		    timeout:5000,  dataType:'json',    
+		    success:function(data){
+		    	data=JSON.parse(data);
+		    	$(".query").html("");
+		    	debugger;
+		    	var list = data.list;
+		    	for(var i=0;i<list.length;i++){
+		    		var str = "<tr><td width='100px'>"+list[i].username+"</td><td width='150px'>"+jibie(list[i].jibie)+"</td><td width:='150px'>创建时间:"+getLocalTime(list[i].zctime)+
+		    		"</td><td width='200px'><a onclick=\"modifyMange('"+i+","+list[i].username+"')\">权限修改</a>|<a onclick=\"deleteMange('"+list[i].username+"')\">删除</a</td>"
+		    		str= str+"<td><div class='div-modify"+i+"' style='display: none'> 管理员级别设定：	<select  class='jibie"+i+"'><option value ='1'>用户管理员</option>"+
+						"<option value ='2'>内容管理员</option>	</select>	<buttion onclick=\"modify("+i+","+list[i].username+")\"></button></div></td></tr>"
+		    		$(".query").append(str);
+		    	}
+		    },
+		    error:function(xhr,textStatus){
+		    	alert("error");
+		    },   
+	});
+	
+}
 
-function deleteMange(){
-	var username=$(".username1").val();
+function modify(i,username){
+	var ji = ".jibie"+i;
+	var jibie = $(ji).val();
+	
+	$.ajax({
+		  url:"mangeModify.do",
+		    type:'POST',  async:true,    
+		    data:{username:username,type:'jibie',jibie:jibie},
+		    timeout:5000,  dataType:'json',    
+		    success:function(data){
+		    	data=JSON.parse(data);
+		    	if(data.stats=='error'){
+		    		alert(data.error);
+		    		return;
+		    	}
+		    	if(data.stats=='success'){
+		    		alert("成功");
+		    	}},
+		    error:function(xhr,textStatus){
+		    },   
+	});
+	
+}
+
+function modifyMange(i,user){
+	var div = ".div-modify"+i;
+	$(div).show();
+}
+
+function getLocalTime(nS) {  
+	var newDate = new Date();
+	newDate.setTime(nS );
+	return newDate.toLocaleDateString();
+}
+function jibie(ji){
+	if(ji==0){
+		return '超级管理员';
+	}
+	if(ji==1){
+		return '用户管理员';
+	}
+	if(ji==2){
+		return '内容管理员';
+	}
+}
+function deleteMange(username){
+	debugger;
+	if(!username)
+		username=$(".username1").val();
 	if(!username.trim()){
 			return;
 		}

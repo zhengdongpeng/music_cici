@@ -25,8 +25,7 @@ $(function() {
   
         // 初始化 数据  
         init : function() {  
-        	initCollectuser(singerid);
-        	initSonguser(singerid);
+        	initSong(singerid);
             // 数据一般来自服务器端,通过ajax 加载数据,这里是模拟  
             Player.data = songdata;  
             Player.name =songname;  
@@ -57,7 +56,7 @@ $(function() {
                 if (Player.currentIndex == -1) {  
                     $('#btn-next').click();  
                     $('#btn-order').click();
-                    $('#btn-play').hide();
+                   // $('#btn-play').hide();
                 }  
             });  
   
@@ -147,6 +146,15 @@ $(function() {
     Player.ready();  
  
 });  
+function playAllmusic(){
+    Player.audio.play();  
+    if (Player.currentIndex == -1) {  
+        $('#btn-next').click();  
+        $('#btn-order').click();
+       // $('#btn-play').hide();
+    }
+}
+
 function playmusic(i){
 	Player.audio.src = Player.path + Player.data[i];  
 	Player.audio.play();  

@@ -54,13 +54,7 @@ var islogin='<%=islogin%>';
               <li class="mout" onclick="setTab(1,1)">最新专辑</li>
             </ul>
             <div id="main1">
-              <ul>
-                <li><a target="_blank" class="pic" href="musiclist/77527.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/14579/77527_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77527.shtml">如果你是落花</a></div><a target="_blank" href="/mlist/14579.shtml">任妙音</a></li>
-                <li><a target="_blank" class="pic" href="musiclist/73086.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/33394/73086_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/73086.shtml">白狐妹妹</a></div><a target="_blank" href="/mlist/33394.shtml">艾美琦</a></li>
-                <li><a target="_blank" class="pic" href="musiclist/77523.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/951/77523_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77523.shtml">暧昧</a></div><a target="_blank" href="/mlist/951.shtml">薛之谦</a></li>
-                <li><a target="_blank" class="pic" href="musiclist/77486.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/10359/77486_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77486.shtml">最佳人选</a></div><a target="_blank" href="/mlist/10359.shtml">夏天Alex</a></li>
-                <li><a target="_blank" class="pic" href="musiclist/77399.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/3629/77399_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77399.shtml">T榜力量10</a></div><a target="_blank" href="/mlist/3629.shtml">群星</a></li>
-                <li><a target="_blank" class="pic" href="musiclist/77388.shtml"><img height="80px" width="80px" src="http://pic.yue365.com/22297/77388_100.jpg"></a><div class="ablumname"><a target="_blank" class="ablumlink" href="/musiclist/77388.shtml">河溪早安</a></div><a target="_blank" href="/mlist/22297.shtml">杨朗朗</a></li>
+              <ul class ="tuijian">
               </ul>
               <ul style="display:none;">
               <c:forEach var="zhuanji" items="${zuixinzj }">
@@ -134,9 +128,9 @@ var islogin='<%=islogin%>';
       <div class="bord">
          <ul id="menu5">
          <% if(islogin)  {%>
-          <span><a href="/bang/xinge.shtml" target="_blank">我的歌曲收藏夹</a></span>
+          <span><a href="userCollect.do" target="_blank">我的歌曲收藏夹</a></span>
           <%} else { %>
-                    <span><a href="/bang/xinge.shtml" target="_blank">推荐歌曲榜</a></span>
+                    <span><a href="ranking.do" target="_blank">推荐歌曲榜</a></span>
           <%} %>
         </ul>
         <div id="main5">

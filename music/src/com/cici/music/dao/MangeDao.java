@@ -1,5 +1,8 @@
 package com.cici.music.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import com.cici.music.pojo.MUser;
 import com.cici.music.pojo.User;
 
@@ -12,5 +15,9 @@ public interface MangeDao {
 	public int updateMUser(MUser mu);
 
 	public int delete(String str);
+
+	public List<MUser> queryMuser(Map<String, Object> map);
+
+	public int updateMJibie(Map<String, Object> map);
 
 }

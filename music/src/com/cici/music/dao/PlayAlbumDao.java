@@ -20,4 +20,6 @@ public interface PlayAlbumDao {
 
 	public int deleteAlbum(String str);
 
+	public List<Album> getAlbumColect(Param p);
+
 }

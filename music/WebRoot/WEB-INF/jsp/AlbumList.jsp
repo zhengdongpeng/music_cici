@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8" import="java.util.*,com.cici.music.pojo.*"%>
+    pageEncoding="utf-8" import="java.util.*,com.cici.music.pojo.*,com.cici.music.contans.*"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -85,10 +85,11 @@ width:33.33%;float:left;height: 120px;
 </html>
 <% int count=Integer.parseInt(request.getAttribute("size").toString());
  int num=0;
- if(count%3==0){
-	 num=count/3;
+ int pager=MusicConts.PAGER_COUNT;
+ if(count%pager==0){
+	 num=count/pager;
  }else{
-	 num=count/3+1;
+	 num=count/pager+1;
  }
  %>
 <<script type="text/javascript">

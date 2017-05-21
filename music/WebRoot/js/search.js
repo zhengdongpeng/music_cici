@@ -28,16 +28,20 @@ function setPager(n,val,type){
 		        	$(".listtable").html("");
 		        	var list = data.list;
 		        	 for(var i=0;i<list.length;i++){
+		        		 debugger;
+		        		 ////SearthText=SearthText.replace('关键字','<font color=red>关键字</font>')
+		        		 var song = list[i].sname;
+		        		 song=song.replace(val,'<font color=#FF00FF>'+val+'</font>');
 		        		 var 
-				    	 str="<tr><td  width='200px'><a href='playMusic.do?id="+list[i].sid+"target='_blank'>"
-				    			   +list[i].sname+"</a> </td><td  width='300px'>"+list[i].songerName+"</td>"
-				    			   +"<td  width='300px'>";
-				    	   if(!list[i].zjName==null && !list[i].zjname==""){
+				    	 str="<tr><td  ><a href='playMusic.do?id="+list[i].sid+"target='_blank'>"
+				    			   +song+"</a> </td><td >"+list[i].songerName+"</td>"
+				    			   +"<td  >";
+				    	   if(list[i].zjName){
 				    		  str=str+"<a href='playMusic.do?id="+list[i].zjid+"'target='_blank'>"
-				    				  +"</a>" ;
+				    				  +list[i].zjName+"</a>" ;
 				    	   }
-				    	   str=str+"</td><td  width='100px'><a class='listen' href='playMusic.do?id="+list[i].sid+
-				    			   " ><img  src='images/college.png'/></a></td></tr>";
+				    	   str=str+"</td><td  ><a class='listen' href='playMusic.do?id="+list[i].sid+
+				    			   "' ><img  src='images/college.png'/></a></td></tr>";
 				    	   $(".listtable").append(str);
 		        	 }
 		        }else if(type=="album"){

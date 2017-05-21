@@ -45,6 +45,31 @@ public class MangeController {
 		return mangeService.delete(request);
 		
 	}
+	
+
+	@ResponseBody
+	@RequestMapping("mangequery")
+	public String mangequery(HttpServletRequest request) {
+		String type = request.getParameter("type");
+		String result=null;
+		if("managequery".equals(type)){
+			result = mangeService.queryForName(request);
+		}
+		return result;
+		
+	}
+	
+	@ResponseBody
+	@RequestMapping("mangeModify")
+	public String mangeModify(HttpServletRequest request) {
+		String type = request.getParameter("type");
+		String result=null;
+		if("jibie".equals(type)){
+			result = mangeService.updateMange(request);
+		}
+		return result;
+		
+	}
 
 	@RequestMapping("mangepager")
 	public String toMangepager(HttpServletRequest request) {

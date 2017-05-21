@@ -43,21 +43,22 @@ text-align:center;
 <script type="text/javascript" src="js/mainpage.js"></script>
 <script type="text/javascript" src="js/music.js"></script>
 <style type="text/css">
-.div-a{ float:left;width:30%; height:100%; background-color: #FFE4E1;} 
+.div-a{ float:left;width:100%; height:350px; background-color: #FFE4E1;} 
+.div-a1{ float:left;width:30%; height:100px;} 
 .div-d{ float:right;width:100%;height:100px;font-size: 18px;margin-top:20px}
 .data-div{ float:right;width:69%;}
-.div-b{ font-size: 18px;margin-top:1px;width:100%;float:left;overflow:hidden;} 
+.div-b{ font-size: 18px;margin-top:1px;width:100%; float:left;overflow:hidden;} 
 .div-c{ float:left;font-size: 18px;margin-top:10px;width:100% ; margin-bottom: 100px} 
 .div-e{ margin-top:20px;} 
 .div-f{ margin-top:20px; height:70px;position:fixed;bottom:0px;left:0px; width:100%;
 background-color:rgba(0,0,0,0.8) ; } 
-.li-div1{ float:left;width:49%; height:100px;} 
+.li-div1{ float:left;width:100%; height:100px;} 
 .albumul ul{
-width:1200px;
+width:286px;
 }
 #m-list{width:100%;}
 ul li{
-width:25%;float:left;height: 180px;
+width:33.33%;float:left;height: 180px;
 }
 </style>
 </head>
@@ -67,6 +68,7 @@ width:25%;float:left;height: 180px;
  <jsp:include page="../head.jsp"></jsp:include>
 </div>
 <div>
+<div class="div-a1" >
 <div class="div-a" align="center">
 <div>
 <img src="<%=user.getHead() %>"  width="200" height="200"/>
@@ -77,29 +79,25 @@ width:25%;float:left;height: 180px;
 		所在城市：<%=user.getCity() %><br>
 		生日：<%=user.getBirthday()%><br>
 	<%=user.getEmail() %>
-	
 </div>
 </div> 
-
-
-<div class="data-div">
 <div class="div-b">
-	<div><img src="images/album.png" width="78" height="128" /><hr></div>
+	<div><p>专辑</p><hr></div>
 	<div class="div-e">
 	<ul id="albumul" class="albumul">
 	</ul>
 	</div>
 </div>
+</div>
+<div class="data-div">
 <div class="div-c">
 <div><img src="images/song.png" width="78" height="128" />播放列表 <button id="btn-play" class="btn btn-success" style="height: 40px;width: 140px" >  
                             点击播放
                         </button>  
+             <div  style="float: right;"><img class="music-top" src="<%=user.getHead() %>"  width="150" height="150"/></div>
 <hr></div>
 <div>
 <ul id = "m-list">
-	<li style="width:20%;height: 30px;"> <a>dsdsdsd</a></li>
-	<li style="width:20%;height: 30px;"> <a>dsdsdsd</a></li>
-	<li style="width:20%;height: 30px;"> <a>dsdsdsd</a></li>
 </ul>
 </div>
 </div>
@@ -166,8 +164,11 @@ function initSonguser(id){
 		    				$("#audio1").src=list[i].song;
 		    				$(".img-head").src=list[i].img;
 		    			}
-		    				$("#m-list").append("<li style='width:20%;height: 40px;'> <span class='a-list' index='"+i
-		    				+"' >"+list[i].sname+"</span></li>");
+		    			var str="<tr style='width:100%;height: 40px;'><td style='width:10%;'><img src='"+list[i].img+" ' width='40px' height='40'/></td>"
+		    			+"<td  style='width:40%;line-height: 40px;height: 50px;text-align: center;vertical-align:middle;'><span class='a-list' index='"+i
+	    				+"' >"+list[i].sname+"</span></td><td style='width:20%;vertical-align:middle;'>"+list[i].songerName+"</td>"+
+	    				"<td style='width:20%;vertical-align:middle;'>"+list[i].zjName+" </td><td  style='width:20%;vertical-align:middle;'><a class ='play-a' onclick='playmusic("+i+")'>播放</a></td></tr>"
+		    				$("#m-list").append(str);
 		    			
 		    		}
 		    		return;
@@ -198,7 +199,7 @@ function initCollectuser(id){
 		    		var list=data.list;
 		    		for(var i=0;i<list.length;i++){
 		    			var str="<li><div class='li-div1'><a href='playAlbum.do?id="+list[i].albumId
-		    			+"'><img src='"+list[i].img+"' width='120' height='120' /></a>";
+		    			+"'><img src='"+list[i].img+"' width='90' height='90' /></a>";
 		    			str=str+""+list[i].aname+""+
 		    			"</div></li>";
 		    			$(".albumul").append(str);

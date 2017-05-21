@@ -33,12 +33,12 @@
 		<input name="type"  type="radio" value="singer">
 		<span>歌手</span>
 	</div>
-	<div style="display:inline-block; float:left; margin-top:7px;"> 欢迎来到cici－－音乐网</div>
+	<div style="display:inline-block; float:left; margin-top:7px;"> 欢迎来到飘乐网</div>
 	
 </div>
   
   <div id="login">
- <span>欢迎来到cici－－音乐网</span>
+ <span>欢迎来到飘乐网</span>
  </div>
  <div>
   <ul id="nav">

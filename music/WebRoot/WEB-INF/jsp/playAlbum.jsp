@@ -52,11 +52,13 @@ text-align:center;
 .div-d{ float:right;width:66%;height:200px;}
 .div-b{ float:left;width:49%;height:200px;font-size: 18px;margin-top:20px} 
 .div-c{ float:right;width:49%;height:200px;border:0px solid #000;font-size: 18px;margin-top:10px} 
-.div-f{float:left; width:100%;margin:0 auto;margin-top:10px }
+.div-f{float:left; width:100%;margin:0 auto;margin-top:10px ;margin-bottom: 70px}
 .div-img{float:left;width:50px;height:50px;}
 .zjgq{ height: 30px;font-size: 30px;font-weight: bold;background-color: lime;width: 100% ;}
 .tables{margin-top:13px;}
 .musiclist{font-size: 20px;height: 30px;}
+.div-f1{ margin-top:40px; height:70px;position:fixed;bottom:0px;left:0px; width:100%;
+background-color:rgba(0,0,0,0.8) ; } 
 li{height:30px;}
 </style> 
 </head>
@@ -93,7 +95,7 @@ li{height:30px;}
 </div>
 	
 <div class="div-f">
-<div class="zjgq">专辑歌曲</div>
+<div class="zjgq">专辑歌曲<div style="float: right;"><button onclick='playAllmusic()'>播放全部</button></div></div>
 <div class="tables">
 <table>
 <tbody class ="musicList">
@@ -106,19 +108,86 @@ li{height:30px;}
 </table>
 </div>
 </div>
+
+<div class="div-f1" align="center"> 
+    <div>  
+                    </div>  
+                         <div class="btn-group" id="ctrl-area" style="float: left;width: 48%;vertical-align:center;" align="right">  
+        
+                                      <button id="btn-pre" class="btn btn-success"  style="height: 40px;margin-bottom: 20px">  
+                            上一首  
+                        </button>  
+                        <button id="btn-next" class="btn btn-success"  style="height: 40px">  
+                            下一首  
+                        </button> 
+                        <img class="img-head" src="img/head/touxiang2.jpg"  width='50px' height='50px'/ >
+   </div>
+                        <div style="float: right;margin-top:10px; width: 49%;" align="left">  
+                        <audio  id="audio1" controls ></audio><br>
+                        <strong id="rmusic" style="color: #ffffff" >sddsd</strong>  </div>
+                      
+                        <a href="#" id="btn-order">  
+                                    </a>  
+                 
 </div>
-
-
+</div>
 </body>
 </html>
 <script type="text/javascript">
-
+var songdata= new Array();
+var songname= new Array();
+var songImg = new Array();
+var singerid='<%=album.getAlbumId()%>';
 $(document).ready(function(){
 	debugger;
 	initCollect(<%=album.getAlbumId()%>);
-	initSong(<%=album.getAlbumId()%>);
-});
 
+});
+function initSong(id){
+	$.ajax({
+		  url:'musicList.do',
+		    type:'POST', //GET
+		    async:true,    //��false,�Ƿ��첽
+		    data:{
+		       id:id
+		    },
+		    timeout:5000,    //��ʱʱ��
+		    dataType:'json',    //���ص���ݸ�ʽ��json/xml/html/script/jsonp/text
+		    success:function(data){
+		    	debugger;
+		    	data=JSON.parse(data);
+		    	if(data.stats=='error'){
+		    		window.location.href="index.do";
+		    		return;
+		    	}
+		    	if(data.stats=='success'){
+		    		var list = data.list;
+		    		$(".musicList").html("");
+		    		for(var i=0 ; i< list.length; i++){
+		    			var newDate = new Date();
+		    			newDate.setTime(list[i].fbtime );
+		    			songdata[i]=list[i].song;
+		    			songname[i]=list[i].sname;
+		    			songImg[i]=list[i].img;
+		    			if(i==0){
+		    				$("#audio1").src=list[i].song;
+		    				$(".img-head").src=list[i].img;
+		    			}
+		    			var str="<tr><td  class='musiclist'><a onclick='playmusic("+i+")'><div class='div-img'>" +
+		    					"<img src='"+list[i].img+"' width='40px' height='40px'/></div><span>"+
+		    			list[i].sname+"</span>------------------------------------<span>发布时间：";
+		    			str=str+newDate.toLocaleDateString()+"</span><span>歌曲类型:"+list[i].typeName+"</span></a></td></tr>";
+		    			$(".musicList").append(str);
+		    		}
+		    		
+		    		return;
+		    	}
+		    },
+		    error:function(xhr){
+		    },
+		   
+	});
+}
 function initCollect(id){
 $.ajax({
 	  url:'iscollect.do',
@@ -145,3 +214,4 @@ $.ajax({
 	   
 });}
 </script>
+<script type="text/javascript" src="js/audio1.js"></script>

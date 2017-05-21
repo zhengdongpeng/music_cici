@@ -42,13 +42,28 @@
 	select song.sid,
 song.img,
 song.sname,
-song.song
+song.song,
+songer.sname as songerName,
+z.zname as zjName
+from collectsong c,songer, song  left join zhuanji z on song.zjid = z.zhujiid
 
-from song ,collectsong c
-
-where c.uid=#{searchParam} and song.sid=c.sid
+where song.songerid=songer.sid and c.uid=#{searchParam} and song.sid=c.sid
 	</select>
-	
+	<select id="getSongListForAlbumid"  parameterType="com.cici.music.pojo.Param" resultType="com.cici.music.pojo.Song">
+	select song.sid,
+song.img,
+song.sname,
+song.song,
+songer.sname as songerName,
+z.zname as zjName
+from songer, song  left join zhuanji z on song.zjid = z.zhujiid
+
+where song.songerid=songer.sid and song.zjid in
+(
+		select c.sid
+		from collectzhuanji c
+		where c.uid=#{searchParam} )
+	</select>
 	<select id="getCollectRanking" parameterType="com.cici.music.pojo.Param" resultType="com.cici.music.pojo.SongDto">
 	 select   song.sid,
             song.sname as name,

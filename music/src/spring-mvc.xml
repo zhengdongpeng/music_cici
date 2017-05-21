@@ -71,6 +71,9 @@
 			<mvc:mapping path="/fileUploadSong.do" />
 			<mvc:mapping path="/fileUploadAlbum.do" />
 			<mvc:mapping path="/fileUploadSinger.do" />
+			<mvc:mapping path="/queryUserForUsername.do"/>
+			<mvc:mapping path="/mangequery.do"/>
+			<mvc:mapping path="/mangeModify.do"/>
 			<!-- 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->
 			<bean class="com.cici.music.interceptor.MangeloginInterceptor" />
 		</mvc:interceptor>

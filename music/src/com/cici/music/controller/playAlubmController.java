@@ -57,6 +57,11 @@ public class playAlubmController {
 		return playAlbumService.musicList(request);
 	}
 	
+	@ResponseBody
+	@RequestMapping("albumCollect")
+	public String albumCollect(HttpServletRequest request){
+		return playAlbumService.albumCollect(request);
+	}
 	
 
 }

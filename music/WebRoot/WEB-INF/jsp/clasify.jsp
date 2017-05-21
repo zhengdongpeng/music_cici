@@ -1,5 +1,5 @@
 
-<%@ page language="java" contentType="text/html; charset=utf-8"	   pageEncoding="utf-8" import="java.util.*,com.cici.music.pojo.*"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"	   pageEncoding="utf-8" import="java.util.*,com.cici.music.contans.*,com.cici.music.pojo.*"%>
     <%  Map<Integer,Integer> typenum =(Map<Integer,Integer>) request.getAttribute("typenum"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
  <jsp:include page="head.jsp"></jsp:include>

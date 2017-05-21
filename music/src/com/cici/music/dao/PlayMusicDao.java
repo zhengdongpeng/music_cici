@@ -51,6 +51,8 @@ public interface PlayMusicDao {
 
 	public void ModifyClickUp(Map<String, Object> map);
 
+	public List<Song> getSongListForAlbumid(Param p);
+
 
 
 }

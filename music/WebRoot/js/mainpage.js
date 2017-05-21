@@ -6,7 +6,37 @@ $().ready(function(){
 	middlelist();
 	singer();
 	initRanking();
+	tuijianalbum();
 });
+
+function tuijianalbum(){
+	$.ajax({
+		  url:'albumCollect.do',
+		    type:'POST', //GET
+		    async:true,    //��false,�Ƿ��첽
+		    data:{
+		    },
+		    timeout:5000,    //��ʱʱ��
+		    dataType:'json',    //���ص���ݸ�ʽ��json/xml/html/script/jsonp/text
+		    success:function(data){
+		    	debugger;
+		        $(".tuijian").html("");
+		        data=JSON.parse(data);
+		        var list =data.list;
+		        for (var i=0;i<list.length;i++){
+		        	var str = "<li><a target='_blank' class='pic' href='playAlbum.do?id="+list[i].albumId+"'>" +
+		        			"<img height='80px' width='80px' src='"+list[i].img+"'></a><div class='ablumname'>"+
+		        			"<a target='_blank' class='ablumlink' href='playAlbum.do?id="+list[i].albumId+"'>"+
+		        			list[i].aname+"</a></div><a target='_blank' href='singer.do?sid="+list[i].singerId+"'>"+list[i].singername+"</a></li>"
+		        			 $(".tuijian").append(str);
+		        }
+	
+		    },
+		    error:function(xhr){
+		    },
+		   
+	});
+}
 
 function initRanking(){
 	$.ajax({
@@ -34,7 +64,11 @@ function initRanking(){
 	});
 }
 function createList1(clazz,song){
-	 for(var i=0;i<song.length;i++){
+	var len = song.length;
+	if(len>20){
+		len=20;
+	}
+	 for(var i=0;i<len;i++){
 	$(clazz).append("<li><dl class='songname'> <a target='m' href='playMusic.do?id="+song[i].sid+"' >"+song[i].name+"</a>   </dl> </li>");
 	 }
 	 }
@@ -60,7 +94,7 @@ function singer(){
 		         */
 		        var head=data.head;
 		       for(var i=0;i<head.length;i++){
-		    	   $(".singerpic").append("<a href='singer.do?sid="+head[i].sid+"'> <img src='"+head[i].head+"' width='90' height='90' ></img> </a>");
+		    	   $(".singerpic").append("<li><a href='singer.do?sid="+head[i].sid+"'> <img src='"+head[i].head+"' width='90' height='90' ></img> </a></li>");
 		       }
 		       
 		       var singer=data.singer;
@@ -68,7 +102,7 @@ function singer(){
 		        * <li><span>1</span><a href="/mlist/18083.shtml">TFBOYS</a></li>
 		        */
 		       for(var i=0;i<singer.length;i++){
-		    	   $("#Top100").append("<li><span>'"+i+"'</span>  <a href='singer.do?sid="+singer[i].sid+"'>"+singer[i].sname+"</a></li>");
+		    	   $("#Top100").append("<li><span>"+(i+1)+"</span>  <a href='singer.do?sid="+singer[i].sid+"'>"+singer[i].sname+"</a></li>");
 		       }
 		       },
 		    error:function(xhr,textStatus){

@@ -1,6 +1,9 @@
 package com.cici.music.service;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -134,6 +137,37 @@ public class MangeService {
 		else {
 			 i=mangeDao.delete(str);
 		}
+		if(i>0){
+			json.put("stats", "success");
+			json.put("success", "成功");
+		}else{
+			json.put("error", "不存在");
+		}
+		return json.toJSONString();
+	}
+
+	public String queryForName(HttpServletRequest request) {
+		JSONObject json =new JSONObject();
+		String name = request.getParameter("username");
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("name", name);
+		map.put("type", MusicConts.QUERY_ALL);
+		map.put("like_",MusicConts.QUERY_LIKE );
+		List<MUser> user = mangeDao.queryMuser(map);
+		json.put("list", user.toArray());
+		return json.toJSONString();
+	}
+
+	public String updateMange(HttpServletRequest request) {
+		
+		JSONObject json =new JSONObject();
+		String name = request.getParameter("username");
+		String jibie = request.getParameter("jibie");
+		json.put("stats", "error");
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("username", name);
+		map.put("jibie",jibie );
+		int i=mangeDao.updateMJibie(map);
 		if(i>0){
 			json.put("stats", "success");
 			json.put("success", "成功");

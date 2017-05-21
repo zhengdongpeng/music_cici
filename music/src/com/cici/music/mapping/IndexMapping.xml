@@ -161,7 +161,7 @@ left join click on song.sid=click.id
 WHERE
 	song.songerid = songer.sid
 	<if test="searchType==1">
-	and click.count>5
+	and click.count>3
 	</if>
 ORDER BY
 <if test="searchType==1">

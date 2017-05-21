@@ -213,10 +213,18 @@ public class PlayMusicService {
 		json.put("stats", "error");
 		Param p=new Param(0,
 				0,uid,2,0);
-		List<Album> list1 = playAlbumDao.getAlbumListForUid(p);
-		List<Integer> li = new ArrayList<Integer>();
-		
+		List<Song> list1 = playMusicDao.getSongListForAlbumid(p);
 		List<Song> list = playMusicDao.getMusicListForUid(p);
+		Map<Integer,Object> map = new HashMap<Integer,Object>();
+		for(Song s : list){
+			map.put(s.getSid(), s);
+		}
+		for(Song s : list1){
+			if(map.containsKey(s.getSid())){
+				continue;
+			}
+			list.add(s);
+		}
 		if(list!=null){
 			json.put("stats", "success");
 			json.put("list", list);

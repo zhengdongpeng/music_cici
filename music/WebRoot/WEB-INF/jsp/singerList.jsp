@@ -85,10 +85,10 @@ width:20%;float:left;height: 140px;
 </html>
 <% int count=Integer.parseInt(request.getAttribute("size").toString());
  int num=0;
- if(count%3==0){
-	 num=count/3;
+ if(count%10==0){
+	 num=count/10;
  }else{
-	 num=count/3+1;
+	 num=count/10+1;
  }
  %>
 <<script type="text/javascript">
