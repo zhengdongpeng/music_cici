@@ -64,7 +64,7 @@ font-size:20px;
     男&nbsp;&nbsp;&nbsp;
     <input name="sex" type="radio" value="女" />
     女&nbsp;&nbsp;&nbsp; <input name="sex" type="radio" value="组合" />组合<br>
-                      歌曲类型：
+                      歌手类型：
                           <select  class="typeid" name="typeid">
   						<option value ="1">民谣</option>
   						<option value ="2">古典音乐</option>
@@ -88,15 +88,15 @@ font-size:20px;
        		<br>
 	   <p>删除歌手</p>
        		<hr>
-       		       歌曲ID：<input type="text"  name="songnamedelete" class="songnamedelete""/>
+       		       歌手ID：<input type="text"  name="songnamedelete" class="songnamedelete""/>
        		       <button onclick="deleteSinger()">歌曲ID删除</button>
        		
        		<br>
        		<br>
        		<p>修改歌手</p>
        		<hr>
-       		歌曲名：<input type="password"  name="password1" class="password1""/><button onclick="updateMange()">歌曲名查询</button><br>
-       		歌曲ID：<input type="password"  name="password1" class="password1""/><button onclick="updateMange()">歌曲ID查询</button>
+       		歌手名：<input type="text"  name="password1" class="password1""/><button onclick="updateMange()">歌曲名查询</button><br>
+       		歌手ID：<input type="text"  name="password1" class="password1""/><button onclick="updateMange()">歌曲ID查询</button>
 			<br>
 			<br>
 	

@@ -114,17 +114,25 @@ li{height:30px;}
                     </div>  
                          <div class="btn-group" id="ctrl-area" style="float: left;width: 48%;vertical-align:center;" align="right">  
         
-                                      <button id="btn-pre" class="btn btn-success"  style="height: 40px;margin-bottom: 20px">  
-                            上一首  
-                        </button>  
-                        <button id="btn-next" class="btn btn-success"  style="height: 40px">  
-                            下一首  
-                        </button> 
+                          
+                        <div style="float: right; width: 50px ;height: 100%;margin-top: 10px">
                         <img class="img-head" src="img/head/touxiang2.jpg"  width='50px' height='50px'/ >
+                        </div>
+                    
+                       <div style="float: right; width: 60px;height: 100%;margin-top: 10px" align="center">
+   <button id="btn-next" class="btn btn-success"  style="height: 51px;width:51px;border:none; margin-bottom: 20px;background-image: url('images/xysg.gif' );background-color: rgba(255,255,255,0)">  
+                           
+                        </button>                        
+                         </div>
+                                <div style="float: right; width: 60px;height: 100%;margin-top: 10px" align="center">
+ <button id="btn-pre" class="btn btn-success"  style="height: 51px;width:51px;border:none; margin-bottom: 20px;background-image: url('images/sys.gif' );background-color: rgba(255,255,255,0)">  
+                        
+                        </button>                          
+                        </div>
    </div>
                         <div style="float: right;margin-top:10px; width: 49%;" align="left">  
                         <audio  id="audio1" controls ></audio><br>
-                        <strong id="rmusic" style="color: #ffffff" >sddsd</strong>  </div>
+                        <strong id="rmusic" style="color: #ffffff" >专辑音乐</strong>  </div>
                       
                         <a href="#" id="btn-order">  
                                     </a>  
