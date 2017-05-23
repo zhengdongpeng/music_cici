@@ -53,6 +53,10 @@ public interface PlayMusicDao {
 
 	public List<Song> getSongListForAlbumid(Param p);
 
+	public List<Singer> getSingerForParam(Map<String, Object> map);
+
+	public int updateSinger(Singer song);
+
 
 
 }

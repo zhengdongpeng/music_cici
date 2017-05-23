@@ -54,6 +54,8 @@ public class MangeController {
 		String result=null;
 		if("managequery".equals(type)){
 			result = mangeService.queryForName(request);
+		}else if("singerquery".equals(type)){
+			result = playMusicService.singerForName(request);
 		}
 		return result;
 		

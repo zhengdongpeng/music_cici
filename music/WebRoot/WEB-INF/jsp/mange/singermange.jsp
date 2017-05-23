@@ -52,11 +52,11 @@ font-size:20px;
   </div>
 <div  class="right">
 		<%if(mange.getJibie()==2) {%>
-       <div>
+       <div style="float: left;width: 50%">
        		<p>创建歌手
        	</p>
        		<hr>
-       		
+       		<div>
        		  <form name="Form2" action="fileUploadSinger.do" method="post"  enctype="multipart/form-data">
        		  			<input type="hidden" name="type" value="1"/>
                       歌手名：<input type="text"  name="singername1" class="singername1"/><br>
@@ -64,7 +64,7 @@ font-size:20px;
     男&nbsp;&nbsp;&nbsp;
     <input name="sex" type="radio" value="女" />
     女&nbsp;&nbsp;&nbsp; <input name="sex" type="radio" value="组合" />组合<br>
-                      歌手类型：
+                      <!-- 歌手类型：
                           <select  class="typeid" name="typeid">
   						<option value ="1">民谣</option>
   						<option value ="2">古典音乐</option>
@@ -75,45 +75,126 @@ font-size:20px;
   						<option value ="1">情歌对唱</option>
   						<option value ="2">草原歌曲</option>
  	 					</select>
-                       <br>
+                       <br> -->
                        
                     歌手头像：    <input name="file" type="file"  accept="image/jpeg,image/png"  value="浏览">
                       <div>
     <h1>介绍</h1>
-			<textarea rows="4" cols="80"  class="js" name="js"></textarea>
-                      </div>
+			<textarea rows="4" cols="40"  class="js" name="js"></textarea>
                       <input type="submit"  value="提交"/>
+                      </div>
                 	</form>
-       		<br>
-       		<br>
-	   <p>删除歌手</p>
+                	</div>
+                	</div>
+                	
+                	
+                	
+  <div style="float: right;width: 50%; visibility:hidden" class="updatesinger">
+       		<p>歌手修改
+       	</p>
        		<hr>
-       		       歌手ID：<input type="text"  name="songnamedelete" class="songnamedelete""/>
-       		       <button onclick="deleteSinger()">歌曲ID删除</button>
+       		<div>
+       		  <form name="Form3" action="fileUploadSinger.do" method="post"  enctype="multipart/form-data">
+       		  			<input type="hidden" name="type" value="2"/>
+       		  		<input type="hidden"  class="singerid" name="singerid" value="0"/>
+       		  			
+                      歌手名：<input type="text"  name="singername1" class="singernameupdate"/><br>
+                      性别：<input name="sex" type="radio" value="男" checked="checked"/>
+    男&nbsp;&nbsp;&nbsp;
+    <input name="sex" type="radio" value="女" />
+    女&nbsp;&nbsp;&nbsp; <input name="sex" type="radio" value="组合" />组合<br>
+                <!--       歌手类型：
+                          <select  class="typeidupdate" name="typeid">
+  						<option value ="1">民谣</option>
+  						<option value ="2">古典音乐</option>
+  						<option value="3">影视金曲</option>
+  						<option value ="1">网络歌曲</option>
+  						<option value ="2">摇滚歌曲</option>
+  						<option value="3">流行歌曲</option>
+  						<option value ="1">情歌对唱</option>
+  						<option value ="2">草原歌曲</option>
+ 	 					</select>
+                       <br> -->
+                       
+                    歌手头像：    <input name="file" type="file"  accept="image/jpeg,image/png"  value="浏览">
+                    <img  class="headupdate"  width="80px" height="80px"/>
+                      <div>
+    <h1>介绍</h1>
+			<textarea rows="4" cols="40"  class="jsupdate" name="js"></textarea>
+                      </div>
+                      <input type="submit"  value="修改"/>
+                	</form>
+                	</div>
+                	      	</div>
+       		<br>
+       		<br>
+       		<p>操作歌手</p>
+       		<hr>
+       		       歌手名：<input type="text"  name="songernamequery" class="songernamequery"/>支持模糊
+       		       <button onclick="querySinger()">点击查询</button>
        		
        		<br>
        		<br>
-       		<p>修改歌手</p>
-       		<hr>
-       		歌手名：<input type="text"  name="password1" class="password1""/><button onclick="updateMange()">歌曲名查询</button><br>
-       		歌手ID：<input type="text"  name="password1" class="password1""/><button onclick="updateMange()">歌曲ID查询</button>
-			<br>
-			<br>
+       		<ul class="query" style="width: 600px">
+       		</ul>
+	   
 	
        		
        </div>
               <%} else{out.print("无访问权限");} %>
  </div>
-</div>
 </body>
 </html>
 
 </body>
 </html>
 <script>
+var arraydata=null;
+function querySinger(){
+	var username = $(".songernamequery").val();
+	if(!username.trim()){
+		return;
+	}
+	$.ajax({
+		  url:"mangequery.do",
+		    type:'POST',  async:true,    
+		    data:{username:username,
+		    	type:'singerquery'},
+		    timeout:5000,  dataType:'json',    
+		    success:function(data){
+		    	data=JSON.parse(data);
+		    	$(".query").html("");
+		    	debugger;
+		    	var list = data.list;
+		    	arraydata=list;
+		    	for(var i=0;i<list.length;i++){
+		    		var str = "<tr><td width='100px'>"+list[i].sname+"</td><td width='150px'>"+list[i].sex+"</td>"
+		    		+"<td width='200px'><a onclick=\"modifySinger('"+i+"')\">修改</a>|<a onclick=\"deleteSinger('"+list[i].sid+"')\">删除</a</td></tr>";
+		    		$(".query").append(str);
+		    	}
+		    },
+		    error:function(xhr,textStatus){
+		    	alert("error");
+		    },   
+	});
+	
+}
 
-function deleteSinger(){
-	var username=$(".songnamedelete").val();
+function modifySinger(i){
+	debugger;
+	if(!arraydata){
+		alert("数据异常");
+		return;
+	}
+	$(".singernameupdate").val(arraydata[i].sname);
+	 $(".singerid").val(arraydata[i].sid); 
+	$(".headupdate").attr("src",arraydata[i].head);
+	$(".jsupdate").val(arraydata[i].jieshao);
+	$(".updatesinger").css("visibility","visible");
+}
+
+function deleteSinger(sid){
+	var username=sid;
 	if(!username.trim()){
 			return;
 		}
@@ -140,17 +221,7 @@ function deleteSinger(){
 }
 
 
-$("#input1").shijian({
-	Format: "yyyy-mm-dd",
-	Order: 'yymmdd',
-	y:-60,//当前年份+10
-	Hour: false, //是否显示小时
-	Minute: false, //是否显示分钟
-	Seconds: false,//是否显示秒
-	yyyy: "0000", //当前显示年
-	mm: "00", //当前显示月
-	dd: "00", //当前显示日
-});
+
 function createMange(){
 	var username = $(".username").val();
 	var password = $(".password").val();
@@ -229,42 +300,4 @@ function pushajax(data,url){
 		   
 	});
 }
-</script>
-<script type="text/javascript">
-	sjObj.defaults = {
-		type: "time",
-		Format: "yyyy-mm-dd", //显示时间格式//yyyy表示年份 ，mm月份 ，dd天数  支持三种格式 dd-mm-yyyy ，mm-dd-yyyy yyyy-mm-dd
-		Order: 'yymmdd',
-		width: 60, //默认宽度
-		height: 32,//默认数值高度
-		Year: true, //是否显示年//
-		Month: true, //是否显示月//
-		Day: true, //是否显示日//
-		Hour: false, //是否显示小时
-		Minute: false, //是否显示分钟
-		Seconds: false, //是否显示秒
-		yyyy: "0000", //当前显示年
-		mm: "00", //当前显示月
-		dd: "00", //当前显示日
-		h: "00", //当前显示小时
-		m: "00", //当前显示分
-		s: "00", //当前显示秒
-		yearText: "年", //顶部时间 年单位 文字
-		monthText: "月", //顶部时间 月单位 文字
-		dayText: '日', //顶部时间 日单位 文字
-		hourText: '时', //顶部时间 时单位 文字
-		minuteText: '分', //顶部时间 分单位 文字
-		secondsText: '秒', //顶部时间 秒单位 文字
-		okText: "确认", //按钮确认键文字
-		cancelText: "取消", //按钮取消键文字
-		showNowTime: true, //是否默认显示当前时间
-		alwaysShow: false, //是否默认直接显示插件
-		timeElm: null, //放时间插件的box
-		onfun: function() { //取消改变时间时候执行事件
-		
-		},
-		okfun: function() { //确认时间时候执行事件
-
-		},
-	}
 </script>
