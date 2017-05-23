@@ -25,7 +25,7 @@ font-size:20px;
 
 </style>
 </head>
-<body>
+<body background="images/bg_dong.gif">
 <div id="wrapper">
 <jsp:include page="head.jsp"></jsp:include>
   
@@ -38,7 +38,7 @@ font-size:20px;
        <td >   
        <h1 class="tou">登录</h1><br/><br/>
        <div class="logindiv">
-           <table width="432" height="359" border="1" class="kuang"> 
+           <table width="432" height="359" border="0" class="kuang"> 
             <tr>
               <td width="122" height="48">账号</td>
               <td width="294"><input type="text" class="username" name="username"/></td>
@@ -48,7 +48,7 @@ font-size:20px;
               <td><input type="password" class="password" name="password"/></td>
             </tr>
             <tr height="48">
-            <td>
+            <td colspan="2" align="left">
            <a href='#' onclick="javascript:changeImg()" > <img id="img" src="authImage" />
         <label >看不清？</label></a>
     </td>
@@ -58,8 +58,8 @@ font-size:20px;
               <td><input type="text" class="yanzhengma" name="yanhengma"/></td>
             </tr>
             <tr>
-              <td height="77" colspan="2"><p>
-              <button  class="sumbit" onclick="userlogin()"> 登录</button></p>
+              <td height="77" colspan="2" align="center" ><p>
+                <input class="sumbit" onclick="userlogin()" name="input" type="button"  style="background-image:url(images/login.jpg);width:105px;height:55px;" />
               <p>&nbsp;</p></td>
               
             </tr>

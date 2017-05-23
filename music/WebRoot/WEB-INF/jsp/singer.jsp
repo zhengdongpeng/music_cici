@@ -44,7 +44,7 @@ text-align:center;
 <script type="text/javascript" src="js/music.js"></script>
 <style type="text/css">
 .div-a{ float:left;width:30%; height:200px; background-color: #FFE4E1;} 
-.div-d{ float:right;width:66%;height:200px;font-size: 18px;margin-top:20px}
+.div-d{ float:right;width:66%;height:200px;color:white;font-size: 20px;margin-top:20px;background-color:rgba(2,130,238,0.6);}
 .div-b{ font-size: 18px;margin-top:1px;width:958px;float:left;overflow:hidden;} 
 .div-c{ float:left;font-size: 18px;margin-top:10px;width:900px;} 
 .div-e{ margin-top:20px;} 
@@ -58,7 +58,7 @@ width:33.33%;float:left;height: 120px;
 }
 </style>
 </head>
-<body >
+<body background="images/guzheng.jpg">
 <div id="wrapper">
 <div>
  <jsp:include page="head.jsp"></jsp:include>

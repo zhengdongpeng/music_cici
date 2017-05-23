@@ -19,11 +19,11 @@
 			    	//data=JSON.parse(data);
 			    	
 			        $(".collect").html("");
-			        $(".hot").html("");
+			        $(".hot1").html("");
 			        $(".new").html("");
 			        data=JSON.parse(data);
 			        createList(".collect",data.rank);
-			        createList(".hot",data.hot);
+			        createList(".hot1",data.hot);
 			        createList(".new",data.news);
 			    },
 			    error:function(xhr){

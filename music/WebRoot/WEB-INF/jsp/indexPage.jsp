@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- 手机 -->
 <script type="text/javascript">BAIDU_CLB_fillSlot("203363");</script>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>cici的音乐网站</title>
+<title>飘悦网</title>
 <meta name="keywords" content="音乐,音乐网,音乐网站,最新音乐,歌曲,mp3,歌曲mp3,mp3下载,好听的歌曲,网络歌曲" />
 <meta name="description" content="高品质音乐Mp3下载试听网站，提供最新最好听的流行歌曲、网络歌曲，以及权威、全面的歌曲排行榜。" />
 

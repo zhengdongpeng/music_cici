@@ -25,7 +25,7 @@ font-size:20px;
 }
 </style>
 </head>
-<body>
+<body background="images/bg_dong.gif">
 <div id="wrapper">
 <jsp:include page="head.jsp"></jsp:include>
   
