@@ -107,7 +107,7 @@ function queryMange(){
 		    		var str = "<tr><td width='100px'>"+list[i].username+"</td><td width='150px'>"+jibie(list[i].jibie)+"</td><td width:='150px'>创建时间:"+getLocalTime(list[i].zctime)+
 		    		"</td><td width='200px'><a onclick=\"modifyMange('"+i+","+list[i].username+"')\">权限修改</a>|<a onclick=\"deleteMange('"+list[i].username+"')\">删除</a</td>"
 		    		str= str+"<td><div class='div-modify"+i+"' style='display: none'> 管理员级别设定：	<select  class='jibie"+i+"'><option value ='1'>用户管理员</option>"+
-						"<option value ='2'>内容管理员</option>	</select>	<buttion onclick=\"modify("+i+","+list[i].username+")\"></button></div></td></tr>"
+						"<option value ='2'>内容管理员</option>	</select>	<button onclick=\"modify("+i+",'"+list[i].username+"')\">修改</button></div></td></tr>"
 		    		$(".query").append(str);
 		    	}
 		    },

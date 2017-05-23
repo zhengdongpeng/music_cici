@@ -174,6 +174,36 @@ public class UploadController {
     	       }
     	       request.setAttribute("url", "singermange.do");
     	        return  "mange/result";
+    	}else if("2".equals(type)){
+    		if(file.getSize()>0){
+    			String path = request.getSession().getServletContext().getRealPath("/img/singer");
+    			String imgName=new Date().getTime()+"zj";
+    			String[] tail=file.getOriginalFilename().split("\\.");
+    			String t = tail[tail.length-1];
+    			String Songpath=path+"/head/"+imgName+"."+t;
+    			File newFile=new File(Songpath);
+    			file.transferTo(newFile);
+    			song.setHead("img/singer/head/"+imgName+"."+t);
+    		}
+		 /**
+		  *处理
+		  */
+	        String songname =request.getParameter("singername1");
+	        String sid=request.getParameter("singerid");
+	        String sex =request.getParameter("sex");
+	        String js =request.getParameter("js");
+	        song.setSname(songname);
+	        song.setJieshao(js);
+	        song.setSex(sex);
+	        song.setSid(Integer.parseInt(sid));
+	       int i= playMusicService.updateSinger(song);
+	       if(i>0){
+	    	   request.setAttribute("result", "修改成功");
+	       }else{
+	    	   request.setAttribute("result", "修改失败"); 
+	       }
+	       request.setAttribute("url", "singermange.do");
+	        return  "mange/result";
     	}
     	return  "mange/result";
     }

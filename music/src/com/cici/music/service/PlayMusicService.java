@@ -260,4 +260,26 @@ public class PlayMusicService {
 		playMusicDao.ModifyClickAdd(map);
 	}
 
+
+	public String singerForName(HttpServletRequest request) {
+		JSONObject json = new JSONObject();
+		json.put("stats", "error");
+		String name = request.getParameter("username");
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("name",name);
+		map.put("mohu", 1);
+		List<Singer> list = playMusicDao.getSingerForParam(map);
+		if(list!=null){
+			json.put("stats", "success");
+			json.put("list", list);
+		}
+		return json.toJSONString();
+	}
+
+
+	public int updateSinger(Singer song) {
+		int i= playMusicDao.updateSinger(song);
+		return i;
+	}
+
 }

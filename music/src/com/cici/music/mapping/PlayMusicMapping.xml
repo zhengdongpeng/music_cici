@@ -136,6 +136,36 @@ songer.head
 from songer
  where songer.sid=#{0}
 </select>
+
+<select id="getSingerForParam" parameterType="hashmap"  resultType="com.cici.music.pojo.Singer">
+select songer.sid,
+songer.sname,
+songer.sex,
+songer.jieshao,
+songer.head
+from songer
+<where>
+<if test="mohu==1">
+	sname like CONCAT('%','${name}','%' ) 
+</if>
+</where>
+</select>
+<update id="updateSinger"  parameterType="com.cici.music.pojo.Singer">
+	update songer 
+	<set>
+			sname=#{sname},
+		<if test="sex!=null">
+			sex = #{sex},
+		</if>
+		<if test="jieshao!=null">
+			jieshao = #{jieshao},
+		</if>
+		<if test="head!=null">
+		 head=#{head},
+		</if>
+	</set>
+	where sid=#{sid}
+</update>
 <select id="queryCollectForId" parameterType="com.cici.music.pojo.Collect" resultType="com.cici.music.pojo.Collect">
 	select uid,sid
 	from
