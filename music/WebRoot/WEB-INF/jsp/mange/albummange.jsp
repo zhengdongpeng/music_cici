@@ -63,7 +63,7 @@ font-size:20px;
                        发行公司：<input type="text"  name="fxgs" class="fxgs"/><br>
                       
                        发布时间：<input type="text"  id="fbtime" class ="input1"/><br>
-                      歌曲类型：
+                      专辑类型：
                           <select  class="typeid" name="typeid">
   						<option value ="1">民谣</option>
   						<option value ="2">古典音乐</option>
@@ -96,15 +96,15 @@ font-size:20px;
        		<br>
 	   <p>删除专辑</p>
        		<hr>
-       		       歌曲ID：<input type="text"  name="songnamedelete" class="songnamedelete""/>
+       		       专辑ID：<input type="text"  name="songnamedelete" class="songnamedelete""/>
        		       <button onclick="deleteMange()">歌曲ID删除</button>
        		
        		<br>
        		<br>
        		<p>修改专辑</p>
        		<hr>
-       		歌曲名：<input type="password"  name="password1" class="password1""/><button onclick="updateMange()">歌曲名查询</button><br>
-       		歌曲ID：<input type="password"  name="password1" class="password1""/><button onclick="updateMange()">歌曲ID查询</button>
+       		专辑名：<input type="text"  name="password1" class="password1""/><button onclick="updateMange()">歌曲名查询</button><br>
+       		专辑ID：<input type="text"  name="password1" class="password1""/><button onclick="updateMange()">歌曲ID查询</button>
 			<br>
 			<br>
        </div>
