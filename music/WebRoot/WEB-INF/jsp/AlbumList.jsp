@@ -59,7 +59,7 @@ width:33.33%;float:left;height: 120px;
 }
 </style>
 </head>
-<body >
+<body background="images/bg_1.jpg">
 <div id="wrapper">
 <div>
  <jsp:include page="head.jsp"></jsp:include>

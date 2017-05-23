@@ -48,21 +48,21 @@ text-align:center;
 <script type="text/javascript" src="js/mainpage.js"></script>
 <script type="text/javascript" src="js/music.js"></script>
 <style> 
-.div-a{ float:left;width:30%; height:200px; background-color: #FFE4E1;} 
+.div-a{ float:left;width:30%; height:250px;} 
 .div-d{ float:right;width:66%;height:200px;}
-.div-b{ float:left;width:49%;height:200px;font-size: 18px;margin-top:20px} 
-.div-c{ float:right;width:49%;height:200px;border:0px solid #000;font-size: 18px;margin-top:10px} 
+.div-b{ float:left;width:49%;height:200px;color:#00FFCC;font-size: 20px;margin-top:10px; background-color: rgba(204,102,153,0.6);} 
+.div-c{ float:right;width:49%;height:200px;color:border:0px solid #000;font-size: 18px;margin-top:10px; background-color: rgba(255,255,51,0.6);} 
 .div-f{float:left; width:100%;margin:0 auto;margin-top:10px ;margin-bottom: 70px}
 .div-img{float:left;width:50px;height:50px;}
-.zjgq{ height: 30px;font-size: 30px;font-weight: bold;background-color: lime;width: 100% ;}
+.zjgq{ height: 35px;font-size: 28px;font-weight: bold;background-color:rgba(0,204,255,0.8);width: 100% ;}
 .tables{margin-top:13px;}
-.musiclist{font-size: 20px;height: 30px;}
+.musiclist{font-size: 20px;height: 30px; background-color: rgba(204,102,255,0.6);}
 .div-f1{ margin-top:40px; height:70px;position:fixed;bottom:0px;left:0px; width:100%;
 background-color:rgba(0,0,0,0.8) ; } 
 li{height:30px;}
 </style> 
 </head>
-<body >
+<body background="images/bg_4.jpg">
 <div id="wrapper">
 <div>
  <jsp:include page="head.jsp"></jsp:include>
@@ -70,7 +70,7 @@ li{height:30px;}
 <div >
 <div class="div-a" align="center">
 <div>
-<img src="<%=album.getImg() %>" width="150" height="150"/></div>
+<img src="<%=album.getImg() %>" width="224" height="221"/></div>
 <div>
     <span class="shoucang1" onclick="shoucangAlbum(<%=album.getAlbumId() %>)"><img height="40" width="70" src="images/shoucang.png"/></span>
 </div>

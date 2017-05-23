@@ -38,7 +38,7 @@ font-size:20px;
        <td >   
        <h1 class="tou">注册</h1><br/>
        <div>
-    <table height="477" border="1" class="kuang">
+    <table height="477" border="0" class="kuang">
     <tr>
         <td width="138" colspan="2" align="center"><img src="images/register.png" width="457" height="157" /></td>
         
@@ -87,10 +87,10 @@ font-size:20px;
         <label >看不清？</label></a></td>
       </tr>
       <tr>
-        <td colspan="2">
-        <button  class="sumbit" onclick="userregister()" align="center"> 注册</button></td>
+        <td colspan="2" align="center" >
         
-      </tr>
+        <input class="sumbit" onclick="userregister()" name="input" type="button"   style="background-image:url(images/register.jpg);width:155px;height:55px;" />
+      </td></tr>
     </table>
 </div>
       </td>
