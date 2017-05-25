@@ -22,4 +22,6 @@ public interface PlayAlbumDao {
 
 	public List<Album> getAlbumColect(Param p);
 
+	public int updateAlbum(Album song);
+
 }

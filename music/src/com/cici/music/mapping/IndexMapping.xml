@@ -72,10 +72,15 @@ GROUP BY type;
 SELECT
 zhuanji.zname as aname,
 zhuanji.zhujiid as albumId,
-zhuanji.img 
+zhuanji.js,
+zhuanji.fxgs,
+zhuanji.img ,
+songer.sname as singername
+
 FROM
-	zhuanji
+	zhuanji ,songer
 WHERE
+zhuanji.songerid = songer.sid and 
 zhuanji.zname LIKE  CONCAT('%','${searchParam}','%' )
 ORDER BY
 	zhuanji.zhujiid DESC
