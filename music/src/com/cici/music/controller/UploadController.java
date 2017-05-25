@@ -118,8 +118,6 @@ public class UploadController {
     	        song.setImg("img/zhuanji/head/"+imgName+"."+t);
     	        String songname =request.getParameter("albumname1");
     	        String fxgs =request.getParameter("fxgs");
-    	        String fbtime =request.getParameter("fbtime");
-    	        String songtype =request.getParameter("typeid");
     	        String singer =request.getParameter("singer1");
     	        String js =request.getParameter("js");
     	        song.setFbtime(new Date());
@@ -128,7 +126,6 @@ public class UploadController {
     	        song.setAname(songname);
     	        song.setJs(js);
     	        song.setSongerId(Integer.parseInt(singer));
-    	        song.setTypeId(Integer.parseInt(songtype));
     	       int i= playAlbumService.insertAlbum(song);
     	       if(i>0){
     	    	   request.setAttribute("result", "上传成功");
