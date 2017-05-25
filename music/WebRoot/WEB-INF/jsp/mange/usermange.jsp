@@ -23,11 +23,27 @@ color:#F39;
 font-size:20px;
 	font-weight:bold;
 }
-.left{width: 17%;float: left; background-color: gray;padding-top: 20px;padding-left: 40px}
-.right{ width: 75%;float: right;}
+.left{
+width: 17%;
+float: left; 
+background:url(images/mange/bgk.png) ;
+background-color: rgba(	127,255,212,0.7);
+height:360px;
+padding-top: 60px;
+padding-left: 40px;
+}
+.htbg{
+background-repeat: no-repeat;
+background-size: cover;
+}
+.right{ width: 75%;float: right;
+background-color: rgba(	127,255,212,0.7);
+height:460px;
+margin-bottom:100px;
+}
 </style>
 </head>
-<body>
+<body  background="images/mange/bgt2.gif" class="htbg">
 <div id="wrapper">
 <div>
 <jsp:include page="head.jsp"></jsp:include>

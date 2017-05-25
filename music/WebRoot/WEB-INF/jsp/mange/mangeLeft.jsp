@@ -22,7 +22,7 @@ font-size:20px;
 	font-weight:bold;
 }
 a{font-size: 20px;font-weight: bold;}
-li{height: 60px;}
+li{height: 56px; margin-left:10px;}
 </style>
 </head>
 <body>

@@ -33,10 +33,23 @@ width:900px;
 ul li{
 width:20%;float:left;
 }
- 
+
+.tr1{
+background-color:rgba(223,45,34,0.5);
+color:white;
+font-size:20px;
+	font-weight:bold;
+
+}
+.data{
+background-color:rgba(23,145,34,0.3);
+color:black;
+font-size:20px;
+	
+}
  </style>
 </head>
-<body >
+<body background="images/bg_dong.gif">
 <div id="wrapper">
 <div>
  <jsp:include page="head.jsp"></jsp:include>
@@ -47,39 +60,35 @@ width:20%;float:left;
     <% 
     if("song".equals(type)) {
     List<Song> list = (List<Song> )request.getAttribute("list");%>
-    <table>
-     <thead>
-    <tr>
+    <table >
+     <thead> 
+    <tr height="40px" class="tr1">
      <td width="200px">歌曲名</td>
      <td width="300px">歌手</td>
      <td width="300px">专辑</td>
-     <td width="100px">试听</td>
+     <td width="200px">试听</td>
      </tr>
     </thead>
-     <tbody class="listtable">
-     
+    
+     <tbody class="listtable">  
   <%  for(Song s : list){ 
     %>
-      <tr class="data" >
-
-      	<td class="songname">
-      		<a href="playMusic.do?id=<%=s.getSid() %>" target="_blank">
-      		<%=(s.getSname().replace((String)request.getAttribute("value"), "<font color=#FF00FF>"+request.getAttribute("value")+"</font>"))%></a>
-      		
-      	</td>
-      	<td class="singer" >
-      		<%=s.getSongerName() %>
-      	</td>
-      	<td class="ablum" >
-      	<% if(!"".equals(s.getZjName()) && ! (null== s.getZjName())){%>
+    
+    <tr class="data" height="30px">
+     <td><a href="playMusic.do?id=<%=s.getSid() %>" target="_blank">
+      		<%=(s.getSname().replace((String)request.getAttribute("value"), "<font color=#FF00FF>"+request.getAttribute("value")+"</font>"))%></a>		</td>
+     <td><%=s.getSongerName() %></td>
+     <td><% if(!"".equals(s.getZjName()) && ! (null== s.getZjName())){%>
       		<a href="playMusic.do?id=<%=s.getZjid()%>"  target="_blank"><%=s.getZjName() %></a>
-      	<%} %>
-      	</td>
-      	      	<td class="operation" >
-      		<a class="listen" href="playMusic.do?id=<%=s.getSid() %>" title="试听歌曲"><img  src="images/college.png"></a>
-      	</td>
-      </tr>
+      	<%} %></td>
+     <td>      		
+     <a  href="playMusic.do?id=<%=s.getSid() %>" title="试听歌曲"><img  src="images/college.png"></a>
+     </td>
+     </tr>
+      
+      
      <%} %>
+     
      </tbody>
       </table>
       <%}else if("singer".equals(type)){

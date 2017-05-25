@@ -43,9 +43,9 @@ text-align:center;
 <script type="text/javascript" src="js/mainpage.js"></script>
 <script type="text/javascript" src="js/music.js"></script>
 <style type="text/css">
-.div-a{ float:left;clear:both;width:33%; font-size: 18px; border:0px solid  #000;margin-top:10px;} 
-.div-b{ font-size: 18px;width:33%;float:left;margin-left:2px; margin-top:10px;border:1px solid  #000} 
-.div-c{ float:right;font-size: 18px;margin-top:10px;width:33%;border:0px solid  #000} 
+.div-a{ float:left;clear:both;width:33%; font-size: 18px;margin-top:10px; border:0px solid  #000;background-color:rgba(21,179,228,0.3);} 
+.div-b{ font-size: 18px;width:33%;float:left;margin-left:2px; margin-top:10px;border:1px solid  #000;background-color:rgba(212,179,228,0.8);} 
+.div-c{ float:right;font-size: 18px;margin-top:10px;width:33%;border:0px solid  #000;background-color:rgba(21,179,228,0.3);} 
 .div-e{ margin-top:20px;} 
 .li-div1{ float:left;width:49%; height:60px;} 
 .albumul ul{
@@ -57,7 +57,7 @@ width:33.33%;float:left;height: 120px;
 }
 </style>
 </head>
-<body >
+<body background="images/bg_dong2.gif">
 <div id="wrapper">
 <div>
  <jsp:include page="head.jsp"></jsp:include>
@@ -65,7 +65,7 @@ width:33.33%;float:left;height: 120px;
 
 <div class="div-a" >
 <p>最热歌曲榜</p><hr>
-<div class="hot" align="left" style="margin-left: 20px;font-size: 18px;"></div>
+<div class="hot1" align="left" style="margin-left: 20px;font-size: 18px;"></div>
 </div> 
 
 <div class="div-b" >
@@ -79,7 +79,7 @@ width:33.33%;float:left;height: 120px;
 
 
 </div>
-</body>
+</body >
 </html>
 <script type="text/javascript">
 var singerid='0';

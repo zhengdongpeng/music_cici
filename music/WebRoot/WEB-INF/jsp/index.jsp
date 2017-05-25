@@ -17,9 +17,8 @@ if(user!=null){
     <base href="<%=basePath%>">
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>cici的音乐网站</title>
-<meta name="keywords" content="音乐,音乐网,音乐网站,最新音乐,歌曲,mp3,歌曲mp3,mp3下载,好听的歌曲,网络歌曲" />
-<meta name="description" content="高品质音乐Mp3下载试听网站，提供最新最好听的流行歌曲、网络歌曲，以及权威、全面的歌曲排行榜。" />
+<title>飘悦网</title>
+
 
 <link type="text/css" rel="stylesheet" href="365_files/newindex.css"/>
 <link type="text/css" rel="stylesheet" href="365_files/header.css?v=0907"/>
@@ -28,17 +27,14 @@ if(user!=null){
 <script type="text/javascript" src="365_files/common.js"></script>
 <script type="text/javascript" src="js/mainpage.js"></script>
 <script>
-<!--
-/*第一种形式 第二种形式 更换显示样式*/
-eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('g p(h){2 5="";2 7=h.9("a");2 4=7.k;l(2 i=0;i<4;i++){2 3=7[i].n("3");j(3!=r&&3!=""){j(i==4-1){5+=3}o{5+=3+","}}};6.8("q").m=5;6.s.y()};g z(f,e,c){2 b=6.8(f).9("A");2 d=6.8(e).9("x");2 4=b.k;l(2 i=0;i<4;i++){b[i].t=i==c?"w":"";d[i].v.u=i==c?"":"B"}}',38,38,'||var|rel|count|url|document|allplays|getElementById|getElementsByTagName||navList|index|contList|contId|navId|function|list||if|length|for|value|getAttribute|else|play|id|null|form1|className|display|style|mover|ul|submit|showTab|li|none'.split('|'),0,{}))
--->
+
 </script>
 
 <script>
 var islogin='<%=islogin%>';
 </script>
 </head>
-<body >
+<body  background="images/guzheng.jpg">
 
 <div id="wrapper">
 <div>
