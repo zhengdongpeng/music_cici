@@ -59,7 +59,7 @@ width:20%;float:left;height: 140px;
 }
 </style>
 </head>
-<body background="images/bg_3.jpg">
+<body background="images/love2.gif">
 <div id="wrapper">
 <div>
  <jsp:include page="head.jsp"></jsp:include>

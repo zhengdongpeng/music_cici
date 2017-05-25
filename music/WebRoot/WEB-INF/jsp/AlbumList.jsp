@@ -57,14 +57,17 @@ width:1200px;
 ul li{
 width:33.33%;float:left;height: 120px;
 }
+.beijing{
+background-color:rgba(250,228,225,0.8);
+}
 </style>
 </head>
-<body background="images/bg_1.jpg">
+<body background="images/love6.gif">
 <div id="wrapper">
 <div>
  <jsp:include page="head.jsp"></jsp:include>
 </div>
-<div>
+<div class="beijing">
 
 
 <div class="data-div">

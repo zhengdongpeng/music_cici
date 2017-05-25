@@ -46,7 +46,7 @@ text-align:center;
 .div-a{ float:left;width:100%; height:350px; background-color: #FFE4E1;} 
 .div-a1{ float:left;width:30%; height:100px;} 
 .div-d{ float:right;width:100%;height:100px;font-size: 18px;margin-top:20px}
-.data-div{ float:right;width:69%;}
+.data-div{ float:right;width:69%; background-color:rgba(0,255,0,0.15);}
 .div-b{ font-size: 18px;margin-top:1px;width:100%; float:left;overflow:hidden;} 
 .div-c{ float:left;font-size: 18px;margin-top:10px;width:100% ; margin-bottom: 100px} 
 .div-e{ margin-top:20px;} 
@@ -62,7 +62,7 @@ width:33.33%;float:left;height: 180px;
 }
 </style>
 </head>
-<body >
+<body background="images/love2.gif">
 <div id="wrapper">
 <div>
  <jsp:include page="../head.jsp"></jsp:include>

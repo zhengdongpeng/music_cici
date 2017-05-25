@@ -39,7 +39,7 @@ text-align:center;
 <meta name="keywords" content="音乐,音乐网,音乐网站,最新音乐,歌曲,mp3,歌曲mp3,mp3下载,好听的歌曲,网络歌曲" />
 <meta name="description" content="高品质音乐Mp3下载试听网站，提供最新最好听的流行歌曲、网络歌曲，以及权威、全面的歌曲排行榜。" />
 
-<link type="text/css" rel="stylesheet" href="365_files/newindex.css"/>
+a { outline: none; color:#fC143C; margin-top:13px; }
 <link type="text/css" rel="stylesheet" href="365_files/header.css?v=0907"/>
 <link type="text/css" rel="stylesheet" href="css/common.css"/>
 <script type="text/javascript" src="365_files/jquery.js"></script>
@@ -55,10 +55,20 @@ text-align:center;
 .div-f{float:left; width:100%;margin:0 auto;margin-top:10px ;margin-bottom: 70px}
 .div-img{float:left;width:50px;height:50px;}
 .zjgq{ height: 35px;font-size: 28px;font-weight: bold;background-color:rgba(0,204,255,0.8);width: 100% ;}
-.tables{margin-top:13px;}
+.tabs{
+margin-top:13px;
+margin-bottom:8px;
+}
+.tables{
+width:950px;
+
+}
 .musiclist{font-size: 20px;height: 30px; background-color: rgba(204,102,255,0.6);}
 .div-f1{ margin-top:40px; height:70px;position:fixed;bottom:0px;left:0px; width:100%;
 background-color:rgba(0,0,0,0.8) ; } 
+.lianjie{
+vertical-align:middle;
+}
 li{height:30px;}
 </style> 
 </head>
@@ -96,8 +106,8 @@ li{height:30px;}
 	
 <div class="div-f">
 <div class="zjgq">专辑歌曲<div style="float: right;"><button onclick='playAllmusic()'>播放全部</button></div></div>
-<div class="tables">
-<table>
+<div class="tabs">
+<table class="tables">
 <tbody class ="musicList">
 <tr>
 <td>
@@ -181,10 +191,10 @@ function initSong(id){
 		    				$("#audio1").src=list[i].song;
 		    				$(".img-head").src=list[i].img;
 		    			}
-		    			var str="<tr><td  class='musiclist'><a onclick='playmusic("+i+")'><div class='div-img'>" +
-		    					"<img src='"+list[i].img+"' width='40px' height='40px'/></div><span>"+
-		    			list[i].sname+"</span>------------------------------------<span>发布时间：";
-		    			str=str+newDate.toLocaleDateString()+"</span><span>歌曲类型:"+list[i].typeName+"</span></a></td></tr>";
+		    			var str="<tr class='musiclist'><span><td ><a onclick='playmusic("+i+")' width='200px'><div class='div-img'>" +
+		    					"<img src='"+list[i].img+"' width='50px' height='50px'/></div><td>"+
+		    			list[i].sname+"</span></td><td>发布时间：";
+		    			str=str+newDate.toLocaleDateString()+"</span></td><td><span>歌曲类型:"+list[i].typeName+"</span></a></td></tr>";
 		    			$(".musicList").append(str);
 		    		}
 		    		

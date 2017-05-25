@@ -17,8 +17,13 @@ Song song =(Song) request.getAttribute("song");
     color:white;
     margin:20px;
     padding:20px;
+    background-color:rgba(0,0,130,0.4);
 	
 }	
+.beijing{
+background-color:rgba(0,255,0,0.4);
+height:400px;
+}
 .songName{
 text-align:center;
 	font-weight:bold;
@@ -43,15 +48,15 @@ text-align:center;
 <script type="text/javascript" src="js/mainpage.js"></script>
 <script type="text/javascript" src="js/music.js"></script>
 </head>
-<body >
+<body background="images/love.gif">
 <div id="wrapper">
 <div>
  <jsp:include page="head.jsp"></jsp:include>
 
 </div>
 <center >
-<div >
-<div  ></div>
+<div class="beijing">
+
 <div  height="200" align="left">
 <span class="songName"><%=song.getSname() %></span>
 <span class="shoucang1" onclick="shoucang(<%=song.getSid() %>)"><img height="40" width="70" src="images/shoucang.png"/></span>
