@@ -30,8 +30,23 @@ color:#F39;
 font-size:20px;
 	font-weight:bold;
 }
-.left{width: 17%;height:100%; float: left; background-color: gray;padding-top: 20px;padding-left: 40px}
-.right{ width: 75%;float: right;}
+.left{
+width: 17%;
+float: left; 
+background:url(images/mange/bgk.png) ;
+background-color: rgba(	127,255,212,0.7);
+height:360px;
+padding-top: 60px;
+padding-left: 40px;
+}
+.htbg{
+background-repeat: no-repeat;
+background-size: cover;
+}
+.right{ width: 75%;float: right;
+background-color: rgba(	127,255,212,0.6);
+margin-bottom:110px;
+}
 #wrapper1{width:956px; margin:auto;}
 </style>
   <style type="text/css">
@@ -41,7 +56,7 @@ font-size:20px;
     </style>
 
 </head>
-<body>
+<body  background="images/mange/bgt5.gif" class="htbg">
 <div id="wrapper1">
 <div>
 <jsp:include page="head.jsp"></jsp:include>
@@ -62,33 +77,18 @@ font-size:20px;
                       专辑名：<input type="text"  name="albumname1" class="albumname1"/><br>
                        发行公司：<input type="text"  name="fxgs" class="fxgs"/><br>
                       
-                       发布时间：<input type="text"  id="fbtime" class ="input1"/><br>
-                      专辑类型：
-                          <select  class="typeid" name="typeid">
-  						<option value ="1">民谣</option>
-  						<option value ="2">古典音乐</option>
-  						<option value="3">影视金曲</option>
-  						<option value ="1">网络歌曲</option>
-  						<option value ="2">摇滚歌曲</option>
-  						<option value="3">流行歌曲</option>
-  						<option value ="1">情歌对唱</option>
-  						<option value ="2">草原歌曲</option>
- 	 					</select>
-                      <br>
-                       所属歌手：
+<!--                        发布时间：<input type="text"  id="fbtime" class ="input1"/><br>
+ -->                      
+                       所属歌手：<input type="text"  class="singerType"  style="width:50px"><button type="button" onclick="getSinger()">查询</button>
                            <select  class="singer1" name="singer1">
-                           <% 
-                           List<Singer> singer =(List<Singer>) request.getAttribute("singerid");
-                           for(int i=0;i<singer.size();i++){ %>
-  						<option value ="<%=singer.get(i).getSid()%>"><%=singer.get(i).getSname() %></option>
-  					<%} %>
+  						<option value =""  style="width: 50px"></option>
  	 					</select>
                        <br>
                        
                     专辑图片：    <input name="file" type="file"  accept="image/jpeg,image/png"  value="浏览">
                       <div>
     <h1>介绍</h1>
-			<textarea rows="4" cols="80"  class="js" name="js"></textarea>
+			<textarea rows="4" cols="40"  class="js" name="js"></textarea>
                       </div>
                       <input type="submit"  value="提交"/>
                 	</form>
@@ -117,7 +117,30 @@ font-size:20px;
 </body>
 </html>
 <script>
-
+function getSinger(){
+	var singerType = $(".singerType").val();
+	if(!singerType) return;
+	$.ajax({
+		  url:"mangequery.do",
+		    type:'POST',  async:true,    
+		    data:{username:singerType,
+		    	type:'singerquery'},
+		    timeout:5000,  dataType:'json',    
+		    success:function(data){
+		    	data=JSON.parse(data);
+		    	$(".singer1").html("");
+		    	debugger;
+		    	var list = data.list;
+		    	//.append("<option value='Value'>Text</option>"); 
+		    	for(var i=0;i<list.length;i++){
+		    		$(".singer1").append("<option value='"+list[i].sid+"'>"+list[i].sname+"</option>"); 
+		    	}
+		    },
+		    error:function(xhr,textStatus){
+		    	alert("error");
+		    },   
+	});
+}
 function deleteMange(){
 	var username=$(".songnamedelete").val();
 	if(!username.trim()){
@@ -146,17 +169,7 @@ function deleteMange(){
 }
 
 
-$("#input1").shijian({
-	Format: "yyyy-mm-dd",
-	Order: 'yymmdd',
-	y:-60,//当前年份+10
-	Hour: false, //是否显示小时
-	Minute: false, //是否显示分钟
-	Seconds: false,//是否显示秒
-	yyyy: "0000", //当前显示年
-	mm: "00", //当前显示月
-	dd: "00", //当前显示日
-});
+
 function createMange(){
 	var username = $(".username").val();
 	var password = $(".password").val();
@@ -235,42 +248,4 @@ function pushajax(data,url){
 		   
 	});
 }
-</script>
-<script type="text/javascript">
-	sjObj.defaults = {
-		type: "time",
-		Format: "yyyy-mm-dd", //显示时间格式//yyyy表示年份 ，mm月份 ，dd天数  支持三种格式 dd-mm-yyyy ，mm-dd-yyyy yyyy-mm-dd
-		Order: 'yymmdd',
-		width: 60, //默认宽度
-		height: 32,//默认数值高度
-		Year: true, //是否显示年//
-		Month: true, //是否显示月//
-		Day: true, //是否显示日//
-		Hour: false, //是否显示小时
-		Minute: false, //是否显示分钟
-		Seconds: false, //是否显示秒
-		yyyy: "0000", //当前显示年
-		mm: "00", //当前显示月
-		dd: "00", //当前显示日
-		h: "00", //当前显示小时
-		m: "00", //当前显示分
-		s: "00", //当前显示秒
-		yearText: "年", //顶部时间 年单位 文字
-		monthText: "月", //顶部时间 月单位 文字
-		dayText: '日', //顶部时间 日单位 文字
-		hourText: '时', //顶部时间 时单位 文字
-		minuteText: '分', //顶部时间 分单位 文字
-		secondsText: '秒', //顶部时间 秒单位 文字
-		okText: "确认", //按钮确认键文字
-		cancelText: "取消", //按钮取消键文字
-		showNowTime: true, //是否默认显示当前时间
-		alwaysShow: false, //是否默认直接显示插件
-		timeElm: null, //放时间插件的box
-		onfun: function() { //取消改变时间时候执行事件
-		
-		},
-		okfun: function() { //确认时间时候执行事件
-
-		},
-	}
 </script>
