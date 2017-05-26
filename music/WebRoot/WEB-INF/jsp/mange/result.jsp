@@ -24,8 +24,7 @@ function out(obj){
 var i=obj;
 document.getElementById("out").innerHTML=i;
 if(i==0){
-    document.location.herf="<%=url%>";
-    return;
+	window.location.href ="<%=url%>";
 }
 i--;
 setTimeout("out("+i+")",1000);

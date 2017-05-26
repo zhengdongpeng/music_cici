@@ -95,7 +95,50 @@ public class UploadController {
     	       }
     	       request.setAttribute("url", "songmange.do");
     	        return  "mange/result";
-    	}
+    	}else if("2".equals(type)){
+    		
+    		String path = request.getSession().getServletContext().getRealPath("/img/song");
+    		String imgName=new Date().getTime()+"so";
+    		if(file.getSize()>0){
+    			String[] tail=file.getOriginalFilename().split("\\.");
+    			String t = tail[tail.length-1];
+    			String Songpath=path+"/song/"+imgName+"."+t;
+    			File newFile=new File(Songpath);
+    			file.transferTo(newFile);
+    			song.setSong("img/song/song/"+imgName+"."+t);
+    			
+    		}
+    		if(file2.getSize()>0){
+    			String[] tailh=file2.getOriginalFilename().split("\\.");
+    			String th = tailh[tailh.length-1];
+    			String headpath=path+"/head/"+imgName+"."+th;
+    			File headFile=new File(headpath);
+    			file2.transferTo(headFile);
+    			song.setImg("img/song/head/"+imgName+"."+th);
+    		}
+   	        String sid = request.getParameter("songid");
+   	        String songname =request.getParameter("songname1");
+   	        String fxgs =request.getParameter("fxgs");
+   	        String zid =request.getParameter("zid");
+   	        String songtype =request.getParameter("songtype");
+   	        String singer =request.getParameter("singer1");
+   	        String geci =request.getParameter("geci");
+   	        song.setLyric(geci);
+   	        song.setSid(Integer.parseInt(sid));
+   	        song.setFxgs(fxgs);
+   	        song.setSname(songname);
+   	        song.setZjid(StringUtils.isEmpty(zid)?0:Integer.parseInt(zid));
+   	        song.setSongerid(StringUtils.isEmpty(singer)?0:Integer.parseInt(singer));
+   	        song.setType(Integer.parseInt(songtype));
+   	       int i= playMusicService.updateSong(song);
+   	       if(i>0){
+   	    	   request.setAttribute("result", "上传成功");
+   	       }else{
+   	    	   request.setAttribute("result", "上传失败"); 
+   	       }
+   	       request.setAttribute("url", "songmange.do");
+   	        return  "mange/result";
+   	}
     	return  "mange/result";
     }
     

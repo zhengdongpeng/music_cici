@@ -14,6 +14,7 @@ import com.cici.music.contans.MusicConts;
 import com.cici.music.pojo.Album;
 import com.cici.music.pojo.MUser;
 import com.cici.music.pojo.Param;
+import com.cici.music.pojo.Song;
 import com.cici.music.pojo.User;
 import com.cici.music.service.IndexService;
 import com.cici.music.service.MangeService;
@@ -72,6 +73,14 @@ public class MangeController {
 			json.put("stats", "success");
 			json.put("list", album);
 			result = json.toJSONString();
+		}else if("songquery".equals(type)){
+			String name = request.getParameter("username");
+			List<Song> album=indexService.getSearchSong(new Param(0,
+					1000,name,0,0));
+			JSONObject json = new JSONObject();
+			json.put("stats", "success");
+			json.put("list", album);
+			result = json.toJSONString();
 		}
 		return result;
 		
@@ -96,8 +105,8 @@ public class MangeController {
 
 	@RequestMapping("songmange")
 	public String toSongmange(HttpServletRequest request) {
-		request.setAttribute("zjid", playAlbumService.getAlbumAll());
-		request.setAttribute("singerid", playMusicService.getSingerAll());
+	//	request.setAttribute("zjid", playAlbumService.getAlbumAll());
+		//request.setAttribute("singerid", playMusicService.getSingerAll());
 		return "mange/songmange";
 	}
 	

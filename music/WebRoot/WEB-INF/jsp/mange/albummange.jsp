@@ -114,8 +114,8 @@ div {
 
 				<form name="Form2" action="fileUploadAlbum.do" method="post"
 					enctype="multipart/form-data">
-					<input type="hidden" name="type" value="2" /> <input type="hidden"
-						class="albumid" name="albumid" value="0" /> 专辑名：<input type="text"
+					<input type="hidden" name="type" value="2" />
+					 <input type="hidden" class="albumid" name="albumid" value="0" /> 专辑名：<input type="text"
 						name="albumname1" class="albumnameupdate" /><br> 发行公司：<input
 						type="text" name="fxgs" class="fxgsupdate" /><br>
 					<!--                        发布时间：<input type="text"  id="fbtime" class ="input1"/><br>

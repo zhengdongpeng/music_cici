@@ -166,6 +166,27 @@ from songer
 	</set>
 	where sid=#{sid}
 </update>
+
+	<update id="updateSong"   parameterType="com.cici.music.pojo.Song">
+	update song
+	<set>
+			sname=#{sname},
+			fxgs = #{fxgs},
+			lyric = #{lyric},
+			type = #{type},
+			zjid= #{zjid},
+			songerid=#{songerid},
+		<if test="song!=null">
+			song.song = #{song},
+		</if>
+		<if test="img!=null">
+			song.img = #{img},
+		</if>
+	
+	</set>
+	where sid=#{sid}
+	</update>
+
 <select id="queryCollectForId" parameterType="com.cici.music.pojo.Collect" resultType="com.cici.music.pojo.Collect">
 	select uid,sid
 	from

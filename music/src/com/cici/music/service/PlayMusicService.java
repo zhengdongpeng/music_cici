@@ -282,4 +282,10 @@ public class PlayMusicService {
 		return i;
 	}
 
+
+	public int updateSong(Song song) {
+		int i= playMusicDao.updateSong(song);
+		return i;
+	}
+
 }

@@ -57,6 +57,8 @@ public interface PlayMusicDao {
 
 	public int updateSinger(Singer song);
 
+	public int updateSong(Song song);
+
 
 
 }
