@@ -147,6 +147,7 @@ public class UploadController {
    	        String fxgs =request.getParameter("fxgs");
    	        String singer =request.getParameter("singer1");
    	        String js =request.getParameter("js");
+   	        js = js.replace("/\n|\r\n/g","<br>");  
    	        song.setFxgs(fxgs);
    	        song.setAname(songname);
    	        song.setJs(js);

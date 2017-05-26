@@ -118,7 +118,7 @@ ORDER BY
         where
         	song.songerid=songer.sid
         order by fbtime desc
-        limit 0,15
+        limit 0,10
            
   </select>
   <select id="getsongLimit"  parameterType="com.cici.music.pojo.Param" resultType="com.cici.music.pojo.SongDto">

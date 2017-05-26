@@ -15,14 +15,14 @@ Song song =(Song) request.getAttribute("song");
 .cities {
     background-color:black;
     color:white;
-    margin:20px;
+    margin-top:20px;
     padding:20px;
     background-color:rgba(0,0,130,0.4);
 	
 }	
 .beijing{
 background-color:rgba(0,255,0,0.4);
-height:400px;
+height:350px;
 }
 .songName{
 text-align:center;
@@ -32,6 +32,9 @@ text-align:center;
 	display:inline-block;
 	margin:0 auto;
 }
+ .text-size{
+ 	font-size: 20px
+ }
 </style>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -69,13 +72,15 @@ text-align:center;
 </div>
 </div>
 <div class="cities">
-<h2>歌词</h2>
+<span class="text-size">歌曲名称：<%=song.getSname() %></span>
 
 
 
-<p><%=song.getSname() %></p>
-<p>演唱：<a href='singer.do?sid=<%=song.getSongerid()%>'><%=song.getSongerName()%></a></p>
-<p><%=song.getLyric() %></p>
+<p  class="text-size">演唱：<a href='singer.do?sid=<%=song.getSongerid()%>'><%=song.getSongerName()%></a></p>
+<span class="text-size">歌词</span>
+<hr style="border-color:#FFEFDB">
+
+<p><textarea rows="5" cols="70"  style= "background:transparent;border-style:none; font-size: 18px;color: #ffffff;text-align: center;" disabled="disabled" ><%=song.getLyric() %></textarea> </p>
 </div> 
 
 
@@ -83,6 +88,7 @@ text-align:center;
 </div>
 </body>
 </html>
+
 <script type="text/javascript">
 
 $(document).ready(function(){

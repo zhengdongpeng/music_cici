@@ -101,7 +101,7 @@ div {
 						accept="image/jpeg,image/png" value="浏览">
 					<div>
 						<h1>介绍</h1>
-						<textarea rows="4" cols="40" class="jsupdate" name="js"></textarea>
+						<textarea rows="4" cols="40" class="js" name="js"></textarea>
 					</div>
 					<input type="submit" value="提交" />
 				</form>
