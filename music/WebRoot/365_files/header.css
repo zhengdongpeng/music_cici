@@ -41,7 +41,7 @@ a { outline: none;
 #logo_play img{ border:none;} 
 #logo_play_right {width:555px;float:right;margin:3px 0 0 5px;}
 
-#search{ float:left; width:503px; height:72px; overflow:hidden; margin-left:90px; display:inline;}
+#search{ float:right; width:503px; height:72px; overflow:hidden; margin-left:90px; display:inline;}
 #search a:hover{ background:none;color: #EEAADD;}
 #search a:visited{ background:none;color: #EEAADD;}
 #search .b_link{ padding-left:35px; display:inline;}

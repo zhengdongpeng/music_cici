@@ -174,8 +174,8 @@ function initSonguser(id){
 		    				$(".img-head").src=list[i].img;
 		    			}
 		    			var str="<tr style='width:100%;height: 40px;'><td style='width:10%;'><img src='"+list[i].img+" ' width='40px' height='40'/></td>"
-		    			+"<td  style='width:40%;line-height: 40px;height: 50px;text-align: center;vertical-align:middle;'><span class='a-list' index='"+i
-	    				+"' >"+list[i].sname+"</span></td><td style='width:20%;vertical-align:middle;'>"+list[i].songerName+"</td>"+
+		    			+"<td  style='width:40%;line-height: 40px;height: 50px;text-align: center;vertical-align:middle;'><a class='a-list' href='playMusic.do?id="+list[i].sid
+	    				+"' >"+list[i].sname+"</a></td><td style='width:20%;vertical-align:middle;'>"+list[i].songerName+"</td>"+
 	    				"<td style='width:20%;vertical-align:middle;'>"+list[i].zjName+" </td><td  style='width:20%;vertical-align:middle;'><a class ='play-a' onclick='playmusic("+i+")'>播放</a></td></tr>"
 		    				$("#m-list").append(str);
 		    			

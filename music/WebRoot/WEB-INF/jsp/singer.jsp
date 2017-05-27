@@ -44,7 +44,7 @@ text-align:center;
 <script type="text/javascript" src="js/music.js"></script>
 <style type="text/css">
 .div-a{ float:left;width:30%; height:200px; background-color: #FFE4E1;} 
-.div-d{ float:right;width:66%;height:200px;color:white;font-size: 20px;margin-top:20px;background-color:rgba(2,130,238,0.6);}
+.div-d{ float:right;width:66%;height:200px;color:white;font-size: 20px;background-color:rgba(2,130,238,0.6);}
 .div-b{ font-size: 18px;margin-top:1px;width:958px;float:left;overflow:hidden;} 
 .div-c{ float:left;font-size: 18px;margin-top:10px;width:900px;} 
 .div-e{ margin-top:20px;} 
@@ -99,7 +99,7 @@ width:33.33%;float:left;height: 120px;
 </div>
 </body>
 </html>
-<<script type="text/javascript">
+<script type="text/javascript">
 var singerid='<%=singer.getSid()%>';
 $().ready(function(){
 	initSingerSong(singerid);

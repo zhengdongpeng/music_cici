@@ -62,7 +62,7 @@ text-align:center;
 
 <div  height="200" align="left">
 <span class="songName"><%=song.getSname() %></span>
-<span class="shoucang1" onclick="shoucang(<%=song.getSid() %>)"><img height="40" width="70" src="images/shoucang.png"/></span>
+<span class="shoucang1" ><a onclick="shoucang(<%=song.getSid() %>)"><img height="40" width="70" src="images/shoucang.png"/></a></span>
 </div>
 <div>
 <div><img src="<%=song.getImg() %>" height="256" width="256"/></div>
@@ -114,7 +114,7 @@ $.ajax({
 	    	}
 	    	if(data.stats=='success'){
 	    		if(data.success==1){
-	    		$(".shoucang1").html("已经收藏");
+	    		$(".shoucang1").html("<span style='color:white;font-size:18px'>已收藏</span>[<a onclick='quitCollect("+id+")'>点击取消收藏</a>]");
 	    		}
 	    		
 	    		return;
@@ -124,4 +124,33 @@ $.ajax({
 	    },
 	   
 });}
+
+function quitCollect(id){
+	$.ajax({
+		  url:'quitcollect.do',
+		    type:'POST', //GET
+		    async:true,    //��false,�Ƿ��첽
+		    data:{
+		       type:"musicquit",
+		       id:id
+		    },
+		    timeout:5000,    //��ʱʱ��
+		    dataType:'json',    //���ص���ݸ�ʽ��json/xml/html/script/jsonp/text
+		    success:function(data){
+		    	data=JSON.parse(data);
+		    	debugger;
+		    	if(data.stats=='error'){
+		    		alert("失败！");
+		    	}
+		    	if(data.stats=='success'){
+		    		$(".shoucang1").html("<a onclick='shoucang("+id+")'><img height='40' width='70' src='images/shoucang.png'/></a>");
+		    		return;
+		    	}
+		    },
+		    error:function(xhr){
+		    },
+		   
+	});
+}
+
 </script>

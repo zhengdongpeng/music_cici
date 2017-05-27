@@ -39,7 +39,6 @@ text-align:center;
 <meta name="keywords" content="音乐,音乐网,音乐网站,最新音乐,歌曲,mp3,歌曲mp3,mp3下载,好听的歌曲,网络歌曲" />
 <meta name="description" content="高品质音乐Mp3下载试听网站，提供最新最好听的流行歌曲、网络歌曲，以及权威、全面的歌曲排行榜。" />
 
-a { outline: none; color:#fC143C; margin-top:13px; }
 <link type="text/css" rel="stylesheet" href="365_files/header.css?v=0907"/>
 <link type="text/css" rel="stylesheet" href="css/common.css"/>
 <script type="text/javascript" src="365_files/jquery.js"></script>
@@ -59,6 +58,7 @@ a { outline: none; color:#fC143C; margin-top:13px; }
 margin-top:13px;
 margin-bottom:8px;
 }
+a { outline: none; color:#fC143C; margin-top:13px; }
 .tables{
 width:950px;
 
@@ -82,7 +82,7 @@ li{height:30px;}
 <div>
 <img src="<%=album.getImg() %>" width="224" height="221"/></div>
 <div>
-    <span class="shoucang1" onclick="shoucangAlbum(<%=album.getAlbumId() %>)"><img height="40" width="70" src="images/shoucang.png"/></span>
+    <span class="shoucang1"  ><a style="font-size: 18px;color: white;" onclick="shoucangAlbum(<%=album.getAlbumId() %>)">点击添加收藏</a></span>
 </div>
 </div> 
 
@@ -192,9 +192,9 @@ function initSong(id){
 		    				$(".img-head").src=list[i].img;
 		    			}
 		    			var str="<tr class='musiclist'><span><td ><a onclick='playmusic("+i+")' width='200px'><div class='div-img'>" +
-		    					"<img src='"+list[i].img+"' width='50px' height='50px'/></div><td>"+
-		    			list[i].sname+"</span></td><td>发布时间：";
-		    			str=str+newDate.toLocaleDateString()+"</span></td><td><span>歌曲类型:"+list[i].typeName+"</span></a></td></tr>";
+		    					"<img src='"+list[i].img+"' width='50px' height='50px'/></div><td><a href='playMusic.do?id="+list[i].sid+"'>"
+		    			+list[i].sname+"</a></span></td><td>发布时间：";
+		    			str=str+newDate.toLocaleDateString()+"</span></td><td><span>歌曲类型:"+list[i].typeName+"</span></a></td><td><a class ='play-a' onclick='playmusic("+i+")'>播放</a></td></tr>";
 		    			$(".musicList").append(str);
 		    		}
 		    		
@@ -223,7 +223,7 @@ $.ajax({
 	    	if(data.stats=='error'){
 	    	}
 	    	if(data.stats=='success'){
-	    		$(".shoucang1").html("已经收藏");
+	    		$(".shoucang1").html("<span style='color:white;font-size:18px'>已收藏</span>[<a onclick='quitCollect("+id+")'>点击取消收藏</a>]");
 	    		return;
 	    	}
 	    },
@@ -231,5 +231,32 @@ $.ajax({
 	    },
 	   
 });}
+function quitCollect(id){
+	$.ajax({
+		  url:'quitcollect.do',
+		    type:'POST', //GET
+		    async:true,    //��false,�Ƿ��첽
+		    data:{
+		       type:"albumquit",
+		       id:id
+		    },
+		    timeout:5000,    //��ʱʱ��
+		    dataType:'json',    //���ص���ݸ�ʽ��json/xml/html/script/jsonp/text
+		    success:function(data){
+		    	data=JSON.parse(data);
+		    	debugger;
+		    	if(data.stats=='error'){
+		    		alert("失败！");
+		    	}
+		    	if(data.stats=='success'){
+		    		$(".shoucang1").html("<a  style='font-size: 18px;color: white;' onclick='shoucangAlbum("+id+")'>点击添加收藏</a>");
+		    		return;
+		    	}
+		    },
+		    error:function(xhr){
+		    },
+		   
+	});
+}
 </script>
 <script type="text/javascript" src="js/audio1.js"></script>

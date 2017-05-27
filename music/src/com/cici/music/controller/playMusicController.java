@@ -103,5 +103,11 @@ public class playMusicController {
 		
 		return playMusicService.iscollect(request);
 	}
+	
+	@ResponseBody
+	@RequestMapping("quitcollect")
+	public String quitcollect(HttpServletRequest request){
+			return playMusicService.deleteCollect(request);
+	}
 
 }

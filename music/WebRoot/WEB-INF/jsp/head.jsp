@@ -22,10 +22,10 @@
   <source src="sound/intro.mp3" type="audio/mp3" />
 <embed height="50" width="215" src="sound/intro.mp3" /></audio></p>
 </span>
-	<div id="search">
+	<div id="search" align="right">
 	<input  id="KeyWords" name="KeyWords" class="searchinput" />
 	<input type="button"   value=" " id="searchbotton"  onclick="toSearch();"/>
-	<div id="searchradio">
+	<div id="searchradio"  >
 		<input name="type"  type="radio" value="album">
 		<span>专辑</span>
 		<input name="type" checked="checked"  type="radio" value="song">
@@ -33,13 +33,10 @@
 		<input name="type"  type="radio" value="singer">
 		<span>歌手</span>
 	</div>
-	<div style="display:inline-block; float:left; margin-top:7px;"> 欢迎来到飘乐网</div>
 	
 </div>
   
-  <div id="login">
- <span>欢迎来到飘乐网</span>
- </div>
+  
  <div>
   <ul id="nav">
     <li><a href="index.do">首页</a></li>

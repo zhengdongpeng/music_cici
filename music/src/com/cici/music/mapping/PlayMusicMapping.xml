@@ -13,7 +13,16 @@
 	where song.songerid=songer.sid and
 	song.sid=#{id}
 	</select>
-	
+	<delete id="deleteCollect"  parameterType="hashmap" >
+	 delete from 
+	 <if test="type == 1">
+	 	collectsong
+	 </if>
+	 <if test="type == 2">
+	 	collectzhuanji
+	 </if>
+		where uid = #{uid}  and sid = #{id}
+	</delete>
 	<select id="getClickCount"  resultType="java.lang.Integer">
 		select count(*) from click where id=#{0}
 	</select>
