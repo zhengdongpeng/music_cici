@@ -282,4 +282,37 @@ public class PlayMusicService {
 		return i;
 	}
 
+
+	public int updateSong(Song song) {
+		int i= playMusicDao.updateSong(song);
+		return i;
+	}
+
+
+	public String deleteCollect(HttpServletRequest request) {
+		JSONObject json = new JSONObject();
+		json.put("stats", "error");
+		String id = request.getParameter("id");
+		User user = (User) request.getSession().getAttribute("user");
+		if(user==null){
+			return json.toJSONString();
+		}
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("uid",user.getUid());
+		map.put("id", id);
+		String type = request.getParameter("type");
+		if("musicquit".equals(type)){
+			map.put("type",1 );//"song"
+		}else if("albumquit".equals(type))
+			map.put("type", 2);
+		else{
+			return json.toJSONString();
+		}
+		int i = playMusicDao.deleteCollect(map);
+		if(i>0){
+			json.put("stats", "success");
+		}
+		return json.toJSONString();
+	}
+
 }

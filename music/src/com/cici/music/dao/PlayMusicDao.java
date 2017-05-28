@@ -57,6 +57,10 @@ public interface PlayMusicDao {
 
 	public int updateSinger(Singer song);
 
+	public int updateSong(Song song);
+
+	public int deleteCollect(Map<String, Object> map);
+
 
 
 }

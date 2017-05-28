@@ -19,7 +19,19 @@
 		zhuanji.songerid = songer.sid
 		AND zhujiid =#{id}
 	</select>
-
+<update id="updateAlbum"  parameterType="com.cici.music.pojo.Album">
+	update zhuanji 
+	<set>
+			zname=#{aname},
+			js = #{js},
+			songerid= #{songerId},
+			fxgs = #{fxgs},
+		<if test="img!=null">
+		 img=#{img},
+		</if>
+	</set>
+	where zhujiid=#{albumId}
+</update>
 	<select id="getAlbumColect" resultType="com.cici.music.pojo.Album"
 		parameterType="com.cici.music.pojo.Param">
 		SELECT

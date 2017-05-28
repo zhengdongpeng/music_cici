@@ -102,4 +102,9 @@ public class PlayAlbumService {
 		return json.toJSONString();
 	}
 
+	public int updateAlbum(Album song) {
+		int i= playAlbumDao.updateAlbum(song);
+		return i;
+	}
+
 }

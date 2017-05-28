@@ -7,9 +7,12 @@
 		song.sid,
 		song.sname,
 		song.songerid,
-		songer.sname AS songername,
-		zhuanji.zname AS zjname,
-		song.zjid
+		songer.sname AS songerName,
+		zhuanji.zname AS zjName,
+		song.img,
+		song.zjid,
+		song.fxgs,
+		song.lyric
 	FROM
 		songer,
 		song
@@ -72,10 +75,15 @@ GROUP BY type;
 SELECT
 zhuanji.zname as aname,
 zhuanji.zhujiid as albumId,
-zhuanji.img 
+zhuanji.js,
+zhuanji.fxgs,
+zhuanji.img ,
+songer.sname as singername
+
 FROM
-	zhuanji
+	zhuanji ,songer
 WHERE
+zhuanji.songerid = songer.sid and 
 zhuanji.zname LIKE  CONCAT('%','${searchParam}','%' )
 ORDER BY
 	zhuanji.zhujiid DESC
@@ -113,7 +121,7 @@ ORDER BY
         where
         	song.songerid=songer.sid
         order by fbtime desc
-        limit 0,15
+        limit 0,10
            
   </select>
   <select id="getsongLimit"  parameterType="com.cici.music.pojo.Param" resultType="com.cici.music.pojo.SongDto">

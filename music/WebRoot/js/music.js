@@ -174,7 +174,7 @@ function shoucangAlbum(id){
 		    		return;
 		    	}
 		    	if(data.stats=='success'){
-		    		$(".shoucang1").html("已经收藏");
+		    		$(".shoucang1").html("<span style='color:white;font-size:18px'>已收藏</span>[<a onclick='quitCollect("+id+")'>点击取消收藏</a>]");
 		    		return;
 		    	}
 		    },
@@ -204,7 +204,7 @@ function shoucang(id){
 		    		return;
 		    	}
 		    	if(data.stats=='success'){
-		    		$(".shoucang1").html("已经收藏");
+		    		$(".shoucang1").html("<span style='color:white;font-size:18px'>已收藏</span>[<a onclick='quitCollect("+id+")'>点击取消收藏</a>]");
 		    		return;
 		    	}
 		    },

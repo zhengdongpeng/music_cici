@@ -27,7 +27,10 @@ if(user!=null){
 <script type="text/javascript" src="365_files/common.js"></script>
 <script type="text/javascript" src="js/mainpage.js"></script>
 <script>
-
+<!--
+/*第一种形式 第二种形式 更换显示样式*/
+eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('g p(h){2 5="";2 7=h.9("a");2 4=7.k;l(2 i=0;i<4;i++){2 3=7[i].n("3");j(3!=r&&3!=""){j(i==4-1){5+=3}o{5+=3+","}}};6.8("q").m=5;6.s.y()};g z(f,e,c){2 b=6.8(f).9("A");2 d=6.8(e).9("x");2 4=b.k;l(2 i=0;i<4;i++){b[i].t=i==c?"w":"";d[i].v.u=i==c?"":"B"}}',38,38,'||var|rel|count|url|document|allplays|getElementById|getElementsByTagName||navList|index|contList|contId|navId|function|list||if|length|for|value|getAttribute|else|play|id|null|form1|className|display|style|mover|ul|submit|showTab|li|none'.split('|'),0,{}))
+-->
 </script>
 
 <script>

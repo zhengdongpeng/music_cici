@@ -15,14 +15,14 @@ Song song =(Song) request.getAttribute("song");
 .cities {
     background-color:black;
     color:white;
-    margin:20px;
+    margin-top:20px;
     padding:20px;
     background-color:rgba(0,0,130,0.4);
 	
 }	
 .beijing{
 background-color:rgba(0,255,0,0.4);
-height:400px;
+height:350px;
 }
 .songName{
 text-align:center;
@@ -32,6 +32,9 @@ text-align:center;
 	display:inline-block;
 	margin:0 auto;
 }
+ .text-size{
+ 	font-size: 20px
+ }
 </style>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -59,7 +62,7 @@ text-align:center;
 
 <div  height="200" align="left">
 <span class="songName"><%=song.getSname() %></span>
-<span class="shoucang1" onclick="shoucang(<%=song.getSid() %>)"><img height="40" width="70" src="images/shoucang.png"/></span>
+<span class="shoucang1" ><a onclick="shoucang(<%=song.getSid() %>)"><img height="40" width="70" src="images/shoucang.png"/></a></span>
 </div>
 <div>
 <div><img src="<%=song.getImg() %>" height="256" width="256"/></div>
@@ -69,13 +72,15 @@ text-align:center;
 </div>
 </div>
 <div class="cities">
-<h2>歌词</h2>
+<span class="text-size">歌曲名称：<%=song.getSname() %></span>
 
 
 
-<p><%=song.getSname() %></p>
-<p>演唱：<a href='singer.do?sid=<%=song.getSongerid()%>'><%=song.getSongerName()%></a></p>
-<p><%=song.getLyric() %></p>
+<p  class="text-size">演唱：<a href='singer.do?sid=<%=song.getSongerid()%>'><%=song.getSongerName()%></a></p>
+<span class="text-size">歌词</span>
+<hr style="border-color:#FFEFDB">
+
+<p><textarea rows="5" cols="70"  style= "background:transparent;border-style:none; font-size: 18px;color: #ffffff;text-align: center;" disabled="disabled" ><%=song.getLyric() %></textarea> </p>
 </div> 
 
 
@@ -83,6 +88,7 @@ text-align:center;
 </div>
 </body>
 </html>
+
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -108,7 +114,7 @@ $.ajax({
 	    	}
 	    	if(data.stats=='success'){
 	    		if(data.success==1){
-	    		$(".shoucang1").html("已经收藏");
+	    		$(".shoucang1").html("<span style='color:white;font-size:18px'>已收藏</span>[<a onclick='quitCollect("+id+")'>点击取消收藏</a>]");
 	    		}
 	    		
 	    		return;
@@ -118,4 +124,33 @@ $.ajax({
 	    },
 	   
 });}
+
+function quitCollect(id){
+	$.ajax({
+		  url:'quitcollect.do',
+		    type:'POST', //GET
+		    async:true,    //��false,�Ƿ��첽
+		    data:{
+		       type:"musicquit",
+		       id:id
+		    },
+		    timeout:5000,    //��ʱʱ��
+		    dataType:'json',    //���ص���ݸ�ʽ��json/xml/html/script/jsonp/text
+		    success:function(data){
+		    	data=JSON.parse(data);
+		    	debugger;
+		    	if(data.stats=='error'){
+		    		alert("失败！");
+		    	}
+		    	if(data.stats=='success'){
+		    		$(".shoucang1").html("<a onclick='shoucang("+id+")'><img height='40' width='70' src='images/shoucang.png'/></a>");
+		    		return;
+		    	}
+		    },
+		    error:function(xhr){
+		    },
+		   
+	});
+}
+
 </script>
