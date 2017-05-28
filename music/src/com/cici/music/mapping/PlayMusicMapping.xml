@@ -13,9 +13,18 @@
 	where song.songerid=songer.sid and
 	song.sid=#{id}
 	</select>
-	
+	<delete id="deleteCollect"  parameterType="hashmap" >
+	 delete from 
+	 <if test="type == 1">
+	 	collectsong
+	 </if>
+	 <if test="type == 2">
+	 	collectzhuanji
+	 </if>
+		where uid = #{uid}  and sid = #{id}
+	</delete>
 	<select id="getClickCount"  resultType="java.lang.Integer">
-		select count(*) from click where id=#{0}
+		select click.count from click where id=#{0}
 	</select>
 	<insert id="ModifyClickAdd"  parameterType="hashmap">
 		insert into click (type,id,count,updatetime) values(#{type},#{sid},#{count},#{updatetime})
@@ -166,6 +175,27 @@ from songer
 	</set>
 	where sid=#{sid}
 </update>
+
+	<update id="updateSong"   parameterType="com.cici.music.pojo.Song">
+	update song
+	<set>
+			sname=#{sname},
+			fxgs = #{fxgs},
+			lyric = #{lyric},
+			type = #{type},
+			zjid= #{zjid},
+			songerid=#{songerid},
+		<if test="song!=null">
+			song.song = #{song},
+		</if>
+		<if test="img!=null">
+			song.img = #{img},
+		</if>
+	
+	</set>
+	where sid=#{sid}
+	</update>
+
 <select id="queryCollectForId" parameterType="com.cici.music.pojo.Collect" resultType="com.cici.music.pojo.Collect">
 	select uid,sid
 	from

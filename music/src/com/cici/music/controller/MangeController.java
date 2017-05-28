@@ -1,5 +1,7 @@
 package com.cici.music.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,9 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
 import com.cici.music.contans.MusicConts;
+import com.cici.music.pojo.Album;
 import com.cici.music.pojo.MUser;
+import com.cici.music.pojo.Param;
+import com.cici.music.pojo.Song;
 import com.cici.music.pojo.User;
+import com.cici.music.service.IndexService;
 import com.cici.music.service.MangeService;
 import com.cici.music.service.PlayAlbumService;
 import com.cici.music.service.PlayMusicService;
@@ -25,6 +32,8 @@ public class MangeController {
 	PlayMusicService playMusicService;
 	@Autowired
 	PlayAlbumService playAlbumService;
+	@Autowired
+	IndexService indexService;
 
 	@RequestMapping("mange")
 	public String toIogin(HttpServletRequest request) {
@@ -45,8 +54,6 @@ public class MangeController {
 		return mangeService.delete(request);
 		
 	}
-	
-
 	@ResponseBody
 	@RequestMapping("mangequery")
 	public String mangequery(HttpServletRequest request) {
@@ -56,11 +63,25 @@ public class MangeController {
 			result = mangeService.queryForName(request);
 		}else if("singerquery".equals(type)){
 			result = playMusicService.singerForName(request);
+		}else if("albumquery".equals(type)){
+			String name = request.getParameter("username");
+			List<Album> album=indexService.getSearchAlbum(new Param(0,
+					1000,name,0,0));
+			JSONObject json = new JSONObject();
+			json.put("stats", "success");
+			json.put("list", album);
+			result = json.toJSONString();
+		}else if("songquery".equals(type)){
+			String name = request.getParameter("username");
+			List<Song> album=indexService.getSearchSong(new Param(0,
+					1000,name,0,0));
+			JSONObject json = new JSONObject();
+			json.put("stats", "success");
+			json.put("list", album);
+			result = json.toJSONString();
 		}
 		return result;
-		
 	}
-	
 	@ResponseBody
 	@RequestMapping("mangeModify")
 	public String mangeModify(HttpServletRequest request) {
@@ -69,10 +90,8 @@ public class MangeController {
 		if("jibie".equals(type)){
 			result = mangeService.updateMange(request);
 		}
-		return result;
-		
+		return result;	
 	}
-
 	@RequestMapping("mangepager")
 	public String toMangepager(HttpServletRequest request) {
 		return "mange/mange";
@@ -80,8 +99,8 @@ public class MangeController {
 
 	@RequestMapping("songmange")
 	public String toSongmange(HttpServletRequest request) {
-		request.setAttribute("zjid", playAlbumService.getAlbumAll());
-		request.setAttribute("singerid", playMusicService.getSingerAll());
+	//	request.setAttribute("zjid", playAlbumService.getAlbumAll());
+		//request.setAttribute("singerid", playMusicService.getSingerAll());
 		return "mange/songmange";
 	}
 	
@@ -101,7 +120,6 @@ public class MangeController {
 		request.setAttribute("count", userService.getUserTotal());
 		return "mange/usermange";
 	}
-
 	@ResponseBody
 	@RequestMapping("mangelogin")
 	public String mangelogin(HttpServletRequest request) {
@@ -111,7 +129,6 @@ public class MangeController {
 		user.setYanzhengma(request.getParameter("yanzhengma"));
 		return mangeService.login(user, request);
 	}
-
 	@ResponseBody
 	@RequestMapping("createMange")
 	public String createMange(HttpServletRequest request) {
