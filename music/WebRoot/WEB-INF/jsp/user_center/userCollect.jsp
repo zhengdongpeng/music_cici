@@ -169,10 +169,6 @@ function initSonguser(id){
 		    			songdata[i]=list[i].song;
 		    			songname[i]=list[i].sname;
 		    			songImg[i]=list[i].img;
-		    			if(i==0){
-		    				$("#audio1").src=list[i].song;
-		    				$(".img-head").src=list[i].img;
-		    			}
 		    			var str="<tr style='width:100%;height: 40px;'><td style='width:10%;'><img src='"+list[i].img+" ' width='40px' height='40'/></td>"
 		    			+"<td  style='width:40%;line-height: 40px;height: 50px;text-align: center;vertical-align:middle;'><a class='a-list' href='playMusic.do?id="+list[i].sid
 	    				+"' >"+list[i].sname+"</a></td><td style='width:20%;vertical-align:middle;'>"+list[i].songerName+"</td>"+

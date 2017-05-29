@@ -178,11 +178,12 @@ function pushajax(data,url){
 		    				var u=list[i];
 			    			var birthday = new Date();
 			    			var cjtime = new Date();
-			    			if(u.birthday){
-			    			birthday=	birthday.setTime(u.birthday ).toLocaleDateString();
-			    			}
-			    			else
-			    				birthday=u.birthday;
+			    			debugger;
+			    			/* if(u.birthday){
+			    			birthday=	birthday.setTime(u.birthday).toLocaleDateString();
+			    			} */
+			    			/* else
+			    				birthday=u.birthday; */
 			    			cjtime.setTime(u.zctime );
 		    				var str="	<tr><td>"+u.uid+"</td><td>"+u.username+"</td><td>"+u.uname+
 		    				"</td><td>"+u.sex+"</td><td>"+u.email+"</td><td>"

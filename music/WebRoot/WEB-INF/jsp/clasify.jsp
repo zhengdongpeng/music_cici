@@ -212,7 +212,7 @@ $('.page8').createPage(function(n){
 	pageCount:<%=(typenum.containsKey(8)?(Integer)(typenum.get(8)):0) %>,//总页码,默认10
 });
 debugger;
-
+//根据类型和当前页数得到该类型的10条数据
 function setSingerPager(n,type){
 	$.ajax({
 		  url:'clasifySong.do',

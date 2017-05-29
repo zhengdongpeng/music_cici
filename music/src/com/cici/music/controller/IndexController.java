@@ -80,24 +80,24 @@ public class IndexController {
 				request.setAttribute("type", null);
 				request.setAttribute("size", 0);
 			}
-//			try {
-//				//value = new String(value.getBytes("iso-8859-1"), "utf-8");
-//			} catch (UnsupportedEncodingException e) {
-//				e.printStackTrace();
-//			}  
+			try {
+				value = new String(value.getBytes("iso-8859-1"), "utf-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}  
 			request.setAttribute("value", value);
 			if(MusicConts.TYPE_SONG.equals(type)){
-				List<Song> song=indexService.getSearchSong(new Param(0,20,value,0,0));
+				List<Song> song=indexService.getSearchSong(new Param(0,10,value,0,0));
 				request.setAttribute("type", MusicConts.TYPE_SONG);
 				request.setAttribute("size", indexService.getSearchCount(value,1));
 				request.setAttribute("list", song);
 			}else if(MusicConts.TYPE_ALBUM.equals(type)){
-				List<Album> album=indexService.getSearchAlbum(new Param(0,20,value,0,0));
+				List<Album> album=indexService.getSearchAlbum(new Param(0,10,value,0,0));
 				request.setAttribute("type", MusicConts.TYPE_ALBUM);
 				request.setAttribute("list", album);
 				request.setAttribute("size", indexService.getSearchCount(value,2));
 			}else if(MusicConts.TYPE_SINGER.equals(type)){
-				List<Singer> singer=indexService.getSearchSinger(new Param(0,20,value,0,0));
+				List<Singer> singer=indexService.getSearchSinger(new Param(0,10,value,0,0));
 				request.setAttribute("type", MusicConts.TYPE_SINGER);
 				request.setAttribute("list", singer);
 				request.setAttribute("size", indexService.getSearchCount(value,3));

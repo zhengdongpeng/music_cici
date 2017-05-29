@@ -80,7 +80,7 @@ text-align:center;
 <span class="text-size">歌词</span>
 <hr style="border-color:#FFEFDB">
 
-<p><textarea rows="5" cols="70"  style= "background:transparent;border-style:none; font-size: 18px;color: #ffffff;text-align: center;" disabled="disabled" ><%=song.getLyric() %></textarea> </p>
+<p><textarea rows="25" cols="70"  style= "background:transparent;border-style:none; font-size: 18px;color: #ffffff;text-align: center;" disabled="disabled" ><%=song.getLyric() %></textarea> </p>
 </div> 
 
 

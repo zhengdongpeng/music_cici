@@ -1,4 +1,5 @@
 function toSearch(){
+	debugger;
 	var value = $("#KeyWords").val();
 	var type = $('#searchradio input[name="type"]:checked ').val();
 	if(value==""){
@@ -23,6 +24,7 @@ function setPager(n,val,type){
 		    dataType:'json',    //���ص���ݸ�ʽ��json/xml/html/script/jsonp/text
 		   
 		    success:function(data){
+		    	debugger;
 		        data=JSON.parse(data);
 		        if(type=="song"){
 		        	$(".listtable").html("");

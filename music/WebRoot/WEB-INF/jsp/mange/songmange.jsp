@@ -88,8 +88,9 @@ div {
 
 					<form name="Form2" action="fileUploadSong.do" method="post"
 						enctype="multipart/form-data">
-						<input type="hidden" name="type" value="1" /> 歌曲文件：<input
-							name="file" type="file" accept="audio/mpeg" value="浏览" /><br>
+						<input type="hidden" name="type" value="1" /> 
+						歌曲文件：
+						<input name="file" type="file" accept="audio/mpeg" value="浏览" /><br>
 						歌曲名：<input type="text" name="songname1" class="songname1" /><br>
 						发行公司：<input type="text" name="fxgs" class="fxgs" /><br>
 						所属专辑： <input type="text" class="albumType" style="width: 50px">

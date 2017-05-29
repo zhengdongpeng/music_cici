@@ -50,7 +50,7 @@ font-size:20px;
         <input type="text" class="email" name="email"/></td>
       </tr>
       <tr>
-        <td>登录名</td>
+        <td>账号</td>
         <td>
         <input type="text" class="username" name="username"/></td>
       </tr>
@@ -83,7 +83,7 @@ font-size:20px;
       <tr>
         <td>验证码</td>
         <td><input type="text" class="yanzhengma" name="yanhengma"  style="width:120px;"/>
-        <a href='#' onclick="javascript:changeImg()" > <img id="img" src="authImage" />
+        <a onclick="javascript:changeImg()" > <img id="img" src="authImage" />
         <label >看不清？</label></a></td>
       </tr>
       <tr>
