@@ -54,8 +54,6 @@ public class MangeController {
 		return mangeService.delete(request);
 		
 	}
-	
-
 	@ResponseBody
 	@RequestMapping("mangequery")
 	public String mangequery(HttpServletRequest request) {
@@ -83,9 +81,7 @@ public class MangeController {
 			result = json.toJSONString();
 		}
 		return result;
-		
 	}
-	
 	@ResponseBody
 	@RequestMapping("mangeModify")
 	public String mangeModify(HttpServletRequest request) {
@@ -94,10 +90,8 @@ public class MangeController {
 		if("jibie".equals(type)){
 			result = mangeService.updateMange(request);
 		}
-		return result;
-		
+		return result;	
 	}
-
 	@RequestMapping("mangepager")
 	public String toMangepager(HttpServletRequest request) {
 		return "mange/mange";
@@ -126,7 +120,6 @@ public class MangeController {
 		request.setAttribute("count", userService.getUserTotal());
 		return "mange/usermange";
 	}
-
 	@ResponseBody
 	@RequestMapping("mangelogin")
 	public String mangelogin(HttpServletRequest request) {
@@ -136,7 +129,6 @@ public class MangeController {
 		user.setYanzhengma(request.getParameter("yanzhengma"));
 		return mangeService.login(user, request);
 	}
-
 	@ResponseBody
 	@RequestMapping("createMange")
 	public String createMange(HttpServletRequest request) {
