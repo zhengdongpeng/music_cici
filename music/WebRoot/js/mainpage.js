@@ -27,7 +27,7 @@ function tuijianalbum(){
 		        	var str = "<li><a target='_blank' class='pic' href='playAlbum.do?id="+list[i].albumId+"'>" +
 		        			"<img height='80px' width='80px' src='"+list[i].img+"'></a><div class='ablumname'>"+
 		        			"<a target='_blank' class='ablumlink' href='playAlbum.do?id="+list[i].albumId+"'>"+
-		        			list[i].aname+"</a></div><a target='_blank' href='singer.do?sid="+list[i].singerId+"'>"+list[i].singername+"</a></li>"
+		        			list[i].aname+"</a></div><a target='_blank' href='singer.do?sid="+list[i].songerId+"'>"+list[i].singername+"</a></li>"
 		        			 $(".tuijian").append(str);
 		        }
 	
