@@ -73,10 +73,17 @@ li{height:30px;}
 </style> 
 </head>
 <body background="images/bg_4.jpg">
-<div id="wrapper">
+
+<div style=" float:left; width: 14%;margin-top:200px;">
+<img class="dong"  style="visibility:hidden" src="images/mei.gif" width="200" height="532" />
+</div>
+<div id="wrapper" style=" float:left;width:72%">
 <div>
  <jsp:include page="head.jsp"></jsp:include>
  </div>
+ 
+
+
 <div >
 <div class="div-a" align="center">
 <div>
@@ -141,7 +148,7 @@ li{height:30px;}
                         </div>
    </div>
                         <div style="float: right;margin-top:10px; width: 49%;" align="left">  
-                        <audio  id="audio1" controls ></audio><br>
+                        <audio  id="audio1" controls onplay="startPlay()" onpause="stopPlay()"></audio><br>
                         <strong id="rmusic" style="color: #ffffff" >专辑音乐</strong>  </div>
                       
                         <a href="#" id="btn-order">  
@@ -149,9 +156,19 @@ li{height:30px;}
                  
 </div>
 </div>
+<div style=" float:right; width: 14%;margin-top:200px;">
+<img class="dong"  style="visibility:hidden" src="images/mei.gif" width="200" height="532" />
+</div>
 </body>
 </html>
 <script type="text/javascript">
+function startPlay(){
+	$(".dong").css("visibility","visible");
+	
+}
+function stopPlay(){
+	$(".dong").css("visibility","hidden");
+}
 var songdata= new Array();
 var songname= new Array();
 var songImg = new Array();

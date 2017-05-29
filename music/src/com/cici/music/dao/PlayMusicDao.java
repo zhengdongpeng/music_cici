@@ -45,7 +45,7 @@ public interface PlayMusicDao {
 
 	public int insertSinger(Singer song);
 
-	public int getClickCount(int sid);
+	public Integer getClickCount(int sid);
 
 	public void ModifyClickAdd(Map<String, Object> map);
 

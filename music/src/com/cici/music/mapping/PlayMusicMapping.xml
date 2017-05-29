@@ -24,7 +24,7 @@
 		where uid = #{uid}  and sid = #{id}
 	</delete>
 	<select id="getClickCount"  resultType="java.lang.Integer">
-		select click.count from click where id=#{0}
+		select  click.count  from click where id=#{0}
 	</select>
 	<insert id="ModifyClickAdd"  parameterType="hashmap">
 		insert into click (type,id,count,updatetime) values(#{type},#{sid},#{count},#{updatetime})

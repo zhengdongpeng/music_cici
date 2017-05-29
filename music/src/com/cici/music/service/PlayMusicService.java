@@ -246,7 +246,10 @@ public class PlayMusicService {
 
 
 	public void songCountAdd(int sid) {
-		int i=playMusicDao.getClickCount(sid);
+		Integer i=playMusicDao.getClickCount(sid);
+		if(i==null){
+			i=0;
+		}
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("sid", sid);
 		map.put("type",1);
