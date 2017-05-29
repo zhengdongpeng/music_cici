@@ -64,12 +64,23 @@ text-align:center;
 <span class="songName"><%=song.getSname() %></span>
 <span class="shoucang1" ><a onclick="shoucang(<%=song.getSid() %>)"><img height="40" width="70" src="images/shoucang.png"/></a></span>
 </div>
-<div>
-<div><img src="<%=song.getImg() %>" height="256" width="256"/></div>
-<audio controls="controls" height="100" width="100">
-  <source src="<%=song.getSong() %>" type="audio/mp3" />
+<div style="width: 924px">
+
+<div style=" float:left; width: 30%;margin-top:80px;">
+<img class="dong"  style="visibility:hidden" src="images/zhuan.gif" width="216" height="132" />
+</div>
+
+<div style="float:left;width: 40%">
+<img src="<%=song.getImg() %>" height="256" width="256"/>
+<audio controls="controls" height="100" width="100" onplay="startPlay()" onpause="stopPlay()">
+  <source src="<%=song.getSong() %>" type="audio/mp3" /> 
 <embed height="100" width="100" src="<%=song.getSong() %>" /></audio>
 </div>
+<div  style="float:right;width: 30%;margin-top:80px;">
+<img class="dong" style="visibility:hidden" src="images/zhuan.gif" width="216" height="132" />
+</div>
+</div>
+
 </div>
 <div class="cities">
 <span class="text-size">歌曲名称：<%=song.getSname() %></span>
@@ -90,7 +101,13 @@ text-align:center;
 </html>
 
 <script type="text/javascript">
-
+function startPlay(){
+	$(".dong").css("visibility","visible");
+	
+}
+function stopPlay(){
+	$(".dong").css("visibility","hidden");
+}
 $(document).ready(function(){
 	debugger;
 	initCollect(<%=song.getSid()%>);
