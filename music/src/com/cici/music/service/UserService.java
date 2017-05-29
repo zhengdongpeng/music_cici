@@ -67,7 +67,7 @@ public class UserService {
 		}
 		User u = userDao.getName(user);
 		if(u!=null){
-			json.put("error", "用户名已经存在，请重新输入");
+			json.put("error", "账号已经存在，请重新输入");
 			return json.toJSONString();
 		}
 		user.setZctime(new Date());

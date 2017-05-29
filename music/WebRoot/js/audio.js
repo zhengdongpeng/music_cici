@@ -148,6 +148,7 @@ $(function() {
  
 });  
 function playmusic(i){
+	debugger
 	Player.audio.src = Player.path + Player.data[i];  
 	Player.audio.play();  
 	Player.currentIndex = i;  

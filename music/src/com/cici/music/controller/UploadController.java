@@ -37,7 +37,9 @@ public class UploadController {
     public String  fileUpload2(@RequestParam("file") CommonsMultipartFile file,
     		HttpServletRequest request) throws IOException {
         String path = request.getSession().getServletContext().getRealPath("/img/head");
-        String imgName=new Date().getTime()+file.getOriginalFilename();
+        String[] tail=file.getOriginalFilename().split("\\.");
+        String t = tail[tail.length-1];
+        String imgName=new Date().getTime()+"."+t;;
         path=path+"/"+imgName;
         File newFile=new File(path);
         //通过CommonsMultipartFile的方法直接写文件（注意这个时候）

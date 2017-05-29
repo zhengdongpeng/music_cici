@@ -49,7 +49,7 @@ font-size:20px;
             </tr>
             <tr height="48">
             <td colspan="2" align="left">
-           <a href='#' onclick="javascript:changeImg()" > <img id="img" src="authImage" />
+           <a onclick="javascript:changeImg()" > <img id="img" src="authImage" />
         <label >看不清？</label></a>
     </td>
             </tr>

@@ -154,7 +154,7 @@ public class IndexService {
 		List<Song> song = playMusicDao.getSongByType(new Param(MusicConts.PAGER_COUNT*n,MusicConts.PAGER_COUNT*n+MusicConts.PAGER_COUNT,type+"",0,0));
 		if(song.size()>0){
 			obj.put("stats", "success");
-			obj.put("success", "收藏成功！");
+			obj.put("success", "查找成功！");
 			obj.put("list",song);
 		}
 		return obj.toJSONString();

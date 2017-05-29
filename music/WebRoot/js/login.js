@@ -63,13 +63,13 @@ function chooseHead(head){
 	$.ajax({
 		  url:'userHeadupload.do',
 		    type:'POST', //GET
-		    async:true,    //��false,�Ƿ��첽
+		    async:true,    //
 		    data:{
 		       type:'settting',
 		       head: head
 		    },
-		    timeout:5000,    //��ʱʱ��
-		    dataType:'json',    //���ص���ݸ�ʽ��json/xml/html/script/jsonp/text
+		    timeout:5000,    
+		    dataType:'json',    //
 		   
 		    success:function(data){
 		    	debugger;
