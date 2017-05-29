@@ -61,8 +61,9 @@ function modifyUser(){
 	var uname = $(".uname").val();
 	var city = $(".city").val();
 	var yanzhengma = $(".yanzhengma").val();
-	var sex = $('#wrap input[name="radio"]:checked ').val();
+	var sex = $('input[name="sex"]:checked').val();
 	debugger;
+	console.log(sex);
 	if(uname==""){
 		alert("用户名不能为空");
 		return;
