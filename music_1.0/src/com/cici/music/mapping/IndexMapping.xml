@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cici.music.dao.IndexDao">
+
+<select id="getSearchSong" parameterType="com.cici.music.pojo.Param"  resultType="com.cici.music.pojo.Song" >
+	SELECT
+		song.sid,
+		song.sname,
+		song.songerid,
+		songer.sname AS songerName,
+		zhuanji.zname AS zjName,
+		song.img,
+		song.zjid,
+		song.fxgs,
+		song.lyric
+	FROM
+		songer,
+		song
+	LEFT JOIN zhuanji ON song.zjid = zhuanji.zhujiid
+	WHERE
+		song.songerid = songer.sid
+	AND song.sname LIKE 
+ 	CONCAT('%','${searchParam}','%' ) 
+	ORDER BY
+		song.cjtime DESC
+	LIMIT #{start},
+ 	#{length}  
+</select>
+<select id="getTypeNum" resultType="com.cici.music.pojo.TypeNum">
+	select 
+  song.type as key_,
+  count(song.sid) as value_
+	 from song
+
+GROUP BY type;
+	</select>
+<select id="getSearchCount" resultType="int" parameterType="hashmap">
+	select count(*) 
+ 	from 
+ 	<if test="type==1">
+		songer,
+		song
+	LEFT JOIN zhuanji ON song.zjid = zhuanji.zhujiid
+	WHERE
+	song.songerid = songer.sid
+	AND song.sname LIKE  CONCAT('%','${value}','%' )
+ 	</if>
+  <if test="type==2">
+   zhuanji
+	WHERE
+	zhuanji.zname LIKE  CONCAT('%','${value}','%' )
+ </if>
+  <if test="type==3">
+   songer
+      WHERE
+	songer.sname LIKE  CONCAT('%','${value}','%' )
+ 	</if>
+</select>
+
+<select id="getSearchSinger" parameterType="com.cici.music.pojo.Param"  resultType="com.cici.music.pojo.Singer" >
+	SELECT
+		songer.sname,
+		songer.sid,
+		songer.head
+	FROM
+		songer
+	WHERE
+		songer.sname LIKE  CONCAT('%','${searchParam}','%' )
+		ORDER BY
+		songer.sid DESC
+		LIMIT #{start},
+ 	#{length} 
+</select>
+<select id="getSearchAlbum" parameterType="com.cici.music.pojo.Param"  resultType="com.cici.music.pojo.Album" >
+SELECT
+zhuanji.zname as aname,
+zhuanji.zhujiid as albumId,
+zhuanji.js,
+zhuanji.fxgs,
+zhuanji.img ,
+songer.sname as singername
+
+FROM
+	zhuanji ,songer
+WHERE
+zhuanji.songerid = songer.sid and 
+zhuanji.zname LIKE  CONCAT('%','${searchParam}','%' )
+ORDER BY
+	zhuanji.zhujiid DESC
+	LIMIT #{start},
+ #{length} 
+</select>
+  <select id="queryForNew" resultType="com.cici.music.pojo.Album" >
+    SELECT
+            zhujiId as albumId,
+            zname as aname,
+            js,
+            zhuanji.songerId,
+            songer.sname as singername,
+            zhuanji.fxgs,
+            zhuanji.typeId,
+            zhuanji.fbtime,
+            zhuanji.cjtime,
+            zhuanji.img
+        FROM
+            zhuanji,songer 
+            where zhuanji.songerId=songer.sid
+        order by fbtime desc  limit 0,6;
+           
+  </select>
+  
+  
+  <select id="getsong" resultType="com.cici.music.pojo.SongDto" >
+    SELECT
+            song.sid,
+            song.sname as name,
+            songer.sid as si_id,
+            songer.sname as singername        
+        FROM
+            song,songer
+        where
+        	song.songerid=songer.sid
+        order by fbtime desc
+        limit 0,10
+           
+  </select>
+  <select id="getsongLimit"  parameterType="com.cici.music.pojo.Param" resultType="com.cici.music.pojo.SongDto">
+   SELECT
+            song.sid,
+            song.sname as name,
+            songer.sid as si_id,
+            songer.sname as singername        
+        FROM
+            song,songer
+        where
+        	song.songerid=songer.sid
+        order by fbtime desc
+        limit #{start},#{length}
+  </select>
+  
+  <select id="getTypeSong"  parameterType="com.cici.music.pojo.Param"  resultType="com.cici.music.pojo.SongDto" >
+    	SELECT
+	song.sid,
+	song.sname AS NAME,
+	songer.sid AS si_id,
+	songer.sname AS singername
+FROM
+	songer,
+	song
+left join click on song.sid=click.id 
+WHERE
+	song.songerid = songer.sid and song.type= #{songType}
+ORDER BY
+	click.count DESC
+LIMIT #{start},
+ #{length}  
+  </select>
+  
+  <select id="getHotSong"  parameterType="com.cici.music.pojo.Param"  resultType="com.cici.music.pojo.SongDto" >
+SELECT
+	song.sid,
+	song.sname AS NAME,
+	songer.sid AS si_id,
+	songer.sname AS singername
+FROM
+	songer,
+	song
+left join click on song.sid=click.id 
+WHERE
+	song.songerid = songer.sid
+	<if test="searchType==1">
+	and click.count>3
+	</if>
+ORDER BY
+<if test="searchType==1">
+	click.updatetime desc 
+	</if>
+	<if test="searchType!=1">
+	click.count DESC
+	</if>
+	
+LIMIT #{start},
+ #{length}        
+ </select>
+ 
+ <select id="getSinger"  parameterType="com.cici.music.pojo.Param"  resultType="com.cici.music.pojo.Singer" >
+SELECT
+	s.sid,
+	s.sname,
+	s.sex,
+	s.jieshao,
+	s.head,
+	s.typeid
+FROM
+	songer s
+LEFT JOIN (
+	SELECT
+		sum(c.count) AS count,
+		s1.songerid
+	FROM
+		song s1,
+		click c
+	WHERE
+		s1.sid = c.id
+	GROUP BY
+		s1.songerid
+	ORDER BY
+		count DESC
+) s2 ON s.sid = s2.songerid
+LIMIT #{start},
+ #{length}        
+ </select>
+  
+</mapper>
+
+
+
+

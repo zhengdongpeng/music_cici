@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.cici.music.dao.PlayMusicDao">
+	<select id="getForId"  parameterType="int"   resultType="com.cici.music.pojo.Song" >
+		select song.sid,
+		song.sname,
+		song.song,
+		songer.sname as songerName,
+		song.lyric,
+		song.img,
+		song.songerid
+	 from song,songer
+	where song.songerid=songer.sid and
+	song.sid=#{id}
+	</select>
+	<delete id="deleteCollect"  parameterType="hashmap" >
+	 delete from 
+	 <if test="type == 1">
+	 	collectsong
+	 </if>
+	 <if test="type == 2">
+	 	collectzhuanji
+	 </if>
+		where uid = #{uid}  and sid = #{id}
+	</delete>
+	<select id="getClickCount"  resultType="java.lang.Integer">
+		select  click.count  from click where id=#{0}
+	</select>
+	<insert id="ModifyClickAdd"  parameterType="hashmap">
+		insert into click (type,id,count,updatetime) values(#{type},#{sid},#{count},#{updatetime})
+	</insert>
+	<update id="ModifyClickUp"  parameterType="hashmap">
+		update click set count = #{count} , updatetime =#{updatetime} where id=#{sid}
+	</update>
+	<delete id="delete"  parameterType="java.lang.String">
+	delete from song where sid=#{0};
+	</delete>
+		<delete id="deleteSinger"  parameterType="java.lang.String">
+	delete from songer where sid=#{0};
+	</delete>
+	<insert id="insertSong"   parameterType="com.cici.music.pojo.Song" >
+			insert into song(sname,song,type,songerid,fxgs,lyric,zjid,fbtime,cjtime,img)
+			values(#{sname},#{song},#{type},#{songerid},#{fxgs}
+			,#{lyric},#{zjid},#{fbtime},#{cjtime},#{img})
+	</insert>
+	<insert id="insertSinger"   parameterType="com.cici.music.pojo.Singer" >
+		insert into songer (sname,sex,jieshao,head)
+		values(#{sname},#{sex},#{jieshao},#{head})
+	</insert>
+	<select id="getMusicListForUid"  resultType="com.cici.music.pojo.Song"   parameterType="com.cici.music.pojo.Param" >
+	select song.sid,
+song.img,
+song.sname,
+song.song,
+songer.sname as songerName,
+z.zname as zjName
+from collectsong c,songer, song  left join zhuanji z on song.zjid = z.zhujiid
+
+where song.songerid=songer.sid and c.uid=#{searchParam} and song.sid=c.sid
+	</select>
+	<select id="getSongListForAlbumid"  parameterType="com.cici.music.pojo.Param" resultType="com.cici.music.pojo.Song">
+	select song.sid,
+song.img,
+song.sname,
+song.song,
+songer.sname as songerName,
+z.zname as zjName
+from songer, song  left join zhuanji z on song.zjid = z.zhujiid
+
+where song.songerid=songer.sid and song.zjid in
+(
+		select c.sid
+		from collectzhuanji c
+		where c.uid=#{searchParam} )
+	</select>
+	<select id="getCollectRanking" parameterType="com.cici.music.pojo.Param" resultType="com.cici.music.pojo.SongDto">
+	 select   song.sid,
+            song.sname as name,
+            songer.sid as si_id,
+            songer.sname as singername   
+	 from songer, song LEFT JOIN 
+(select count(*) ,sid from collectsong GROUP BY sid) coll on song.sid=coll.sid
+where song.songerid=songer.sid
+order by coll.sid desc
+limit #{start},#{length}
+	</select>
+	<select id="getSingerAll" resultType="com.cici.music.pojo.Singer" parameterType="com.cici.music.pojo.Param">
+		select songer.sid,
+		songer.sname,
+	songer.head
+	
+	from songer
+ <if test="searchType!=1">
+	order by songer.sid desc
+	LIMIT #{start},
+ 	#{length}  
+</if>
+</select>
+
+
+
+	<select id="getSongByType"  parameterType="com.cici.music.pojo.Param"   resultType="com.cici.music.pojo.Song" >
+		select song.sid,
+		song.sname,
+		songer.sname as songerName,
+		zhuanji.zname as zjName
+		
+	 from songer,song left join zhuanji on song.zjid=zhuanji.zhujiid
+	where song.songerid=songer.sid and 
+	song.type=#{searchParam}
+	order by  song.fbtime
+	limit #{start},#{length}
+	</select>
+	
+	
+	
+<select id="getAlbumForSinger" parameterType="hashmap" resultType="com.cici.music.pojo.Album">
+	select zhuanji.zhujiid as albumId,
+	zhuanji.zname as aname,
+	zhuanji.fxgs,
+	zhuanji.fbtime,
+	zhuanji.img
+	from zhuanji
+	where zhuanji.songerid=#{id}
+	<if test="type==1">
+	 limit 0,10
+	</if>
+</select>
+
+<select id="getSongForSinger" parameterType="hashmap" resultType="com.cici.music.pojo.Song">
+	select 
+	sid,sname from song
+	where song.songerid=#{id}
+	<if test="type==1">
+	 limit 0,50
+	</if>
+</select>
+
+<select id="getSingerForId" resultType="com.cici.music.pojo.Singer">
+select songer.sid,
+songer.sname,
+songer.sex,
+songer.jieshao,
+songer.head
+from songer
+ where songer.sid=#{0}
+</select>
+
+<select id="getSingerForParam" parameterType="hashmap"  resultType="com.cici.music.pojo.Singer">
+select songer.sid,
+songer.sname,
+songer.sex,
+songer.jieshao,
+songer.head
+from songer
+<where>
+<if test="mohu==1">
+	sname like CONCAT('%','${name}','%' ) 
+</if>
+</where>
+</select>
+<update id="updateSinger"  parameterType="com.cici.music.pojo.Singer">
+	update songer 
+	<set>
+			sname=#{sname},
+		<if test="sex!=null">
+			sex = #{sex},
+		</if>
+		<if test="jieshao!=null">
+			jieshao = #{jieshao},
+		</if>
+		<if test="head!=null">
+		 head=#{head},
+		</if>
+	</set>
+	where sid=#{sid}
+</update>
+
+	<update id="updateSong"   parameterType="com.cici.music.pojo.Song">
+	update song
+	<set>
+			sname=#{sname},
+			fxgs = #{fxgs},
+			lyric = #{lyric},
+			type = #{type},
+			zjid= #{zjid},
+			songerid=#{songerid},
+		<if test="song!=null">
+			song.song = #{song},
+		</if>
+		<if test="img!=null">
+			song.img = #{img},
+		</if>
+	
+	</set>
+	where sid=#{sid}
+	</update>
+
+<select id="queryCollectForId" parameterType="com.cici.music.pojo.Collect" resultType="com.cici.music.pojo.Collect">
+	select uid,sid
+	from
+	<if test="type==1">
+		collectsong
+	</if>
+	<if test="type==2">
+	collectzhuanji
+	</if>
+	where uid=#{uid} and sid=#{sid}
+</select>
+<select id="queryCollectAll" parameterType="com.cici.music.pojo.Collect" resultType="com.cici.music.pojo.Collect">
+	select uid,sid,sctime
+	from
+	<if test="type==1">
+		collectsong
+	</if>
+	<if test="type==2">
+	collectzhuanji
+	</if>
+	where uid=#{uid} 
+</select>
+
+<select id="getCollectForUid"  resultType="com.cici.music.pojo.SongDto" parameterType="com.cici.music.pojo.Param">
+SELECT
+	song.sid,
+	song.sname as name,
+	song.songerid as si_id,
+	s1.sname AS singername
+FROM
+	song,
+	collectsong c,
+	songer s1
+WHERE
+	c.uid = #{searchParam}
+AND c.sid=song.sid  and song.songerid=s1.sid
+order by c.sctime desc
+limit #{start},#{length}
+</select>
+
+
+
+<insert id="insertConllectSong" parameterType="com.cici.music.pojo.Collect">
+	insert into collectsong values(#{uid},#{sid},#{sctime})
+</insert>
+<insert id="insertConllectAlubm" parameterType="com.cici.music.pojo.Collect">
+insert into collectzhuanji values(#{uid},#{sid},#{sctime})
+</insert>
+</mapper>
