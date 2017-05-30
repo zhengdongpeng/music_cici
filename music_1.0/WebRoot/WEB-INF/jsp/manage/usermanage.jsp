@@ -176,14 +176,13 @@ function pushajax(data,url){
 		    		$(".tbody").html("");
 		    			for(var i=0;i<list.length;i++){
 		    				var u=list[i];
-			    			var birthday = new Date();
 			    			var cjtime = new Date();
 			    			debugger;
-			    			/* if(u.birthday){
-			    			birthday=	birthday.setTime(u.birthday).toLocaleDateString();
-			    			} */
-			    			/* else
-			    				birthday=u.birthday; */
+			    			birthday="暂无";
+			    			if(u.birthday){
+			    				birthday=getLocalTime(u.birthday);
+			    			} 
+			    			
 			    			cjtime.setTime(u.zctime );
 		    				var str="	<tr><td>"+u.uid+"</td><td>"+u.username+"</td><td>"+u.uname+
 		    				"</td><td>"+u.sex+"</td><td>"+u.email+"</td><td>"
@@ -198,5 +197,11 @@ function pushajax(data,url){
 		    },
 		   
 	});
+}
+
+function getLocalTime(nS) {  
+	var newDate = new Date();
+	newDate.setTime(nS );
+	return newDate.toLocaleDateString();
 }
 </script>

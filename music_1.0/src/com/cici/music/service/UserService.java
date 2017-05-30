@@ -120,6 +120,9 @@ public class UserService {
 		user.setUid(u.getUid());
 		int i=userDao.updateUser(user);
 		if(i>0){
+			u.setBirthday(user.getBirthday());
+			u.setCity(user.getCity());
+			u.setSex(user.getSex());
 			json.put("stats", "success");
 			json.put("success", "修改成功！");
 			return json.toJSONString();

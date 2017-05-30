@@ -1,9 +1,17 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8" import="java.util.*,com.cici.music.pojo.*"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 User user =(User) session.getAttribute("user");
+String birth="暂无";
+SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd");
+if(user.getBirthday()!=null){
+	birth = sim.format(user.getBirthday());
+}
+
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -76,9 +84,9 @@ width:33.33%;float:left;height: 180px;
 <div  class="div-d">
 	登录账号：<%=user.getUsername() %><br>
 	<%=user.getUname() %>,<%=user.getSex() %><br>
-		所在城市：<%=user.getCity() %><br>
-		生日：<%=user.getBirthday()%><br>
-	<%=user.getEmail() %>
+		所在城市：<%=user.getCity()==null?"暂无":user.getCity() %><br>
+		生日：<%=birth%><br>
+	邮箱:<%=user.getEmail()==null?"暂无":user.getEmail()%>
 </div>
 </div> 
 <div class="div-b">
@@ -172,7 +180,7 @@ function initSonguser(id){
 		    			var str="<tr style='width:100%;height: 40px;'><td style='width:10%;'><img src='"+list[i].img+" ' width='40px' height='40'/></td>"
 		    			+"<td  style='width:40%;line-height: 40px;height: 50px;text-align: center;vertical-align:middle;'><a class='a-list' href='playMusic.do?id="+list[i].sid
 	    				+"' >"+list[i].sname+"</a></td><td style='width:20%;vertical-align:middle;'>"+list[i].songerName+"</td>"+
-	    				"<td style='width:20%;vertical-align:middle;'>"+list[i].zjName+" </td><td  style='width:20%;vertical-align:middle;'><a class ='play-a' onclick='playmusic("+i+")'>播放</a></td></tr>"
+	    				"<td style='width:20%;vertical-align:middle;'>"+(list[i].zjName?list[i].zjName:"暂无")+" </td><td  style='width:20%;vertical-align:middle;'><a class ='play-a' onclick='playmusic("+i+")'>播放</a></td></tr>"
 		    				$("#m-list").append(str);
 		    			
 		    		}
