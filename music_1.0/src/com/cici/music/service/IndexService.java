@@ -151,7 +151,7 @@ public class IndexService {
 		obj.put("stats", "error");
 		int type = Integer.parseInt(request.getParameter("type"));
 		int n =  Integer.parseInt(request.getParameter("n"));
-		List<Song> song = playMusicDao.getSongByType(new Param(MusicConts.PAGER_COUNT*n,MusicConts.PAGER_COUNT*n+MusicConts.PAGER_COUNT,type+"",0,0));
+		List<Song> song = playMusicDao.getSongByType(new Param(MusicConts.PAGER_COUNT*n,MusicConts.PAGER_COUNT,type+"",0,0));
 		if(song.size()>0){
 			obj.put("stats", "success");
 			obj.put("success", "查找成功！");

@@ -78,7 +78,8 @@ zhuanji.zhujiid as albumId,
 zhuanji.js,
 zhuanji.fxgs,
 zhuanji.img ,
-songer.sname as singername
+songer.sname as singername,
+zhuanji.fbtime
 
 FROM
 	zhuanji ,songer

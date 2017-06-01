@@ -115,11 +115,11 @@
   </tr>
   <tr>
     <td align="right" >生日：</td>
-    <td><input type="text"  id="input1" class ="input1"/></td>
+    <td><input type="text"  id="input1" class ="input1" /></td>
   </tr>
   <tr>
     <td align="right" >城市：</td>
-    <td><input type="text"  class="city" value="北京市"/></td>
+    <td><input type="text"  class="city" value="<%=user.getCity()== null?"北京市":user.getCity() %>" /></td>
   </tr>
  <!--  <tr>
     <td align="right" >个人简介：</td>
@@ -173,6 +173,16 @@
 </body>
 </html>
 <script type="text/javascript">
+var birthday = '<%=user.getBirthday().getTime()%>';
+$().ready(function (){
+	
+$(".input1").val(getLocalTime(birthday));
+});
+function getLocalTime(nS) {  
+	var newDate = new Date();
+	newDate.setTime(nS );
+	return newDate.toLocaleDateString();
+}
     function changeImg(img){
         var img = document.getElementById(img); 
         img.src = "authImage?date=" + new Date();

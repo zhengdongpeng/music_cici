@@ -38,7 +38,7 @@ font-size:20px;
        <td >   
        <h1 class="tou">管理员后台登录</h1><br/><br/>
        <div class="logindiv">
-           <table width="432" height="359" border="1" class="kuang"> 
+           <table width="432" height="359" class="kuang"> 
             <tr>
               <td width="122" height="48">账号</td>
               <td width="294"><input type="text" class="username" name="username"/></td>

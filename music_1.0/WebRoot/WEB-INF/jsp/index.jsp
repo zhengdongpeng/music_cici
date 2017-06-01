@@ -152,31 +152,7 @@ var islogin='<%=islogin%>';
   </div>
  
 
-<div id="footer">
-  <div style="height:28px;line-height:28px;border-bottom:1px solid #DDDDDD;margin-bottom:10px;width:960px;" align="center">
-		<a href="/about/us.shtml" rel="nofollow">网站介绍</a> | 
-		<a href="/about/copy.shtml" rel="nofollow">版权声明</a> | 
-		<a href="/about/contact.shtml" rel="nofollow">联系方式</a> | 
-	</div>
-  <div>
-    <div align="center">
-		<a href="http://www.yue365.com/" target="_blank">cici音乐网</a> 在线音乐门户，分享最新网络歌曲，带给你最好听的新歌 <br />
-		
-		<div style="  width:300px;margin:0 auto; padding:0px;">
-			<a style="display:inline-block;text-decoration:none;height:20px;line-height:20px;" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=35020302000124" target="_blank">
-			<img style="float:left;" src="http://www.yue365.com/about/gonganbu.jpg">
-			<p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">闽公网安备 35020302000124号</p>
-			</a>
-		</div>
-		
-			
-		<div style="display:none;">
-		
-		</div>
-		
-	  </div>
-  </div>
-</div>
+
 <div class="dialogPopup" id="dialogPopup">
   <div class="dialogMain">
     <h3 id="dialogTitle">音乐收藏</h3>

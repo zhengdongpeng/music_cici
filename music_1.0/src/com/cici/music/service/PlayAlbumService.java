@@ -67,8 +67,8 @@ public class PlayAlbumService {
 		int n = Integer.parseInt(n1);
 		JSONObject json = new JSONObject();
 		json.put("stats", "error");
-		Param p = new Param(n * MusicConts.PAGER_COUNT, n
-				* MusicConts.PAGER_COUNT + MusicConts.PAGER_COUNT, "", 2, 0);
+		Param p = new Param(n * MusicConts.PAGER_COUNT, 
+				MusicConts.PAGER_COUNT, "", 2, 0);
 		List<Album> list = playAlbumDao.getAlbumAll(p);
 		if (list != null) {
 			json.put("stats", "success");

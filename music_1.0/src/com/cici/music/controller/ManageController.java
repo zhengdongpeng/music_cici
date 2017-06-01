@@ -72,8 +72,8 @@ public class ManageController {
 			json.put("list", album);
 			result = json.toJSONString();
 		}else if("songquery".equals(type)){
-			String name = request.getParameter("username");
-			List<Song> album=indexService.getSearchSong(new Param(0,
+			String name = request.getParameter("username");//song
+			List<Song> album=indexService.getSearchSong(new Param(0, //song
 					1000,name,0,0));
 			JSONObject json = new JSONObject();
 			json.put("stats", "success");

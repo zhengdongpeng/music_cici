@@ -51,7 +51,7 @@ public class UserService {
 				&& user.getPassword().equals(u.getPassword())){
 			json.put("stats", "success");
 			json.put("success", "��½�ɹ�");
-			request.getSession().setAttribute("user", u);
+			request.getSession().setAttribute("user", u);//在此处设置用户
 		}else{
 			json.put("error", "账号或密码不存在");
 			return json.toJSONString();

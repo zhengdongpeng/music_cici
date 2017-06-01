@@ -115,7 +115,7 @@ function querymanage(){
 		    	type:'managequery'},
 		    timeout:5000,  dataType:'json',    
 		    success:function(data){
-		    	data=JSON.parse(data);
+		    	data=JSON.parse(data);//js
 		    	$(".query").html("");
 		    	debugger;
 		    	var list = data.list;

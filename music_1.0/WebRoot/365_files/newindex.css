@@ -53,7 +53,7 @@
 #menu4{ width:100%; overflow:hidden; height:25px; line-height:25px; background:url(../images/bg.gif) repeat-x;}
 #menu4 li{ float:left; width:84px; text-align:center; margin-left:2px; cursor:pointer;background:url(../images/mout.gif) no-repeat;}
 #menu4 li.mover{ background:url(../images/mover.gif) no-repeat;}
-#main4{ overflow:hidden;padding-top:10px;}
+#main4{ overflow:hidden;padding-top:10px;background-color:rgba(135,207,235,0.7);}
 #listen{ padding-top:10px;}
 #main4 ul li{ float:left; width:221px; margin-left:11px; display:inline; height:24px; line-height:24px; overflow:hidden;}
 #main4 ul{ overflow:hidden;}

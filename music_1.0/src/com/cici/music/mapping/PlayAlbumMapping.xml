@@ -26,6 +26,7 @@
 			js = #{js},
 			songerid= #{songerId},
 			fxgs = #{fxgs},
+			fbtime = #{fbtime}
 		<if test="img!=null">
 		 img=#{img},
 		</if>

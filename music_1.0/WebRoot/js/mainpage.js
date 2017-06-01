@@ -13,7 +13,7 @@ function tuijianalbum(){
 	$.ajax({
 		  url:'albumCollect.do',
 		    type:'POST', //GET
-		    async:true,    //��false,�Ƿ��첽
+		    async:true,    //如果设置为false的话就是同步
 		    data:{
 		    },
 		    timeout:5000,    //��ʱʱ��
@@ -88,19 +88,12 @@ function singer(){
 		        $(".singerpic").html("");
 		        $("#Top100").html("");
 		        data=JSON.parse(data);
-		        /**   <a href="/mlist/18083.shtml">
-		         * <img src="http://pic.yue365.com/singer/90/10/18083.jpg" width="90" height="90"/>
-		         * </a>
-		         */
 		        var head=data.head;
 		       for(var i=0;i<head.length;i++){
 		    	   $(".singerpic").append("<li><a href='singer.do?sid="+head[i].sid+"'> <img src='"+head[i].head+"' width='90' height='90' ></img> </a></li>");
 		       }
 		       
 		       var singer=data.singer;
-		       /*
-		        * <li><span>1</span><a href="/mlist/18083.shtml">TFBOYS</a></li>
-		        */
 		       for(var i=0;i<singer.length;i++){
 		    	   $("#Top100").append("<li><span>"+(i+1)+"</span>  <a href='singer.do?sid="+singer[i].sid+"'>"+singer[i].sname+"</a></li>");
 		       }
@@ -192,7 +185,7 @@ function rigthview(){
 			    timeout:5000,    //��ʱʱ��
 			    dataType:'json',    //���ص���ݸ�ʽ��json/xml/html/script/jsonp/text
 			   
-			    success:function(data,textStatus,jqXHR){
+			    success:function(data){
 			        debugger;
 			        $(".musicList").html("");
 			        data=JSON.parse(data);

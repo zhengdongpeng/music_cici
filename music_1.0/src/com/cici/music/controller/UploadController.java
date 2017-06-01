@@ -2,6 +2,8 @@ package com.cici.music.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -66,7 +68,7 @@ public class UploadController {
     	        File newFile=new File(Songpath);
     	        file.transferTo(newFile);
     	        song.setSong("img/song/song/"+imgName+"."+t);
-    	        String[] tailh=file2.getOriginalFilename().split("\\.");
+    	        String[] tailh=file2.getOriginalFilename().split("\\.");//pic
        		 String th = tailh[tailh.length-1];
        	       String headpath=path+"/head/"+imgName+"."+th;
        	       System.out.println(Songpath+","+headpath);
@@ -162,7 +164,18 @@ public class UploadController {
     	        String fxgs =request.getParameter("fxgs");
     	        String singer =request.getParameter("singer1");
     	        String js =request.getParameter("js");
-    	        song.setFbtime(new Date());
+    	        String fbtime = request.getParameter("fbtime");
+    	        if(fbtime == null){
+    	        	fbtime = "2017-06-01";
+    	        }
+    	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    	        try {
+					song.setFbtime(sdf.parse(fbtime));
+				} catch (ParseException e) {
+					 request.setAttribute("result", "上传失败,日期格式错误"); 
+	    	       request.setAttribute("url", "albummanage.do");
+	    	        return  "manage/result";
+				}
     	        song.setFxgs(fxgs);
     	        song.setCjtime(new Date());
     	        song.setAname(songname);
@@ -193,6 +206,18 @@ public class UploadController {
    	        String singer =request.getParameter("singer1");
    	        String js =request.getParameter("js");
    	        js = js.replace("/\n|\r\n/g","<br>");  
+   	     String fbtime = request.getParameter("fbtime");
+	        if(fbtime == null){
+	        	fbtime = "2017-06-01";
+	        }
+	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	        try {
+				song.setFbtime(sdf.parse(fbtime));
+			} catch (ParseException e) {
+				 request.setAttribute("result", "上传失败,日期格式错误"); 
+ 	       request.setAttribute("url", "albummanage.do");
+ 	        return  "manage/result";
+			}
    	        song.setFxgs(fxgs);
    	        song.setAname(songname);
    	        song.setJs(js);

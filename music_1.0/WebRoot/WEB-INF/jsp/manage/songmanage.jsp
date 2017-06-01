@@ -128,7 +128,7 @@ div {
 				</div>
 				<div style="float: right; width: 50%; visibility: hidden"
 					class="updatesinger">
-					<p>歌曲上传</p>
+					<p>歌曲修改</p>
 					<hr>
 
 					<form name="Form2" action="fileUploadSong.do" method="post"
@@ -231,7 +231,7 @@ div {
 	}
 	var arraydata = null;
 	function querySong() {
-		var username = $(".albumnamequery").val();
+		var username = $(".albumnamequery").val(); //username is song name.
 		if (!username.trim()) {
 			return;
 		}

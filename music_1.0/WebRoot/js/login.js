@@ -8,7 +8,11 @@ function confirmd() {
             }  
         }  
 
-
+function getLocalTime(nS) {  
+	var newDate = new Date();
+	newDate.setTime(nS );
+	return newDate.toLocaleDateString();
+}
 function manageuserlogin(){
 	var username = $(".username").val();
 	var password = $(".password").val();
@@ -23,6 +27,10 @@ function manageuserlogin(){
 	}
 	if(!password.trim){
 		$(".tishi").text("密码不能为空");
+		return;
+	}
+	if(password.length>12 || password<4){
+		$(".tishi").text("密码长度为4-12位，请重新填写");
 		return;
 	}
 	$.ajax({

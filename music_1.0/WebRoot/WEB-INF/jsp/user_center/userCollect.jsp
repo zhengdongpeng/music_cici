@@ -158,7 +158,7 @@ function initSonguser(id){
 	$.ajax({
 		  url:'musiclistForUid.do',
 		    type:'POST', //GET
-		    async:true,    //��false,�Ƿ��첽
+		    async:true,    
 		    data:{
 		  uid:id
 		    },

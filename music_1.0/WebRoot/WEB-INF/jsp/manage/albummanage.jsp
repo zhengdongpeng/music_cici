@@ -91,8 +91,8 @@ div {
 						type="text" name="albumname1" class="albumname1" /><br> 发行公司：<input
 						type="text" name="fxgs" class="fxgs" /><br>
 
-					<!--                        发布时间：<input type="text"  id="fbtime" class ="input1"/><br>
- -->
+					发布时间：<input type="text"  name="fbtime" class="Wdate" onclick="WdatePicker()"/><br>
+ 
 					所属歌手：<input type="text" class="singerTypecreate" style="width: 50px">
 					<button type="button" onclick="getSinger('create')">查询</button>
 					<select class="singer1create" name="singer1">
@@ -118,8 +118,8 @@ div {
 					 <input type="hidden" class="albumid" name="albumid" value="0" /> 专辑名：<input type="text"
 						name="albumname1" class="albumnameupdate" /><br> 发行公司：<input
 						type="text" name="fxgs" class="fxgsupdate" /><br>
-					<!--                        发布时间：<input type="text"  id="fbtime" class ="input1"/><br>
- -->
+			发布时间：<input type="text" id="fbtimeupdate" name="fbtime" class="Wdate" onclick="WdatePicker()"/><br>
+
 					所属歌手：<input type="text" class="singerTypeUpdate" style="width: 50px">
 					<button type="button" onclick="getSinger('update')">查询</button>
 					<select class="singerupdate" name="singer1">
@@ -157,6 +157,8 @@ div {
 
 </body>
 </html>
+<script type="text/javascript" src="resouce/date/My97DatePicker/WdatePicker.js"></script>
+
 <script>
 var arraydata=null;
 function queryAlbum(){
@@ -187,7 +189,11 @@ function queryAlbum(){
 		    },   
 	});
 }
-
+function getLocalTime(nS) {  
+	var newDate = new Date();
+	newDate.setTime(nS );
+	return newDate.toLocaleDateString();
+}
 function modifySinger(i){
 	debugger;
 	if(!arraydata){
@@ -198,6 +204,8 @@ function modifySinger(i){
 	 $(".albumid").val(arraydata[i].albumId); 
 	$(".headupdate").attr("src",arraydata[i].img);
 	$(".jsupdate").val(arraydata[i].js);
+	var time = getLocalTime(arraydata[i].fbtime);
+	$("#fbtimeupdate").val(time);
 	$(".singerTypeUpdate").val(arraydata[i].singername);
 	$(".fxgsupdate").val(arraydata[i].fxgs);
 	getSinger();

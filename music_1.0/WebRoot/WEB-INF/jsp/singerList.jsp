@@ -91,7 +91,7 @@ width:20%;float:left;height: 140px;
 	 num=count/10+1;
  }
  %>
-<<script type="text/javascript">
+<script type="text/javascript">
 $('.page').createPage(function(n){
 		setSingerPager(n);
 },{

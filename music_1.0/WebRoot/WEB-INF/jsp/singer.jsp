@@ -44,11 +44,12 @@ text-align:center;
 <script type="text/javascript" src="js/music.js"></script>
 <style type="text/css">
 .div-a{ float:left;width:30%; height:200px; background-color: #FFE4E1;} 
-.div-d{ float:right;width:66%;height:200px;color:white;font-size: 20px;background-color:rgba(2,130,238,0.6);}
-.div-b{ font-size: 18px;margin-top:1px;width:958px;float:left;overflow:hidden;} 
-.div-c{ float:left;font-size: 18px;margin-top:10px;width:900px;} 
+.div-d{ float:right;width:66%;height:200px;color:white;font-size: 20px;background-color:rgba(0,128,128,0.6);}
+.div-b{margin-top:15px; font-size: 18px;width:958px;float:left;overflow:hidden;background-color:rgba(255,192,203,0.6);} 
+.div-c{ float:left;font-size: 18px;margin-top:10px;width:958px;background-color:rgba(152,252,152,0.6);} 
 .div-e{ margin-top:20px;} 
 .li-div1{ float:left;width:49%; height:60px;} 
+
 .albumul ul{
 width:1200px;
 }
@@ -86,7 +87,7 @@ width:33.33%;float:left;height: 120px;
 </div>
 <div class="div-c">
 <div><img src="images/song.png" width="78" height="128" /><a class="text-1" onclick="ajaxSinger(<%=singer.getSid() %>,3)">点击查看全部歌曲>></a></div>
-<div>
+<div class="div-ul">
 <ul class = "ul-song">
 	
 </ul>

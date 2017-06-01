@@ -185,7 +185,7 @@ public class PlayMusicService {
 		JSONObject json = new JSONObject();
 		json.put("stats", "error");
 		Param p=new Param(n*MusicConts.PAGER_COUNT,
-				n*MusicConts.PAGER_COUNT+MusicConts.PAGER_COUNT,"",2,0);
+				MusicConts.PAGER_COUNT,"",2,0);
 		List<Singer> list = playMusicDao.getSingerAll(p);
 		if(list!=null){
 			json.put("stats", "success");
@@ -216,9 +216,9 @@ public class PlayMusicService {
 		List<Song> list1 = playMusicDao.getSongListForAlbumid(p);
 		List<Song> list = playMusicDao.getMusicListForUid(p);
 		Map<Integer,Object> map = new HashMap<Integer,Object>();
-		for(Song s : list){
+		for(Song s : list){ //先把收藏的歌曲根据，歌曲ID为key 歌曲对象为value存放到Map中
 			map.put(s.getSid(), s);
-		}
+		}//然后再循环 从收藏的专辑那获取到的歌曲。在循环中判断这个歌曲是否已经存在map中如果存在就continue不存在就放进去
 		for(Song s : list1){
 			if(map.containsKey(s.getSid())){
 				continue;
