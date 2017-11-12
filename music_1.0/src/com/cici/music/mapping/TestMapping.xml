@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cici.music.dao.TestDao">
+
+  <select id="queryForName" resultType="com.cici.music.pojo.Test" parameterType="com.cici.music.pojo.Test">
+    SELECT
+            name,
+            sex,
+            age
+        FROM
+            test
+        WHERE
+            name = #{name}
+  </select>
+</mapper>
+
+<!-- <?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ -->
+<!-- <mapper namespace="com.cici.music.dao.TestDao">
+    目的：为dao接口方法提供sql语句配置
+    <select id="queryForName" parametertype="com.cici.music.pojo.Test" 
+    resulttype="com.cici.music.pojo.Test">
+        具体的sql
+        SELECT
+            name,
+            sex,
+            age
+        FROM
+            test
+        WHERE
+            name = #{name}
+    </select>
+ 
+   
+</mapper> -->
+
+

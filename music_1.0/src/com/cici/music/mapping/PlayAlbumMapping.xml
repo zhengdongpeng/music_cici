@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cici.music.dao.PlayAlbumDao">
+	<select id="getForId" parameterType="int" resultType="com.cici.music.pojo.Album">
+		SELECT
+		zhujiid as albumId,
+		zname as aname,
+		js,
+		songerid,
+		fxgs,
+		fbtime,
+		cjtime,
+		img,
+		songer.sname as singername
+		FROM
+		zhuanji,
+		songer
+		WHERE
+		zhuanji.songerid = songer.sid
+		AND zhujiid =#{id}
+	</select>
+<update id="updateAlbum"  parameterType="com.cici.music.pojo.Album">
+	update zhuanji 
+	<set>
+			zname=#{aname},
+			js = #{js},
+			songerid= #{songerId},
+			fxgs = #{fxgs},
+			fbtime = #{fbtime}
+		<if test="img!=null">
+		 img=#{img},
+		</if>
+	</set>
+	where zhujiid=#{albumId}
+</update>
+	<select id="getAlbumColect" resultType="com.cici.music.pojo.Album"
+		parameterType="com.cici.music.pojo.Param">
+		SELECT
+		count(z.zhujiid) AS size,
+		s.sname as singername,
+		z.img,
+		z.songerid,
+		z.zhujiid as albumId,
+		z.zname as aname
+		FROM
+		songer s,
+		zhuanji z
+		LEFT JOIN collectzhuanji c ON z.zhujiid = c.sid
+		WHERE
+		s.sid = z.songerid
+		GROUP BY
+		z.zhujiid
+		ORDER BY
+		size DESC
+		LIMIT 0,
+		6
+	</select>
+
+	<delete id="deleteAlbum" parameterType="java.lang.String">
+		delete from zhuanji where zhujiid=#{0}
+	</delete>
+	<insert id="insertAlbum" parameterType="com.cici.music.pojo.Album">
+		insert into zhuanji(zname,js,songerid,fxgs,typeid,fbtime,cjtime,img)
+		values(#{aname},#{js},#{songerId},#{fxgs},#{typeId},#{fbtime},#{cjtime},#{img})
+	</insert>
+
+	<select id="getAlbumListForUid" resultType="com.cici.music.pojo.Album"
+		parameterType="com.cici.music.pojo.Param">
+		select zhuanji.zhujiid as albumId,
+		zhuanji.img,
+		zhuanji.zname as aname
+
+		from zhuanji ,collectzhuanji c
+
+		where c.uid=#{searchParam} and zhuanji.zhujiid=c.sid
+	</select>
+	
+	<select id="getMusicList" resultType="com.cici.music.pojo.Song">
+		select
+		song.sid,
+		song.sname,
+		song.song,
+		song.img,
+		t.name as typeName,
+		song.fbtime
+		from
+		song ,type t where song.type=t.tid and song.zjid=#{0};
+	</select>
+
+
+	<select id="getAlbumAll" resultType="com.cici.music.pojo.Album"
+		parameterType="com.cici.music.pojo.Param">
+		select
+		<if test="searchType==1">
+			zhuanji.zhujiid as albumId,
+			zhuanji.zname as aname
+		</if>
+		<if test="searchType!=1">
+			zhuanji.zhujiid as albumId,
+			zhuanji.zname as aname,
+			zhuanji.fxgs,
+			zhuanji.fbtime,
+			zhuanji.img
+		</if>
+		from zhuanji
+
+		<if test="searchType!=1">
+			order by zhuanji.fbtime desc
+			LIMIT #{start},
+			#{length}
+		</if>
+	</select>
+
+</mapper>

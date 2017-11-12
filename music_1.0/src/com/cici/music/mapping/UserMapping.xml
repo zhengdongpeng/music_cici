@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cici.music.dao.UserDao">
+ <select id="queryUser" resultType="com.cici.music.pojo.User" parameterType="com.cici.music.pojo.User">
+    SELECT
+           uid,
+           username,
+           password,
+           sex,
+           head,
+           email,
+           zctime,
+           uname,
+           city,
+           birthday
+        FROM
+            user
+        WHERE
+            username=#{username}
+            and password=#{password}
+            and code=#{code}
+  </select>
+   <delete id="delete"  >
+  	update user set code=#{1} where uid=#{0}
+  </delete>
+  <select id="getUserTotal"  resultType="java.lang.Integer">
+  select count(*) from user;
+  </select>
+  <select id="getUserForType"   resultType="com.cici.music.pojo.User" >
+  select * 
+  from user 
+  where 
+  <if test="type==1">
+  username  LIKE 
+ 	CONCAT('%','${username}','%' ) 
+  </if>
+    <if test="type==2">
+  uid=#{username}
+  </if>
+    <if test="type==3">
+  uname  LIKE 
+ 	CONCAT('%','${username}','%' ) 
+  </if>
+  </select>
+  <select id="getName" resultType="com.cici.music.pojo.User" parameterType="com.cici.music.pojo.User">
+	  SELECT
+           username
+        FROM
+            user
+        WHERE
+            username=#{username}
+  </select>
+  
+  <insert id="insertUser" parameterType="com.cici.music.pojo.User">
+  	   insert into user(username,password,sex,head,email,zctime,uname,code) 
+  	   values(#{username},#{password},#{sex},#{head},#{email},#{zctime},
+  	   #{uname},0)
+  </insert>
+  <update id="updateHeadImage" parameterType="com.cici.music.pojo.User">
+  	update user set head = #{head} where uid = #{uid}
+  </update>
+  <update id="updateUser" parameterType="com.cici.music.pojo.User">
+  	update user set city = #{city} , birthday =#{birthday} ,sex=#{sex},uname=#{uname}
+  	where uid = #{uid}
+  </update>
+  <update id="updatePassword" parameterType="com.cici.music.pojo.User">
+  	update user set password=#{password}
+  	where uid = #{uid}
+  </update>
+  </mapper>

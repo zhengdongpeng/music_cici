@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cici.music.dao.ManageDao">
+	<select id="queryMUser" resultType="com.cici.music.pojo.MUser"
+		parameterType="com.cici.music.pojo.MUser">
+		SELECT
+		mid,
+		username,
+		password,
+		head,
+		zctime,
+		jibie
+		FROM
+		muser
+		WHERE
+		username=#{username}
+		and password=#{password}
+	</select>
+	<insert id="insertMUser" parameterType="com.cici.music.pojo.MUser">
+		insert into muser(username,password,jibie,zctime)
+		values(#{username},#{password},#{jibie},#{zctime})
+	</insert>
+
+	<update id="updateMUser" parameterType="com.cici.music.pojo.MUser">
+		update muser set password=#{password}
+		where username = #{username}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.String">
+		delete from muser where username=#{0}
+	</delete>
+	<update id="updateMJibie" parameterType="hashmap">
+		update muser set jibie = #{jibie}
+		where username = #{username}
+	</update>
+
+	<select id="queryMuser" parameterType="hashmap"
+		resultType="com.cici.music.pojo.MUser">
+		select
+		mid,
+		username,
+		password,
+		head,
+		zctime,
+		jibie
+		from muser
+		<where>
+			<if test="like_== 1">
+				 username like	CONCAT('%','${name}','%' ) 
+			</if>
+		</where>
+	</select>
+</mapper>
