@@ -80,11 +80,11 @@ public class IndexController {
 				request.setAttribute("type", null);
 				request.setAttribute("size", 0);
 			}
-			/*try {
+			try {
 				value = new String(value.getBytes("iso-8859-1"), "utf-8");
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
-			}  */
+			}  
 			request.setAttribute("value", value);
 			if(MusicConts.TYPE_SONG.equals(type)){
 				List<Song> song=indexService.getSearchSong(new Param(0,10,value,0,0));

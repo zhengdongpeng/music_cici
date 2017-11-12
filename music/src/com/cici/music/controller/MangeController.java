@@ -64,7 +64,7 @@ public class MangeController {
 		}else if("singerquery".equals(type)){
 			result = playMusicService.singerForName(request);
 		}else if("albumquery".equals(type)){
-			String name = request.getParameter("username");
+			String name = request.getParameter("username"); //album name
 			List<Album> album=indexService.getSearchAlbum(new Param(0,
 					1000,name,0,0));
 			JSONObject json = new JSONObject();

@@ -54,7 +54,7 @@ public class UploadController {
     		HttpServletRequest request) throws IOException {
     	String type = request.getParameter("type");
     	Song song = new Song();
-    	if("1".equals(type)){
+    	if("1".equals(type)){  //创建
     		 String path = request.getSession().getServletContext().getRealPath("/img/song");
     		 String imgName=new Date().getTime()+"abc";
     		 /**
@@ -97,7 +97,7 @@ public class UploadController {
     	       }
     	       request.setAttribute("url", "songmange.do");
     	        return  "mange/result";
-    	}else if("2".equals(type)){
+    	}else if("2".equals(type)){   //修改
     		
     		String path = request.getSession().getServletContext().getRealPath("/img/song");
     		String imgName=new Date().getTime()+"so";
@@ -204,8 +204,8 @@ public class UploadController {
    	       }else{
    	    	   request.setAttribute("result", "修改失败"); 
    	       }
-   	       request.setAttribute("url", "albummange.do");
-   	        return  "mange/result";
+   	       request.setAttribute("url", "albummange.do"); //second
+   	        return  "mange/result"; //first
    	}
     	return  "mange/result";
     }

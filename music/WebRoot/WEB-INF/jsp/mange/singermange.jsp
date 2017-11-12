@@ -194,7 +194,7 @@ function querySinger(){
 	
 }
 
-function modifySinger(i){
+function modifySinger(i){  //显示
 	debugger;
 	if(!arraydata){
 		alert("数据异常");
